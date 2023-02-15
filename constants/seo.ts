@@ -3,8 +3,8 @@ export const Seo = {
     main: 'Main',
     intro: 'Intro',
     member: 'Member',
-    notice: 'Notice',
-    reference: 'Reference',
+    business: 'Business',
+    community: 'Community',
     //notFound: 'Not Found',
   },
 } as const;
