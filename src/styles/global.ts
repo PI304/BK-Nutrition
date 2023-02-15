@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
-    font-family: 'Arial';
+    font-family: 'Inter';
   }
 
   * {
