@@ -7,6 +7,7 @@ export const CustomHead = ({ title }: CustomHeadProps) => {
       <meta name='viewport' content='user-scalable=no, width=device-width, initial-scale=1' />
       <meta httpEquiv='x-ua-compatible' content='ie=edge' />
       <title>{`${title} | BK-Nutrition`}</title>
+      <base href='/'></base>
     </Head>
   );
 };
