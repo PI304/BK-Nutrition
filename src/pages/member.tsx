@@ -3,6 +3,8 @@ import { DefaultLayout } from '@/components/layouts/DefaultLayout';
 import { MemberPage } from '@/components/pages/member/MemberPage';
 import { CustomHead } from '@/components/seo/CustomHead';
 import { Seo } from 'constants/seo';
+import { MemberLayout } from '@/components/layouts';
+import { BackgroundHeader } from '@/components/shared';
 
 export default function member() {
   return (
@@ -14,5 +16,10 @@ export default function member() {
 }
 
 member.getLayout = (page: ReactElement) => {
-  return <DefaultLayout>{page}</DefaultLayout>;
+  return (
+    <DefaultLayout>
+      <BackgroundHeader title='Member' address='sub address' />
+      <MemberLayout>{page}</MemberLayout>
+    </DefaultLayout>
+  );
 };

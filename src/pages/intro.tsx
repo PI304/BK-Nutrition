@@ -3,6 +3,8 @@ import { DefaultLayout } from '@/components/layouts/DefaultLayout';
 import { IntroPage } from '@/components/pages/intro/IntroPage';
 import { CustomHead } from '@/components/seo/CustomHead';
 import { Seo } from 'constants/seo';
+import { IntroLayout } from '@/components/layouts';
+import { BackgroundHeader } from '@/components/shared';
 
 export default function intro() {
   return (
@@ -14,5 +16,10 @@ export default function intro() {
 }
 
 intro.getLayout = (page: ReactElement) => {
-  return <DefaultLayout>{page}</DefaultLayout>;
+  return (
+    <DefaultLayout>
+      <BackgroundHeader title='Intro' address='sub address' />
+      <IntroLayout>{page}</IntroLayout>
+    </DefaultLayout>
+  );
 };

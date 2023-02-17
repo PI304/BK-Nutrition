@@ -3,6 +3,8 @@ import { DefaultLayout } from '@/components/layouts/DefaultLayout';
 import { BusinessPage } from '@/components/pages/business/BusinessPage';
 import { CustomHead } from '@/components/seo/CustomHead';
 import { Seo } from 'constants/seo';
+import { SharedLayout } from '@/components/layouts';
+import { BackgroundHeader } from '@/components/shared';
 
 export default function business() {
   return (
@@ -14,5 +16,10 @@ export default function business() {
 }
 
 business.getLayout = (page: ReactElement) => {
-  return <DefaultLayout>{page}</DefaultLayout>;
+  return (
+    <DefaultLayout>
+      <BackgroundHeader title='Business' address='sub address' />
+      <SharedLayout>{page}</SharedLayout>
+    </DefaultLayout>
+  );
 };
