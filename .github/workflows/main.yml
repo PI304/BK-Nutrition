@@ -1,0 +1,15 @@
+name: BK-Nutrition
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  CI_CD:
+    name: CI/CD
+    runs-on: [self-hosted, BK-Nutrition-runner]
+    steps:
+      - name: Deploy
+        run: |
+          cd ~/SSK
+          git fetch --all && git reset --hard origin/main && git pull origin main
