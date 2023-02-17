@@ -3,6 +3,8 @@ import { DefaultLayout } from '@/components/layouts/DefaultLayout';
 import { CommunityPage } from '@/components/pages/community/CommunityPage';
 import { CustomHead } from '@/components/seo/CustomHead';
 import { Seo } from 'constants/seo';
+import { SharedLayout } from '@/components/layouts';
+import { BackgroundHeader } from '@/components/shared';
 
 export default function community() {
   return (
@@ -14,5 +16,10 @@ export default function community() {
 }
 
 community.getLayout = (page: ReactElement) => {
-  return <DefaultLayout>{page}</DefaultLayout>;
+  return (
+    <DefaultLayout>
+      <BackgroundHeader title='Community' address='sub address' />
+      <SharedLayout>{page}</SharedLayout>
+    </DefaultLayout>
+  );
 };
