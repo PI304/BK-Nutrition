@@ -61,6 +61,10 @@ namespace S {
     flex-direction: column;
     margin-left: 6rem;
     gap: 1rem;
+
+    > div:last-child {
+      padding-left: 0.5rem;
+    }
   `;
 
   export const Contact = styled.div`

@@ -40,7 +40,7 @@ export const Header = () => {
 
 namespace S {
   export const HeaderLayout = styled.header`
-    height: 9rem;
+    height: 9.2rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
