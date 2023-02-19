@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Fonts, SC } from '@/styles';
+import { Colors, Fonts, SC } from '@/styles';
 import Image from 'next/image';
 import People from '../../../../public/assets/people1.png';
 import Goal from '../../../../public/assets/goal.png';
@@ -175,6 +175,14 @@ namespace S {
     > div:first-child {
       ${Fonts.bold30};
       margin: 3rem 0 5rem;
+
+      &::after {
+        content: '';
+        width: 40rem;
+        margin: 2rem 0 0 2rem;
+        display: block;
+        border-bottom: 0.3rem solid ${Colors.black};
+      }
     }
 
     > div:last-child div {
@@ -185,11 +193,11 @@ namespace S {
 
     > div:last-child ol {
       list-style: decimal;
-    }
 
-    > div:last-child ol li {
-      ${Fonts.medium24};
-      margin-bottom: 3rem;
+      > li {
+        ${Fonts.medium24};
+        margin-bottom: 3rem;
+      }
     }
   `;
 
@@ -197,35 +205,43 @@ namespace S {
     > div:first-child {
       ${Fonts.bold30};
       margin: 13rem 0 5rem;
+
+      &::after {
+        content: '';
+        width: 40rem;
+        margin: 2rem 0 0 2rem;
+        display: block;
+        border-bottom: 0.3rem solid ${Colors.black};
+      }
     }
 
     > div:last-child ol {
       list-style: decimal;
       margin-bottom: 4rem;
-    }
 
-    > div:last-child ol li {
-      ${Fonts.medium24};
-      line-height: 3.5rem;
+      li {
+        ${Fonts.medium24};
+        line-height: 3.5rem;
+      }
     }
 
     > div:last-child ul:first-of-type {
       list-style: disc;
-    }
 
-    > div:last-child ul:first-of-type li {
-      ${Fonts.bold24};
-      line-height: 4rem;
+      > li {
+        ${Fonts.bold24};
+        line-height: 4rem;
+      }
     }
 
     > div:last-child ul:last-of-type {
       list-style: lower-latin;
       padding-left: 2rem;
-    }
 
-    > div:last-child ul:last-of-type li {
-      ${Fonts.medium24};
-      line-height: 3.5rem;
+      li {
+        ${Fonts.medium24};
+        line-height: 3.5rem;
+      }
     }
   `;
 
