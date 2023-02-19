@@ -9,5 +9,11 @@ export const MemberLayout = ({ children }: ChildrenType) => {
 };
 
 namespace S {
-  export const Layout = styled.section``;
+  export const Layout = styled.section`
+    width: 120rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 172.5rem 0 56rem 125.6rem;
+    grid-row-gap: 5rem;
+  `;
 }
