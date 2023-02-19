@@ -1,15 +1,7 @@
-import { Colors } from '@/styles';
 import styled from 'styled-components';
+import { Colors } from '.';
 
-export const Line = () => {
-  return (
-    <>
-      <S.Line></S.Line>
-    </>
-  );
-};
-
-namespace S {
+export namespace SC {
   export const Line = styled.div`
     width: 30rem;
     margin: 0 auto;
