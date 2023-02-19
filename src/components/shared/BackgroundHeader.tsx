@@ -37,7 +37,7 @@ namespace S {
     flex-direction: column;
     justify-content: flex-end;
     gap: 7rem;
-    width: 75%;
+    width: 120rem;
   `;
 
   export const Title = styled.div`
