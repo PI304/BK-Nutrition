@@ -7,4 +7,5 @@ export const Colors = {
   header: 'rgba(0, 0, 0, 0.1)',
   contact: 'rgba(18, 18, 18, 0.55)',
   shadow: 'rgba(57, 57, 57, 0.6)',
+  line: '#F3F3F3',
 } as const;
