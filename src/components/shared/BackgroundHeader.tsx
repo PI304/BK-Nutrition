@@ -26,7 +26,7 @@ namespace S {
     height: 29rem;
     display: flex;
     justify-content: center;
-    background-color: gray;
+    background-image: url(/assets/background.png);
     position: relative;
     top: -9rem;
     z-index: -1;

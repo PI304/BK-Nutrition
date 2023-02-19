@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { Fonts } from '@/styles';
+import { Fonts, SC } from '@/styles';
 import Image from 'next/image';
 import People from '../../../../public/assets/people1.png';
 import Goal from '../../../../public/assets/goal.png';
 import Group from '../../../../public/assets/group.png';
-import { Line } from '@/components/shared/Line';
 
 export const IntroPage = () => {
   return (
@@ -40,7 +39,7 @@ export const IntroPage = () => {
           </p>
         </S.Greeting>
       </S.GreetingBox>
-      <Line />
+      <SC.Line />
 
       <S.GoalBox>
         <S.Title>목표 및 비전</S.Title>
@@ -96,13 +95,13 @@ export const IntroPage = () => {
           </div>
         </S.SubDescription>
       </S.GoalBox>
-      <Line />
+      <SC.Line />
 
       <S.GroupBox>
         <S.Title>조직 현황</S.Title>
         <Image src={Group} alt='group' />
       </S.GroupBox>
-      <Line />
+      <SC.Line />
 
       <S.MapBox>
         <S.Title>찾아오시는 길</S.Title>
@@ -146,10 +145,10 @@ namespace S {
     > p {
       ${Fonts.medium20};
       margin-bottom: 4rem;
-    }
 
-    > p strong {
-      ${Fonts.bold20}
+      > strong {
+        ${Fonts.bold20}
+      }
     }
   `;
 
