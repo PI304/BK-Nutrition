@@ -35,11 +35,19 @@ export const Footer = () => {
 namespace S {
   export const FooterLayout = styled.footer`
     margin: auto;
-    height: 18rem;
-    background-color: ${Colors.yonsei};
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 18rem;
+    background-color: ${Colors.yonsei};
+
+    > div:first-child {
+      margin: auto;
+      width: 120rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
     > img {
       margin-right: 6rem;
