@@ -197,6 +197,7 @@ namespace S {
       > li {
         ${Fonts.medium24};
         margin-bottom: 3rem;
+        line-height: 3rem;
       }
     }
   `;
@@ -240,7 +241,7 @@ namespace S {
 
       li {
         ${Fonts.medium24};
-        line-height: 3.5rem;
+        line-height: 1.5em;
       }
     }
   `;
