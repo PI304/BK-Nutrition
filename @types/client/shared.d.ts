@@ -4,6 +4,7 @@
 
 type TitleProps = {
   title: string;
+  sub_title: string;
   address: string;
 };
 
@@ -15,3 +16,8 @@ type PageButtonProps = {
 };
 
 type NumberButtonProps = IsCurrentType & {};
+
+type DownloadProps = {
+  year: string;
+  semester: string;
+};

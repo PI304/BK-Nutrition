@@ -1,16 +1,22 @@
 import { Colors, Fonts } from '@/styles';
+import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import Home from '../../../public/assets/home.png';
 
-export const BackgroundHeader = ({ title, address }: TitleProps) => {
+export const BackgroundHeader = ({ title, sub_title, address }: TitleProps) => {
   return (
     <>
       <S.Background>
         <S.TitleLayout>
-          <S.Title>{title}</S.Title>
+          <S.Title>
+            <div>{title}</div>
+            <div>{sub_title}</div>
+          </S.Title>
           <S.Tab>
-            <Image src={Home} alt='home'></Image>
+            <Link href='/main'>
+              <Image src={Home} alt='home' />
+            </Link>
             <div>{title}</div>
             <div>{address}</div>
           </S.Tab>
@@ -26,7 +32,10 @@ namespace S {
     height: 29rem;
     display: flex;
     justify-content: center;
-    background-image: url(/assets/background.png);
+    background-image: url(/assets/background3.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     position: relative;
     top: -9rem;
     z-index: -1;
@@ -36,16 +45,26 @@ namespace S {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    gap: 7rem;
+    gap: 0.5rem;
     width: 120rem;
   `;
 
   export const Title = styled.div`
-    ${Fonts.bold40};
-    color: ${Colors.white};
     display: flex;
-    justify-content: center;
-    margin-top: 5rem;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    height: 25rem;
+
+    > div:first-of-type {
+      ${Fonts.bold40};
+      color: ${Colors.white};
+    }
+
+    > div:last-of-type {
+      ${Fonts.medium30};
+      color: ${Colors.white};
+    }
   `;
 
   export const Tab = styled.div`

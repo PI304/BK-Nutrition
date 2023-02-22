@@ -1,7 +1,7 @@
 import useChangePage from '../../../hooks/useChangePage';
 import { useState } from 'react';
 import { BoxShadows, Colors, Fonts, SC } from '@/styles';
-import { Members, PageButton, Pagination } from '@/components/shared';
+import { Download, Members, PageButton, Pagination } from '@/components/shared';
 import Image from 'next/image';
 import styled from 'styled-components';
 import Member from '../../../../public/assets/newmember.png';
@@ -59,6 +59,13 @@ export const MemberPage = () => {
       <S.UniversityBox>
         <S.Title>지원 대학원생</S.Title>
         <Image src={University} alt='member2'></Image>
+        <div>
+          <Download year='2020년' semester='2학기' />
+          <Download year='2021년' semester='1학기' />
+          <Download year='2021년' semester='2학기' />
+          <Download year='2022년' semester='1학기' />
+          <Download year='2022년' semester='2학기' />
+        </div>
       </S.UniversityBox>
     </>
   );
@@ -182,5 +189,11 @@ namespace S {
   export const UniversityBox = styled.div`
     display: flex;
     flex-direction: column;
+
+    > div:last-of-type {
+      display: flex;
+      margin-top: 3rem;
+      gap: 1.2rem;
+    }
   `;
 }

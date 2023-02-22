@@ -69,6 +69,7 @@ export const IntroPage = () => {
               </li>
             </ol>
           </div>
+          <div>혁신 글로벌 중심 대학원</div>
         </S.Description>
         <div>
           <Image src={Goal} alt='goal' />
@@ -77,9 +78,15 @@ export const IntroPage = () => {
           <div>웰니스 융합인재 양성팀의 목표</div>
           <div>
             <ol>
-              <li>1. 글로벌 웰니스문제 해결을 위한 혁신적 융합 전문인력 양성</li>
-              <li>2. 글로벌 웰니스융합문제 해결을 위한 국제적 수준의 교육연구 주도</li>
-              <li>3. 미래식품영양기술의 국제화 및 신산업화를 통한 사회적 기여 달성</li>
+              <li>
+                1. 글로벌 웰니스문제 해결을 위한 <strong>혁신적 융합 전문인력 양성</strong>
+              </li>
+              <li>
+                2. 글로벌 웰니스융합문제 해결을 위한 <strong>국제적 수준의 교육연구 주도</strong>
+              </li>
+              <li>
+                3. <strong>미래식품영양기술의 국제화 및 신산업화</strong>를 통한 사회적 기여 달성
+              </li>
             </ol>
             <ul>
               <li>
@@ -105,11 +112,12 @@ export const IntroPage = () => {
 
       <S.MapBox>
         <S.Title>찾아오시는 길</S.Title>
-        <div>
-          주소: 서울특별시 서대문구 연세로 50 삼성관 110호 BK21 FOUR 웰니스 융합인재양성팀 전화:
-          02-2123-3126
-        </div>
         <div></div>
+        <div>
+          주소: 서울특별시 서대문구 연세로 50 삼성관 110호 BK21 FOUR 웰니스 융합인재양성팀
+          <br />
+          전화: 02-2123-3126
+        </div>
       </S.MapBox>
     </>
   );
@@ -156,7 +164,7 @@ namespace S {
   export const GoalBox = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 5rem 65rem 55rem;
+    grid-template-rows: 5rem 65rem 70rem;
 
     > div:nth-child(3) {
       grid-column: 2 / 3;
@@ -185,13 +193,19 @@ namespace S {
       }
     }
 
-    > div:last-child div {
+    > div:last-of-type {
+      ${Fonts.bold30};
+      text-align: center;
+      padding-top: 2.5rem;
+    }
+
+    > div:nth-child(2) div {
       ${Fonts.bold24};
       padding-left: 2rem;
       margin-bottom: 3.5rem;
     }
 
-    > div:last-child ol {
+    > div:nth-child(2) ol {
       list-style: decimal;
 
       > li {
@@ -222,7 +236,11 @@ namespace S {
 
       li {
         ${Fonts.medium24};
-        line-height: 3.5rem;
+        line-height: 4rem;
+
+        strong {
+          ${Fonts.bold24}
+        }
       }
     }
 
@@ -231,7 +249,7 @@ namespace S {
 
       > li {
         ${Fonts.bold24};
-        line-height: 4rem;
+        line-height: 5rem;
       }
     }
 
@@ -241,7 +259,7 @@ namespace S {
 
       li {
         ${Fonts.medium24};
-        line-height: 1.5em;
+        line-height: 2em;
       }
     }
   `;
@@ -259,8 +277,7 @@ namespace S {
   /* 찾아오시는 길*/
   export const MapBox = styled.div`
     display: grid;
-    grid-template-columns: 48rem 70rem;
-    grid-template-rows: 35rem 70rem;
+    grid-template-rows: 10rem 43rem 13rem;
     margin-bottom: 15rem;
 
     > div:first-child {
@@ -269,17 +286,16 @@ namespace S {
     }
 
     > div:nth-child(2) {
-      ${Fonts.bold24};
-      grid-row: 2 / 3;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background-color: gray;
     }
 
     > div:last-child {
-      background-color: red;
-      grid-row: -2 / -1;
-      grid-column: 2 / 3;
+      ${Fonts.bold24};
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      line-height: 3.5rem;
     }
   `;
 }

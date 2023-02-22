@@ -9,6 +9,7 @@ export const Fonts = {
   medium16: 'font-size:1.6rem; font-weight:400',
   medium20: 'font-size:2rem; font-weight:400',
   medium24: 'font-size:2.4rem; font-weight:400',
+  medium30: 'font-size:3rem; font-weight:400',
 
   /* 500 */
   regular16: 'font-size:1.6rem; font-weight:500',

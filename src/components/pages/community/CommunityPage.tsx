@@ -4,15 +4,20 @@ import { Paths } from 'constants/paths';
 import { Seo } from 'constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
 import { PageButton, Select } from '@/components/shared';
+import { useState } from 'react';
 
 export const CommunityPage = () => {
+  const [isClick, setIsClick] = useState<boolean>(false);
+  const onClick = () => {
+    setIsClick(true);
+  };
   return (
     <>
       <S.PageBox>
-        <S.Page href={Paths.community} title={Seo.Title.community}>
+        <S.Page href={Paths.community} title={Seo.Title.community} onClick={onClick}>
           공지사항
         </S.Page>
-        <S.Page href={Paths.community} title={Seo.Title.community}>
+        <S.Page href={Paths.resource} title={Seo.Title.resource}>
           자료실
         </S.Page>
         <Select />
@@ -71,7 +76,8 @@ namespace S {
   export const Page = styled(Link)`
     ${Fonts.bold20};
     box-shadow: ${BoxShadows.smooth};
-    background-color: ${Colors.gray};
+    background-color: ${(props) => (props.onClick ? Colors.table : Colors.gray)};
+    color: ${(props) => (props.onClick ? Colors.white : Colors.black)};
     width: 15rem;
     height: 5rem;
     display: flex;
