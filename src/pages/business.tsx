@@ -18,7 +18,7 @@ export default function business() {
 business.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='Business' address='Business' />
+      <BackgroundHeader title='Business' sub_title='' address='Business' />
       <SharedLayout>{page}</SharedLayout>
     </DefaultLayout>
   );

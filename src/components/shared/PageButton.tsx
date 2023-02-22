@@ -25,6 +25,7 @@ namespace S {
     gap: 0.1rem;
 
     > button {
+      height: 2.4rem;
       flex-shrink: 0;
       padding: 0 0.6rem;
       border: 0.05rem solid ${Colors.gray150};

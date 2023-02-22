@@ -1,62 +1,59 @@
 import { Colors, Fonts } from '@/styles';
 import Image from 'next/image';
 import styled from 'styled-components';
-import Footerlogo from '../../../public/assets/footerlogo.png';
+import Footerlogo1 from '../../../public/assets/footerlogo1.png';
+import Footerlogo2 from '../../../public/assets/footerlogo2.png';
 import Arrow from '../../../public/assets/arrow.png';
 
 export const Footer = () => {
   return (
     <S.FooterLayout>
-      <Image src={Footerlogo} alt='footerlogo' />
-      <S.Description>
-        개인정보처리방침 | 이메일무단수집거부 | 고객서비스현장 | 권익위부패공익신고 |
-        부정비리신고센터
+      <div>
         <div>
-          주소: 서울시 서대문구 연세로 50 연세대학교 식품영양학과 웰니스 융합인재 양성팀
-          <br></br>
-          Cpyright(c) 2013 YONSEI UNIV FOUR PROJECT FOR WELLNESS INTEGRTED TALENTS. All right
-          reservesd
+          <Image src={Footerlogo1} alt='footerlogo1' />
+          <Image src={Footerlogo2} alt='footerlogo2' />
         </div>
-      </S.Description>
-      <S.ContactLayout>
-        <S.Contact>
-          부속홈페이지
-          <Image src={Arrow} alt='arrow'></Image>
-        </S.Contact>
-        <S.Contact>
-          관련기관 &nbsp;
-          <Image src={Arrow} alt='arrow'></Image>
-        </S.Contact>
-      </S.ContactLayout>
+        <S.Description>
+          <div>
+            주소: 서울시 서대문구 연세로 50 연세대학교 식품영양학과 웰니스 융합인재 양성팀
+            <br></br>
+            Cpyright(c) 2013 YONSEI UNIV FOUR PROJECT FOR WELLNESS INTEGRTED TALENTS. All right
+            reservesd
+          </div>
+        </S.Description>
+      </div>
     </S.FooterLayout>
   );
 };
 
 namespace S {
   export const FooterLayout = styled.footer`
-    margin: auto;
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 18rem;
-    background-color: ${Colors.yonsei};
+    background-color: ${Colors.footer};
 
-    > div:first-child {
-      margin: auto;
+    > div {
+      position: relative;
       width: 120rem;
       display: flex;
       justify-content: center;
       align-items: center;
-    }
 
-    > img {
-      margin-right: 6rem;
+      > div:first-child {
+        position: absolute;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+      }
     }
   `;
 
   export const Description = styled.div`
     ${Fonts.medium16};
     color: ${Colors.white};
+    position: absolute;
+    right: 0;
 
     > div {
       margin-top: 1.5rem;
