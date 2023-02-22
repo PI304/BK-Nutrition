@@ -18,7 +18,7 @@ export default function community() {
 community.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='Community' address='sub address' />
+      <BackgroundHeader title='Community' address='Community' />
       <SharedLayout>{page}</SharedLayout>
     </DefaultLayout>
   );

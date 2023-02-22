@@ -9,5 +9,9 @@ export const SharedLayout = ({ children }: ChildrenType) => {
 };
 
 namespace S {
-  export const Layout = styled.section``;
+  export const Layout = styled.section`
+    width: 120rem;
+    margin: 0 auto;
+    display: block;
+  `;
 }
