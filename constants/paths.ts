@@ -3,5 +3,8 @@ export const Paths: PathsType = {
   intro: '/intro',
   member: '/member',
   community: '/community',
+  resource: '/community/resource',
   business: '/business',
+  international: '/business/international',
+  industry: '/business/industry',
 } as const;

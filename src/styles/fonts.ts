@@ -4,6 +4,7 @@ export const Fonts = {
 
   /* 400 */
   medium12: 'font-size:1.2rem; font-weight:400',
+  medium14: 'font-size:1.4rem; font-weight:400',
   medium18: 'font-size:1.8rem; font-weight:400',
   medium16: 'font-size:1.6rem; font-weight:400',
   medium20: 'font-size:2rem; font-weight:400',
@@ -13,6 +14,7 @@ export const Fonts = {
   regular16: 'font-size:1.6rem; font-weight:500',
 
   /* 700 */
+  bold16: 'font-size:1.6rem; font-weight:700',
   bold20: 'font-size:2rem; font-weight:700',
   bold24: 'font-size:2.4rem; font-weight:700',
   bold30: 'font-size:3rem; font-weight:700',
