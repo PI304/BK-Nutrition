@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Footer, Header } from '../Adds';
+import { Footer, Header } from '../shared';
 
 export const DefaultLayout = ({ children }: ChildrenType) => {
   return (

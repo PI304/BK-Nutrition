@@ -54,7 +54,7 @@ export const Pagination = ({
       ];
       setPages(pages);
     }
-  }, [totalPosts]);
+  }, [totalPosts, size]);
 
   return (
     <>
