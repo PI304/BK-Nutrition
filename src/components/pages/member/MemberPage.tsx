@@ -145,7 +145,7 @@ namespace S {
       position: relative;
 
       > p {
-        ${Fonts.medium18};
+        ${Fonts.regular18};
         margin-bottom: 1rem;
       }
 
@@ -166,7 +166,7 @@ namespace S {
       padding: 2.5rem 2rem;
 
       > p {
-        ${Fonts.medium18};
+        ${Fonts.regular18};
         line-height: 2.5rem;
       }
     }

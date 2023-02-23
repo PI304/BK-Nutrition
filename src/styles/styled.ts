@@ -16,7 +16,7 @@ export namespace SC {
     margin-right: 8rem;
 
     > div {
-      ${Fonts.medium20}
+      ${Fonts.regular20}
     }
   `;
 

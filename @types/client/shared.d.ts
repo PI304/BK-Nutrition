@@ -4,7 +4,7 @@
 
 type TitleProps = {
   title: string;
-  sub_title: string;
+  sub_title?: string;
   address: string;
 };
 

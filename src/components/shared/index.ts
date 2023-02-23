@@ -4,3 +4,5 @@ export * from './Pagination';
 export * from './PageButton';
 export * from './Select';
 export * from './Download';
+export * from './Header';
+export * from './Footer';

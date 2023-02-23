@@ -3,8 +3,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
 import Mainlogo from '../../../public/assets/mainlogo.png';
-import { Paths } from 'constants/paths';
-import { Seo } from 'constants/seo';
+import { Paths } from '@/constants/paths';
+import { Seo } from '@/constants/seo';
 
 export const Header = () => {
   return (
@@ -42,6 +42,8 @@ export const Header = () => {
 
 namespace S {
   export const HeaderLayout = styled.header`
+    position: relative;
+    z-index: 1;
     height: 9.2rem;
     display: flex;
     justify-content: space-around;

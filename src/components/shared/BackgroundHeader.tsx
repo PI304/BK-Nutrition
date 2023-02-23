@@ -3,6 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import Home from '../../../public/assets/home.png';
+import { Paths } from '@/constants/paths';
 
 export const BackgroundHeader = ({ title, sub_title, address }: TitleProps) => {
   return (
@@ -14,7 +15,7 @@ export const BackgroundHeader = ({ title, sub_title, address }: TitleProps) => {
             <div>{sub_title}</div>
           </S.Title>
           <S.Tab>
-            <Link href='/main'>
+            <Link href={Paths.main}>
               <Image src={Home} alt='home' />
             </Link>
             <div>{title}</div>
@@ -38,7 +39,6 @@ namespace S {
     background-position: center center;
     position: relative;
     top: -9rem;
-    z-index: -1;
   `;
 
   export const TitleLayout = styled.div`
@@ -52,9 +52,9 @@ namespace S {
   export const Title = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-items: center;
-    height: 25rem;
+    height: 7rem;
 
     > div:first-of-type {
       ${Fonts.bold40};
@@ -62,7 +62,7 @@ namespace S {
     }
 
     > div:last-of-type {
-      ${Fonts.medium30};
+      ${Fonts.regular30};
       color: ${Colors.white};
     }
   `;

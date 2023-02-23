@@ -50,7 +50,7 @@ namespace S {
   `;
 
   export const Description = styled.div`
-    ${Fonts.medium16};
+    ${Fonts.regular16};
     color: ${Colors.white};
     position: absolute;
     right: 0;
@@ -73,7 +73,7 @@ namespace S {
   `;
 
   export const Contact = styled.div`
-    ${Fonts.medium12};
+    ${Fonts.regular12};
     color: ${Colors.white};
     background-color: ${Colors.contact};
     width: 12rem;

@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { DefaultLayout } from '@/components/layouts/DefaultLayout';
 import { BusinessPage } from '@/components/pages/business/BusinessPage';
 import { CustomHead } from '@/components/seo/CustomHead';
-import { Seo } from 'constants/seo';
+import { Seo } from '@/constants/seo';
 import { SharedLayout } from '@/components/layouts';
 import { BackgroundHeader } from '@/components/shared';
 
@@ -18,7 +18,7 @@ export default function business() {
 business.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='Business' sub_title='' address='Business' />
+      <BackgroundHeader title='Business' address='Business' />
       <SharedLayout>{page}</SharedLayout>
     </DefaultLayout>
   );

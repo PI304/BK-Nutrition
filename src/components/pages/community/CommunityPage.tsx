@@ -1,20 +1,15 @@
 import Link from 'next/link';
 import styled from 'styled-components';
-import { Paths } from 'constants/paths';
-import { Seo } from 'constants/seo';
+import { Paths } from '@/constants/paths';
+import { Seo } from '@/constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
 import { PageButton, Select } from '@/components/shared';
-import { useState } from 'react';
 
 export const CommunityPage = () => {
-  const [isClick, setIsClick] = useState<boolean>(false);
-  const onClick = () => {
-    setIsClick(true);
-  };
   return (
     <>
       <S.PageBox>
-        <S.Page href={Paths.community} title={Seo.Title.community} onClick={onClick}>
+        <S.Page href={Paths.community} title={Seo.Title.community} isCurrent>
           공지사항
         </S.Page>
         <S.Page href={Paths.resource} title={Seo.Title.resource}>
@@ -73,11 +68,11 @@ namespace S {
     }
   `;
 
-  export const Page = styled(Link)`
+  export const Page = styled(Link)<IsCurrentType>`
     ${Fonts.bold20};
     box-shadow: ${BoxShadows.smooth};
-    background-color: ${(props) => (props.onClick ? Colors.table : Colors.gray)};
-    color: ${(props) => (props.onClick ? Colors.white : Colors.black)};
+    background-color: ${(props) => (props.isCurrent ? Colors.table : Colors.gray)};
+    color: ${(props) => (props.isCurrent ? Colors.white : Colors.black)};
     width: 15rem;
     height: 5rem;
     display: flex;

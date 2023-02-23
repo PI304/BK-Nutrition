@@ -10,9 +10,6 @@ export const IntroPage = () => {
     <>
       <S.GreetingBox>
         <S.Title>인사말</S.Title>
-        <div>
-          <Image src={People} alt='people' />
-        </div>
         <S.Greeting>
           <p>
             <strong>Brain Korea 21 FOUR 웰니스 융합인재 양성팀</strong>은 국내외적으로
@@ -38,6 +35,9 @@ export const IntroPage = () => {
             <br /> 미래지향적인 융합혁신인재 양성과 배출의 요람으로서 그 역할을 다하고자 합니다
           </p>
         </S.Greeting>
+        <div>
+          <Image src={People} alt='people' />
+        </div>
       </S.GreetingBox>
       <SC.Line />
 
@@ -46,7 +46,6 @@ export const IntroPage = () => {
         <S.Description>
           <div>웰니스 융합인재 양성팀의 비전</div>
           <div>
-            <div>혁신적 글로벌 중심 대학원</div>
             <ol>
               <li>
                 웰니스 항상성 유지를 통해
@@ -114,9 +113,20 @@ export const IntroPage = () => {
         <S.Title>찾아오시는 길</S.Title>
         <div></div>
         <div>
-          주소: 서울특별시 서대문구 연세로 50 삼성관 110호 BK21 FOUR 웰니스 융합인재양성팀
-          <br />
-          전화: 02-2123-3126
+          <p>
+            주소:
+            <br />
+            서울특별시 서대문구 연세로 50
+            <br />
+            삼성관 110호 BK21 FOUR
+            <br />
+            웰니스 융합인재양성팀
+          </p>
+          <p>
+            전화:
+            <br />
+            02-2123-3126
+          </p>
         </div>
       </S.MapBox>
     </>
@@ -131,8 +141,8 @@ namespace S {
   /* 인사말 */
   export const GreetingBox = styled.div`
     display: grid;
-    grid-template-columns: 90rem 25rem;
-    grid-template-rows: 10rem 35rem;
+    grid-template-columns: 25rem 90rem;
+    grid-template-rows: 10rem 36rem;
     grid-column-gap: 5rem;
     grid-column: auto;
 
@@ -141,9 +151,9 @@ namespace S {
       align-items: center;
     }
 
-    > div:nth-child(2) {
-      grid-row: -1 / -2;
-      grid-column: -1 / -2;
+    > div:last-of-type {
+      grid-row: 2 / 3;
+      grid-column: -3 / -2;
     }
   `;
 
@@ -151,11 +161,12 @@ namespace S {
     grid-row: 2 / 3;
 
     > p {
-      ${Fonts.medium20};
+      ${Fonts.regular16};
       margin-bottom: 4rem;
+      line-height: 2.1rem;
 
       > strong {
-        ${Fonts.bold20}
+        ${Fonts.bold16}
       }
     }
   `;
@@ -181,8 +192,8 @@ namespace S {
     grid-row: 2 / 3;
 
     > div:first-child {
-      ${Fonts.bold30};
-      margin: 3rem 0 5rem;
+      ${Fonts.bold24};
+      margin: 3rem 0 5rem 8rem;
 
       &::after {
         content: '';
@@ -193,23 +204,22 @@ namespace S {
       }
     }
 
+    > div:nth-child(2) {
+      margin-left: 14rem;
+    }
+
     > div:last-of-type {
       ${Fonts.bold30};
-      text-align: center;
+      text-align: end;
+      margin-right: 4rem;
       padding-top: 2.5rem;
     }
 
-    > div:nth-child(2) div {
-      ${Fonts.bold24};
-      padding-left: 2rem;
-      margin-bottom: 3.5rem;
-    }
-
-    > div:nth-child(2) ol {
+    > div ol {
       list-style: decimal;
 
       > li {
-        ${Fonts.medium24};
+        ${Fonts.regular24};
         margin-bottom: 3rem;
         line-height: 3rem;
       }
@@ -218,7 +228,7 @@ namespace S {
 
   export const SubDescription = styled.div`
     > div:first-child {
-      ${Fonts.bold30};
+      ${Fonts.bold24};
       margin: 13rem 0 5rem;
 
       &::after {
@@ -230,16 +240,20 @@ namespace S {
       }
     }
 
-    > div:last-child ol {
-      list-style: decimal;
-      margin-bottom: 4rem;
+    > div:last-child {
+      margin-left: 6rem;
 
-      li {
-        ${Fonts.medium24};
-        line-height: 4rem;
+      ol {
+        list-style: decimal;
+        margin-bottom: 4rem;
 
-        strong {
-          ${Fonts.bold24}
+        li {
+          ${Fonts.regular20};
+          line-height: 4rem;
+
+          strong {
+            ${Fonts.bold20}
+          }
         }
       }
     }
@@ -248,7 +262,7 @@ namespace S {
       list-style: disc;
 
       > li {
-        ${Fonts.bold24};
+        ${Fonts.bold20};
         line-height: 5rem;
       }
     }
@@ -258,7 +272,7 @@ namespace S {
       padding-left: 2rem;
 
       li {
-        ${Fonts.medium24};
+        ${Fonts.regular20};
         line-height: 2em;
       }
     }
@@ -277,25 +291,39 @@ namespace S {
   /* 찾아오시는 길*/
   export const MapBox = styled.div`
     display: grid;
-    grid-template-rows: 10rem 43rem 13rem;
+    grid-template-rows: 10rem 45rem;
+    grid-template-columns: 6rem 72rem 34rem;
     margin-bottom: 15rem;
 
     > div:first-child {
       display: flex;
       align-items: center;
+      grid-column: 1 / 3;
     }
 
     > div:nth-child(2) {
       background-color: gray;
+      grid-row: 2 / 3;
+      grid-column: -3 / -2;
     }
 
     > div:last-child {
-      ${Fonts.bold24};
+      grid-row: -2 / -1;
+      grid-column: -2 / -1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      line-height: 3.5rem;
+
+      > p {
+        ${Fonts.bold20};
+      }
+
+      > p:first-of-type {
+        line-height: 2.3rem;
+        margin-bottom: 2.5rem;
+      }
     }
   `;
 }

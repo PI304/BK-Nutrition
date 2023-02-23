@@ -13,8 +13,6 @@ export const DefaultLayout = ({ children }: ChildrenType) => {
 
 namespace S {
   export const Layout = styled.main`
-    width: 100vw;
-    height: 100vh;
     position: relative;
   `;
 }

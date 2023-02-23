@@ -49,7 +49,7 @@ namespace S {
       gap: 1.5rem;
 
       > p {
-        ${Fonts.medium18};
+        ${Fonts.regular18};
       }
 
       > h2 {
@@ -60,7 +60,7 @@ namespace S {
 
     > div:last-of-type {
       grid-column: -3 / -1;
-      ${Fonts.medium16};
+      ${Fonts.regular16};
       background-color: ${Colors.gray};
       box-shadow: ${BoxShadows.smooth};
       display: flex;
@@ -69,7 +69,7 @@ namespace S {
       padding: 1.5rem 2rem;
 
       > p {
-        ${Fonts.medium16}
+        ${Fonts.regular16}
       }
     }
   `;

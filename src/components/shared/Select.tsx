@@ -21,7 +21,7 @@ namespace S {
     top: 0.2rem;
 
     > select {
-      ${Fonts.medium14};
+      ${Fonts.regular14};
       align-self: center;
       width: 11.6rem;
       padding: 0.5rem 0.8rem;
