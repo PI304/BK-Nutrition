@@ -34,3 +34,15 @@ export const svgDown12 = (
     />
   </svg>
 );
+
+export const svgLeft14 = (
+  <svg width='14' height='24' viewBox='0 0 14 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path opacity='0.6' d='M13 1L2 12L13 23' stroke='#333333' strokeWidth='2.5' />
+  </svg>
+);
+
+export const svgRight14 = (
+  <svg width='14' height='24' viewBox='0 0 14 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path opacity='0.6' d='M0.999999 23L12 12L1 0.999998' stroke='#333333' strokeWidth='2.5' />
+  </svg>
+);

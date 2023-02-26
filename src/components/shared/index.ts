@@ -6,3 +6,5 @@ export * from './Select';
 export * from './Download';
 export * from './Header';
 export * from './Footer';
+export * from './Carousel';
+export * from './MainContact';

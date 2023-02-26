@@ -2,7 +2,7 @@ import { Colors, Fonts } from '@/styles';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
-import Mainlogo from '../../../public/assets/mainlogo.png';
+import Mainlogo from '../../../public/assets/main_logo.png';
 import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 
@@ -44,10 +44,10 @@ namespace S {
   export const HeaderLayout = styled.header`
     position: relative;
     z-index: 1;
-    height: 9.2rem;
+    height: 11rem;
     display: flex;
     justify-content: space-around;
-    background-color: ${Colors.header};
+    background-color: ${Colors.white};
 
     > div:first-of-type {
       position: relative;
@@ -64,24 +64,34 @@ namespace S {
     position: absolute;
     left: 0;
     width: 34.4rem;
+
+    > img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   `;
 
   export const MenuWrapper = styled.div`
     display: flex;
     position: absolute;
     right: 0;
-    width: 50rem;
+    width: 60rem;
   `;
 
   export const MenuBox = styled.div`
     cursor: pointer;
     position: relative;
+    height: 11rem;
   `;
 
   export const MenuLink = styled(Link)`
-    ${Fonts.bold24};
-    color: ${Colors.white};
+    ${Fonts.medium18};
+    width: 15rem;
+    height: 100%;
+    color: ${Colors.black};
     display: flex;
-    padding: 0 1.5rem;
+    align-items: center;
+    padding: 0 3.5rem;
   `;
 }

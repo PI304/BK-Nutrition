@@ -37,8 +37,6 @@ namespace S {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    position: relative;
-    top: -9rem;
   `;
 
   export const TitleLayout = styled.div`

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SharedLayout = ({ children }: ChildrenType) => {
+export const MainLayout = ({ children }: ChildrenType) => {
   return (
     <>
       <S.Layout>{children}</S.Layout>
@@ -10,8 +10,9 @@ export const SharedLayout = ({ children }: ChildrenType) => {
 
 namespace S {
   export const Layout = styled.section`
-    width: 120rem;
-    margin: 5rem auto 0;
-    display: block;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: 46rem 15.9rem 1fr;
+    grid-row-gap: 10rem;
   `;
 }

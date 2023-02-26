@@ -57,7 +57,7 @@ namespace S {
   export const NumberButton = styled.button<NumberButtonProps>`
     ${Fonts.light14}
     font-weight: ${(props) => props.isCurrent && '500'};
-    border-bottom: ${(props) => props.isCurrent && `0.1rem solid ${Colors.gray300}`};
+    border-bottom: ${(props) => props.isCurrent && `0.1rem solid ${Colors.back}`};
     padding: 0.6rem;
   `;
 }
