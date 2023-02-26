@@ -78,13 +78,15 @@ export const IntroPage = () => {
           <div>
             <ol>
               <li>
-                1. 글로벌 웰니스문제 해결을 위한 <strong>혁신적 융합 전문인력 양성</strong>
+                <strong>1.</strong> 글로벌 웰니스문제 해결을 위한{' '}
+                <strong>혁신적 융합 전문인력 양성</strong>
               </li>
               <li>
-                2. 글로벌 웰니스융합문제 해결을 위한 <strong>국제적 수준의 교육연구 주도</strong>
+                <strong>2.</strong> 글로벌 웰니스융합문제 해결을 위한{' '}
+                <strong>국제적 수준의 교육연구 주도</strong>
               </li>
               <li>
-                3. <strong>미래식품영양기술의 국제화 및 신산업화</strong>를 통한 사회적 기여 달성
+                <strong>3. 미래식품영양기술의 국제화 및 신산업화</strong>를 통한 사회적 기여 달성
               </li>
             </ol>
             <ul>
@@ -216,10 +218,9 @@ namespace S {
     }
 
     > div ol {
-      list-style: decimal;
-
       > li {
         ${Fonts.regular24};
+        list-style: decimal;
         margin-bottom: 3rem;
         line-height: 3rem;
       }
@@ -244,7 +245,6 @@ namespace S {
       margin-left: 6rem;
 
       ol {
-        list-style: decimal;
         margin-bottom: 4rem;
 
         li {
@@ -252,27 +252,26 @@ namespace S {
           line-height: 4rem;
 
           strong {
-            ${Fonts.bold20}
+            ${Fonts.bold24}
           }
         }
       }
     }
 
     > div:last-child ul:first-of-type {
-      list-style: disc;
-
       > li {
-        ${Fonts.bold20};
+        ${Fonts.bold24};
         line-height: 5rem;
+        list-style: disc;
       }
     }
 
     > div:last-child ul:last-of-type {
-      list-style: lower-latin;
       padding-left: 2rem;
 
       li {
         ${Fonts.regular20};
+        list-style: lower-latin;
         line-height: 2em;
       }
     }

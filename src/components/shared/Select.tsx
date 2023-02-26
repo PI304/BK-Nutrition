@@ -27,7 +27,7 @@ namespace S {
       padding: 0.5rem 0.8rem;
       border-radius: 0;
       border: 0.1rem solid ${Colors.gray150};
-      color: ${Colors.gray300};
+      color: ${Colors.back};
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;

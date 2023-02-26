@@ -11,7 +11,7 @@ export const SharedLayout = ({ children }: ChildrenType) => {
 namespace S {
   export const Layout = styled.section`
     width: 120rem;
-    margin: 0 auto;
+    margin: 5rem auto 0;
     display: block;
   `;
 }

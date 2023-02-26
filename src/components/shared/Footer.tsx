@@ -1,24 +1,29 @@
 import { Colors, Fonts } from '@/styles';
 import Image from 'next/image';
 import styled from 'styled-components';
-import Footerlogo1 from '../../../public/assets/footerlogo1.png';
-import Footerlogo2 from '../../../public/assets/footerlogo2.png';
-import Arrow from '../../../public/assets/arrow.png';
+import Footerlogo from '../../../public/assets/footer_logo.png';
 
 export const Footer = () => {
   return (
     <S.FooterLayout>
       <div>
         <div>
-          <Image src={Footerlogo1} alt='footerlogo1' />
-          <Image src={Footerlogo2} alt='footerlogo2' />
+          <div>
+            <Image src={Footerlogo} alt='footerlogo1' />
+          </div>
+          <div>
+            <p>연세대학교</p>
+            <p>BK21 FOUR 웰니스 융합 인재 양성팀</p>
+          </div>
         </div>
+
         <S.Description>
           <div>
-            주소: 서울시 서대문구 연세로 50 연세대학교 식품영양학과 웰니스 융합인재 양성팀
-            <br></br>
-            Cpyright(c) 2013 YONSEI UNIV FOUR PROJECT FOR WELLNESS INTEGRTED TALENTS. All right
-            reservesd
+            <p>서울시 서대문구 연세로 50 연세대학교 식품영양학과 웰니스 융합인재 양성팀</p>
+            <p>
+              Cpyright(c) 2013 YONSEI UNIV FOUR PROJECT FOR WELLNESS INTEGRTED TALENTS.
+              <br /> ALL RIGHTS RESERVED.
+            </p>
           </div>
         </S.Description>
       </div>
@@ -30,34 +35,48 @@ namespace S {
   export const FooterLayout = styled.footer`
     display: flex;
     justify-content: center;
-    height: 18rem;
+    height: 17rem;
     background-color: ${Colors.footer};
 
     > div {
-      position: relative;
       width: 120rem;
       display: flex;
       justify-content: center;
       align-items: center;
+      gap: 10rem;
 
       > div:first-child {
-        position: absolute;
-        left: 0;
         display: flex;
-        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+
+        > div:last-of-type p {
+          ${Fonts.bold16};
+          color: ${Colors.white};
+          line-height: 2.2rem;
+        }
+      }
+
+      > div:nth-child(2) {
+        > p {
+          ${Fonts.bold16};
+        }
       }
     }
   `;
 
   export const Description = styled.div`
-    ${Fonts.regular16};
-    color: ${Colors.white};
-    position: absolute;
-    right: 0;
+    > div p:first-of-type {
+      ${Fonts.regular14};
+      color: ${Colors.white};
+      line-height: 2.5rem;
+    }
 
-    > div {
-      margin-top: 1.5rem;
-      line-height: 2rem;
+    > div p:last-of-type {
+      ${Fonts.regular10};
+      color: ${Colors.gray800};
+      line-height: 1.5rem;
     }
   `;
 
@@ -69,22 +88,6 @@ namespace S {
 
     > div:last-child {
       padding-left: 0.5rem;
-    }
-  `;
-
-  export const Contact = styled.div`
-    ${Fonts.regular12};
-    color: ${Colors.white};
-    background-color: ${Colors.contact};
-    width: 12rem;
-    height: 3.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    > img {
-      cursor: pointer;
-      margin-left: 1rem;
     }
   `;
 }
