@@ -5,8 +5,7 @@
 /* BackgroundHeader */
 type TitleProps = {
   title: string;
-  sub_title?: string;
-  address: string;
+  address?: string;
 };
 
 /* Pagination */

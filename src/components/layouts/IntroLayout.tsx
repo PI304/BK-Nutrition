@@ -14,6 +14,6 @@ namespace S {
     margin: 0 auto;
     display: grid;
     grid-template-rows: 46rem 0 130rem 0 122.5rem 0 1fr;
-    grid-row-gap: 10rem;
+    grid-row-gap: 5rem;
   `;
 }

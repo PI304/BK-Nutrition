@@ -43,7 +43,7 @@ export default function Carousel() {
         <S.CarouselWindow>
           <S.CarouselWrapper itemIdx={itemIdx} ref={carouselWrapperRef}>
             <S.CarouselItem>
-              <Link href={Urls.carouselLife}>
+              <Link href={Urls.carouselResearch}>
                 <Image src={Carousel4} alt='carousel' />
               </Link>
             </S.CarouselItem>
@@ -53,32 +53,32 @@ export default function Carousel() {
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselNrf}>
+              <Link href={Urls.carouselBrain}>
                 <Image src={Carousel2} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselYouth}>
+              <Link href={Urls.carouselFood}>
                 <Image src={Carousel3} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselSsk}>
+              <Link href={Urls.carouselResearch}>
                 <Image src={Carousel4} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselChe}>
+              <Link href={Urls.carouselYonsei}>
                 <Image src={Carousel1} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselNrf}>
+              <Link href={Urls.carouselBrain}>
                 <Image src={Carousel2} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselYouth}>
+              <Link href={Urls.carouselFood}>
                 <Image src={Carousel3} alt='carousel' />
               </Link>
             </S.CarouselItem>
@@ -99,7 +99,7 @@ export default function Carousel() {
 namespace S {
   export const HomeCarouselLayout = styled.section`
     margin-bottom: 7.6rem;
-    width: 120rem;
+    width: 140rem;
     margin: 0 auto;
 
     > div:first-of-type {
@@ -128,15 +128,15 @@ namespace S {
   export const CarouselWrapper = styled.div<CarouselWrapperProps>`
     display: flex;
     justify-content: space-between;
-    gap: 3.45rem;
+    gap: 4rem;
     position: relative;
-    left: calc((30.7rem + 3.45rem) * -1 * (${(props) => props.itemIdx} + 1));
+    left: calc((36.7rem + 4rem) * -1 * (${(props) => props.itemIdx} + 1));
     transition: 0.3s ease;
   `;
 
   export const CarouselItem = styled.li`
     flex: none;
-    width: 30.7rem;
+    width: 36.7rem;
     height: 9.1rem;
 
     > a {

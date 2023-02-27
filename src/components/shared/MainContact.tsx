@@ -9,24 +9,26 @@ export const MainContact = ({ page, title }: MainContactProps) => {
     <>
       <S.Container>
         <div>
-          <div>공지사항</div>
+          <div>{page}</div>
           <Image src={Arrow} alt='arrow'></Image>
         </div>
 
         <div>
           <Image src={Notice} alt='notice'></Image>
-          <tbody>
-            <tr>
-              <th>공지사항입니다.</th>
-              <th>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                irure dolor in reprehenderit in volup
-              </th>
-              <th>2023. 02. 24</th>
-            </tr>
-          </tbody>
+          <table>
+            <tbody>
+              <tr>
+                <th>{title}</th>
+                <th>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in volup
+                </th>
+                <th>2023. 02. 24</th>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <table>
@@ -91,7 +93,7 @@ namespace S {
       display: flex;
       gap: 3rem;
 
-      > tbody tr {
+      > table tbody tr {
         display: flex;
         flex-direction: column;
         align-items: flex-start;

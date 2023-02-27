@@ -8,22 +8,20 @@ export const MainPage = () => {
     <>
       <S.MainImg>
         <div>
-          <p>연세대학교 BK21 FOUR 웰니스 융합 인재 양성팀</p>
           <p>
             BK21 FOUR Project for
             <br />
-            Wellness Integrated
-            <br />
-            Talents
+            Wellness Integrated Talents
           </p>
+          <p>연세대학교 BK21 FOUR 웰니스 융합 인재 양성팀</p>
         </div>
       </S.MainImg>
 
       <Carousel />
 
       <S.ContactLayout>
-        <MainContact />
-        <MainContact />
+        <MainContact page='NOTICE' title='공지사항입니다.' />
+        <MainContact page='BUSINESS' title='사업성과입니다.' />
       </S.ContactLayout>
     </>
   );
@@ -31,10 +29,13 @@ export const MainPage = () => {
 
 namespace S {
   export const MainImg = styled.div`
-    background: url(/assets/main_img.png) no-repeat;
+    background: url(/assets/background2.png) no-repeat;
     position: relative;
 
     > div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       position: absolute;
       width: 100%;
       height: 100%;
@@ -44,17 +45,17 @@ namespace S {
       background: linear-gradient(${BoxShadows.main});
 
       > p:first-of-type {
-        ${Fonts.medium18};
-        color: ${Colors.white};
-        text-align: right;
-        line-height: 4rem;
-      }
-
-      > p:last-of-type {
         ${Fonts.bold48};
         color: ${Colors.white};
         text-align: right;
         line-height: 5.5rem;
+      }
+
+      > p:last-of-type {
+        ${Fonts.medium18};
+        color: ${Colors.white};
+        text-align: right;
+        line-height: 4rem;
       }
     }
   `;
