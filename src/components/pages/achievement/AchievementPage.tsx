@@ -4,18 +4,32 @@ import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
 import { PageButton, Select } from '@/components/shared';
+import { useState, useEffect } from 'react';
+import { getPosts } from 'api/posts';
+import { PostsType } from '@/constants';
 
-export const IndustryPage = () => {
+export const AchievementPage = () => {
+  const [achievement, setAchievement] = useState<ResponsePosts.Get>();
+
+  const getAchievement = async () => {
+    const achievement = await getPosts(PostsType.achievement);
+    setAchievement(achievement);
+  };
+
+  useEffect(() => {
+    getAchievement();
+  }, []);
+
   return (
     <>
       <S.PageBox>
-        <S.Page href={Paths.business} title={Seo.Title.business}>
+        <S.Page href={Paths.achievement} title={Seo.Title.achievement} isCurrent>
           연구업적
         </S.Page>
         <S.Page href={Paths.international} title={Seo.Title.international}>
           국제 협력
         </S.Page>
-        <S.Page href={Paths.industry} title={Seo.Title.industry} isCurrent>
+        <S.Page href={Paths.industrial} title={Seo.Title.industrial}>
           산학 협력
         </S.Page>
         <Select />
@@ -32,17 +46,16 @@ export const IndustryPage = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <S.BoardText>1</S.BoardText>
-              <S.BoardText>
-                <Link href='/main'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labo
-                </Link>
-              </S.BoardText>
-              <S.BoardText>관리자</S.BoardText>
-              <S.BoardText>2023-02-22</S.BoardText>
-            </tr>
+            {achievement?.map((achievement, i) => (
+              <tr key={i}>
+                <S.BoardText>{achievement.id}</S.BoardText>
+                <S.BoardText>
+                  <Link href='/main'>{achievement.title}</Link>
+                </S.BoardText>
+                <S.BoardText>{achievement.author_id}</S.BoardText>
+                <S.BoardText>{achievement.created_at}</S.BoardText>
+              </tr>
+            ))}
           </tbody>
         </table>
         <PageButton />
@@ -76,10 +89,10 @@ namespace S {
   `;
 
   export const Page = styled(Link)<IsCurrentType>`
-    ${Fonts.bold20};
+    ${Fonts.semibold18};
     box-shadow: ${BoxShadows.smooth};
     background-color: ${(props) => (props.isCurrent ? Colors.table : Colors.gray)};
-    color: ${(props) => (props.isCurrent ? Colors.white : Colors.black)};
+    color: ${(props) => (props.isCurrent ? Colors.white : Colors.gray900)};
     width: 15rem;
     height: 5rem;
     display: flex;

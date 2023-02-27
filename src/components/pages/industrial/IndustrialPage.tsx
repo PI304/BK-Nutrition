@@ -2,18 +2,34 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
+import { useState, useEffect } from 'react';
+import { getPosts } from 'api/posts';
+import { PostsType } from '@/constants';
 import { Colors, Fonts, BoxShadows } from '@/styles';
 import { PageButton, Select } from '@/components/shared';
 
-export const CommunityPage = () => {
+export const IndustrialPage = () => {
+  const [industrial, setIndustrial] = useState<ResponsePosts.Get>();
+
+  const getIndustrial = async () => {
+    const industrial = await getPosts(PostsType.industrial);
+    setIndustrial(industrial);
+  };
+
+  useEffect(() => {
+    getIndustrial();
+  }, []);
   return (
     <>
       <S.PageBox>
-        <S.Page href={Paths.community} title={Seo.Title.community} isCurrent>
-          공지사항
+        <S.Page href={Paths.achievement} title={Seo.Title.achievement}>
+          연구업적
         </S.Page>
-        <S.Page href={Paths.resource} title={Seo.Title.resource}>
-          자료실
+        <S.Page href={Paths.international} title={Seo.Title.international}>
+          국제 협력
+        </S.Page>
+        <S.Page href={Paths.industrial} title={Seo.Title.industrial} isCurrent>
+          산학 협력
         </S.Page>
         <Select />
       </S.PageBox>
@@ -29,17 +45,16 @@ export const CommunityPage = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <S.BoardText>1</S.BoardText>
-              <S.BoardText>
-                <Link href='/main'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labo
-                </Link>
-              </S.BoardText>
-              <S.BoardText>관리자</S.BoardText>
-              <S.BoardText>2023-02-22</S.BoardText>
-            </tr>
+            {industrial?.map((industrial, i) => (
+              <tr key={i}>
+                <S.BoardText>{industrial.id}</S.BoardText>
+                <S.BoardText>
+                  <Link href='/main'>{industrial.title}</Link>
+                </S.BoardText>
+                <S.BoardText>{industrial.author_id}</S.BoardText>
+                <S.BoardText>{industrial.created_at}</S.BoardText>
+              </tr>
+            ))}
           </tbody>
         </table>
         <PageButton />
@@ -58,6 +73,10 @@ namespace S {
       border-radius: 1.5rem 0.5rem 0 0;
     }
 
+    > a:nth-child(2) {
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
     > a:last-of-type {
       border-radius: 0.5rem 1.5rem 0 0;
     }
@@ -69,10 +88,10 @@ namespace S {
   `;
 
   export const Page = styled(Link)<IsCurrentType>`
-    ${Fonts.bold20};
+    ${Fonts.semibold18};
     box-shadow: ${BoxShadows.smooth};
     background-color: ${(props) => (props.isCurrent ? Colors.table : Colors.gray)};
-    color: ${(props) => (props.isCurrent ? Colors.white : Colors.black)};
+    color: ${(props) => (props.isCurrent ? Colors.white : Colors.gray900)};
     width: 15rem;
     height: 5rem;
     display: flex;

@@ -4,19 +4,30 @@ import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
 import { PageButton, Select } from '@/components/shared';
+import { getPosts } from 'api/posts';
+import { useEffect, useState } from 'react';
+import { PostsType } from '@/constants';
 
-export const BusinessPage = () => {
+export const NoticePage = () => {
+  const [notice, setNotice] = useState<ResponsePosts.Get>();
+
+  const getNotice = async () => {
+    const notice = await getPosts(PostsType.notice);
+    setNotice(notice);
+  };
+
+  useEffect(() => {
+    getNotice();
+  }, []);
+
   return (
     <>
       <S.PageBox>
-        <S.Page href={Paths.business} title={Seo.Title.business} isCurrent>
-          연구업적
+        <S.Page href={Paths.notice} title={Seo.Title.notice} isCurrent>
+          공지사항
         </S.Page>
-        <S.Page href={Paths.international} title={Seo.Title.international}>
-          국제 협력
-        </S.Page>
-        <S.Page href={Paths.industry} title={Seo.Title.industry}>
-          산학 협력
+        <S.Page href={Paths.resource} title={Seo.Title.resource}>
+          자료실
         </S.Page>
         <Select />
       </S.PageBox>
@@ -32,17 +43,16 @@ export const BusinessPage = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <S.BoardText>1</S.BoardText>
-              <S.BoardText>
-                <Link href='/main'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labo
-                </Link>
-              </S.BoardText>
-              <S.BoardText>관리자</S.BoardText>
-              <S.BoardText>2023-02-22</S.BoardText>
-            </tr>
+            {notice?.map((notice, i) => (
+              <tr key={i}>
+                <S.BoardText>{notice.id}</S.BoardText>
+                <S.BoardText>
+                  <Link href='/main'>{notice.title}</Link>
+                </S.BoardText>
+                <S.BoardText>{notice.author_id}</S.BoardText>
+                <S.BoardText>{notice.created_at}</S.BoardText>
+              </tr>
+            ))}
           </tbody>
         </table>
         <PageButton />
@@ -61,10 +71,6 @@ namespace S {
       border-radius: 1.5rem 0.5rem 0 0;
     }
 
-    > a:nth-child(2) {
-      border-radius: 0.5rem 0.5rem 0 0;
-    }
-
     > a:last-of-type {
       border-radius: 0.5rem 1.5rem 0 0;
     }
@@ -76,10 +82,10 @@ namespace S {
   `;
 
   export const Page = styled(Link)<IsCurrentType>`
-    ${Fonts.bold20};
+    ${Fonts.semibold18};
     box-shadow: ${BoxShadows.smooth};
     background-color: ${(props) => (props.isCurrent ? Colors.table : Colors.gray)};
-    color: ${(props) => (props.isCurrent ? Colors.white : Colors.black)};
+    color: ${(props) => (props.isCurrent ? Colors.white : Colors.gray900)};
     width: 15rem;
     height: 5rem;
     display: flex;
