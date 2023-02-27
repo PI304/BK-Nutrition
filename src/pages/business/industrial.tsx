@@ -1,24 +1,24 @@
 import { ReactElement } from 'react';
 import { DefaultLayout } from '@/components/layouts/DefaultLayout';
-import { IndustryPage } from '@/components/pages/industry';
+import { IndustrialPage } from '@/components/pages/industrial';
 import { CustomHead } from '@/components/seo/CustomHead';
 import { Seo } from '@/constants/seo';
 import { SharedLayout } from '@/components/layouts';
 import { BackgroundHeader } from '@/components/shared';
 
-export default function industry() {
+export default function industrial() {
   return (
     <>
-      <CustomHead title={Seo.Title.industry} />
-      <IndustryPage />
+      <CustomHead title={Seo.Title.industrial} />
+      <IndustrialPage />
     </>
   );
 }
 
-industry.getLayout = (page: ReactElement) => {
+industrial.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='Industry' sub_title='' address='Industry' />
+      <BackgroundHeader title='Business' address='Industrial' />
       <SharedLayout>{page}</SharedLayout>
     </DefaultLayout>
   );
