@@ -11,7 +11,7 @@ export const BackgroundHeader = ({ title, address }: TitleProps) => {
       <S.Background>
         <S.TitleLayout>
           <S.Title>
-            <div>{title}</div>
+            <div>{address}</div>
           </S.Title>
           <S.Tab>
             <Link href={Paths.main}>
@@ -27,14 +27,6 @@ export const BackgroundHeader = ({ title, address }: TitleProps) => {
 };
 
 namespace S {
-  export const S = styled.div`
-    position: absolute;
-    background-color: ${Colors.gray600};
-    opacity: 0.4;
-    width: 100%;
-    height: 100%;
-  `;
-
   export const Background = styled.div`
     width: 100%;
     height: 20rem;

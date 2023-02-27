@@ -295,7 +295,9 @@ namespace S {
     }
 
     > div:nth-child(2) {
-      background-color: gray;
+      background-image: url(/assets/map.png);
+      background-size: contain;
+      background-repeat: no-repeat;
       grid-row: 2 / 3;
       grid-column: -3 / -2;
     }
