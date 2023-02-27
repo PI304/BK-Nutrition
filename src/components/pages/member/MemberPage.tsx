@@ -1,45 +1,77 @@
 import useChangePage from '../../../hooks/useChangePage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BoxShadows, Colors, Fonts, SC } from '@/styles';
 import { Download, Members, PageButton, Pagination } from '@/components/shared';
 import Image from 'next/image';
 import styled from 'styled-components';
-import Member from '../../../../public/assets/newmember.png';
+import { getResearchers } from 'api/researchers';
 import University from '../../../../public/assets/universitymember.png';
 import Kim from '../../../../public/assets/kimhyunkyung.png';
 import Phone from '../../../../public/assets/phone.png';
 import Message from '../../../../public/assets/message.png';
 import Home from '../../../../public/assets/home2.png';
+import { getProfessors } from 'api/professors';
+import { getGraduates } from 'api/graduates';
 
 export const MemberPage = () => {
+  const [researchers, setResearchers] = useState<ResponseResearchers.Get>();
+  const [professors, setProfessors] = useState<ResponseProfessors.Get>();
+  const [university, setUniversity] = useState<ResponseGraduates.Get>();
+
+  const getMembers = async () => {
+    const researchers = await getResearchers();
+    setResearchers(researchers);
+  };
+  useEffect(() => {
+    getMembers();
+  }, []);
+
+  const getMember = async () => {
+    const professors = await getProfessors();
+    setProfessors(professors);
+  };
+  useEffect(() => {
+    getMember();
+  }, []);
+
+  const getUniversity = async () => {
+    const university = await getGraduates();
+    setUniversity(university);
+  };
+  useEffect(() => {
+    getUniversity();
+  }, []);
   return (
     <>
       <S.MemberBox>
         <S.Title>참여교수</S.Title>
-        <S.TopMember>
-          <Image src={Kim} alt='kim'></Image>
-          <div>
-            <p>연구 책임자</p>
-            <h2>김현경 교수</h2>
+
+        {professors?.map((professors, i) => (
+          <S.TopMember key={i}>
+            <Image src={Kim} alt='kim'></Image>
             <div>
-              <SC.Contact>
-                <Image src={Message} alt='message'></Image>
-                <div>1234567@yonsei.ac.kr</div>
-              </SC.Contact>
-              <SC.Contact>
-                <Image src={Phone} alt='phone'></Image>
-                <div>010-0000-0000</div>
-              </SC.Contact>
+              <p>{professors.position}</p>
+              <h2>{professors.name}</h2>
+              <div>
+                <SC.Contact>
+                  <Image src={Message} alt='message'></Image>
+                  <div>{professors.email}</div>
+                </SC.Contact>
+                <SC.Contact>
+                  <Image src={Phone} alt='phone'></Image>
+                  <div>{professors.phone_number}</div>
+                </SC.Contact>
+              </div>
+              <SC.Home href='https://yonsei-impact.weebly.com/'>
+                <Image src={Home} alt='home'></Image>
+              </SC.Home>
             </div>
-            <SC.Home href='https://yonsei-impact.weebly.com/'>
-              <Image src={Home} alt='home'></Image>
-            </SC.Home>
-          </div>
-          <div>
-            <p>연세대학교 아동가족학과 인간생애와 혁신적 디자인 교수</p>
-            <p>청소년, 바이오마커 수집, 양적 연구 설계 전문성</p>
-          </div>
-        </S.TopMember>
+            <div>
+              <p>{professors.introduction}</p>
+            </div>
+          </S.TopMember>
+        ))}
+
         <Members />
         <Members />
         <Members />
@@ -51,21 +83,53 @@ export const MemberPage = () => {
       <SC.Line />
 
       <S.ResearchBox>
-        <S.Title>신진 연구 이력</S.Title>
-        <Image src={Member} alt='member'></Image>
+        <S.Title>신진 연구 인력</S.Title>
+        <table>
+          <thead>
+            <tr>
+              <S.BoardText>이름</S.BoardText>
+              <S.BoardText>직위</S.BoardText>
+              <S.BoardText>소속</S.BoardText>
+              <S.BoardText>전공</S.BoardText>
+            </tr>
+          </thead>
+          <tbody>
+            {researchers?.map((researchers, i) => (
+              <tr key={i}>
+                <S.BoardText>{researchers.name}</S.BoardText>
+                <S.BoardText>{researchers.position}</S.BoardText>
+                <S.BoardText>{researchers.affiliation}</S.BoardText>
+                <S.BoardText>{researchers.major}</S.BoardText>
+              </tr>
+            ))}
+          </tbody>
+        </table>
         <PageButton />
       </S.ResearchBox>
 
       <S.UniversityBox>
         <S.Title>지원 대학원생</S.Title>
-        <Image src={University} alt='member2'></Image>
-        <div>
-          <Download year='2020년' semester='2학기' />
-          <Download year='2021년' semester='1학기' />
-          <Download year='2021년' semester='2학기' />
-          <Download year='2022년' semester='1학기' />
-          <Download year='2022년' semester='2학기' />
-        </div>
+        <table>
+          <thead>
+            <tr>
+              <S.BoardText>연번</S.BoardText>
+              <S.BoardText>성명</S.BoardText>
+              <S.BoardText>학위과정</S.BoardText>
+              <S.BoardText>재학학기수</S.BoardText>
+              <S.BoardText>지도교수</S.BoardText>
+              <S.BoardText>참여/지원</S.BoardText>
+            </tr>
+          </thead>
+          <tbody>
+            {university?.map((university, i) => (
+              <tr key={i}>
+                <S.BoardText>{university.id}</S.BoardText>
+                <S.BoardText>{university.semester}</S.BoardText>
+                <S.BoardText>{university.uuid}</S.BoardText>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </S.UniversityBox>
     </>
   );
@@ -168,6 +232,7 @@ namespace S {
       > p {
         ${Fonts.regular18};
         line-height: 2.5rem;
+        word-break: break-all;
       }
     }
   `;
@@ -183,6 +248,28 @@ namespace S {
       justify-content: center;
       align-items: center;
     }
+
+    > table {
+      width: 100%;
+      text-align: center;
+
+      > thead {
+        background-color: ${Colors.gray};
+        height: 4.5rem;
+      }
+
+      > tbody {
+        > tr {
+          border-bottom: 0.3rem solid ${Colors.line};
+        }
+      }
+    }
+  `;
+
+  export const BoardText = styled.th`
+    width: 10rem;
+    padding: 1.5rem;
+    white-space: nowrap;
   `;
 
   /* 지원 대학원생 */
@@ -190,10 +277,20 @@ namespace S {
     display: flex;
     flex-direction: column;
 
-    > div:last-of-type {
-      display: flex;
-      margin-top: 3rem;
-      gap: 1.2rem;
+    > table {
+      width: 100%;
+      text-align: center;
+
+      > thead {
+        background-color: ${Colors.gray};
+        height: 4.5rem;
+      }
+
+      > tbody {
+        > tr {
+          border-bottom: 0.3rem solid ${Colors.line};
+        }
+      }
     }
   `;
 }

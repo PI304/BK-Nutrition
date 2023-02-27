@@ -3,8 +3,20 @@ import Arrow from '../../../public/assets/main_arrow.png';
 import Notice from '../../../public/assets/main_notice.png';
 import Image from 'next/image';
 import { Colors, Fonts } from '@/styles';
+import { getPosts } from 'api/posts';
+import { useEffect, useState } from 'react';
+import { PostsType } from '@/constants';
 
-export const MainContact = ({ page, title }: MainContactProps) => {
+export const MainContact = ({ page }: MainContactProps) => {
+  const [notice, setNotice] = useState<ResponsePosts.Get>();
+
+  const getNotice = async () => {
+    const notice = await getPosts(PostsType.notice);
+    setNotice(notice);
+  };
+  useEffect(() => {
+    getNotice();
+  }, []);
   return (
     <>
       <S.Container>
@@ -17,50 +29,25 @@ export const MainContact = ({ page, title }: MainContactProps) => {
           <Image src={Notice} alt='notice'></Image>
           <table>
             <tbody>
-              <tr>
-                <th>{title}</th>
-                <th>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-                  irure dolor in reprehenderit in volup
-                </th>
-                <th>2023. 02. 24</th>
-              </tr>
+              {notice?.map((notice, i) => (
+                <tr key={i}>
+                  <th>{notice.title}</th>
+                  <th>{notice.content}</th>
+                  <th>{notice.created_at}</th>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
 
         <table>
           <tbody>
-            <tr>
-              <th>BK21 FOUR 웰니스 공지사항입니다.</th>
-              <th>2023. 02. 24</th>
-            </tr>
-            <tr>
-              <th>BK21 FOUR 웰니스 공지사항입니다.</th>
-              <th>2023. 02. 24</th>
-            </tr>
-            <tr>
-              <th>BK21 FOUR 웰니스 공지사항입니다.</th>
-              <th>2023. 02. 24</th>
-            </tr>
-            <tr>
-              <th>BK21 FOUR 웰니스 공지사항입니다.</th>
-              <th>2023. 02. 24</th>
-            </tr>
-            <tr>
-              <th>BK21 FOUR 웰니스 공지사항입니다.</th>
-              <th>2023. 02. 24</th>
-            </tr>
-            <tr>
-              <th>BK21 FOUR 웰니스 공지사항입니다.</th>
-              <th>2023. 02. 24</th>
-            </tr>
-            <tr>
-              <th>BK21 FOUR 웰니스 공지사항입니다.</th>
-              <th>2023. 02. 24</th>
-            </tr>
+            {notice?.map((notice, i) => (
+              <tr key={i}>
+                <th>{notice.title}</th>
+                <th>{notice.created_at}</th>
+              </tr>
+            ))}
           </tbody>
         </table>
       </S.Container>
