@@ -116,19 +116,13 @@ export const IntroPage = () => {
         <div></div>
         <div>
           <p>
-            주소:
-            <br />
             서울특별시 서대문구 연세로 50
             <br />
             삼성관 110호 BK21 FOUR
             <br />
             웰니스 융합인재양성팀
           </p>
-          <p>
-            전화:
-            <br />
-            02-2123-3126
-          </p>
+          <p>02-2123-3126</p>
         </div>
       </S.MapBox>
     </>
@@ -316,11 +310,12 @@ namespace S {
       text-align: center;
 
       > p {
-        ${Fonts.bold20};
+        ${Fonts.medium18};
       }
 
       > p:first-of-type {
-        line-height: 2.3rem;
+        ${Fonts.semibold20};
+        line-height: 140%;
         margin-bottom: 2.5rem;
       }
     }

@@ -18,7 +18,7 @@ export default function international() {
 international.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='International' sub_title='' address='International' />
+      <BackgroundHeader title='Business' address='International' />
       <SharedLayout>{page}</SharedLayout>
     </DefaultLayout>
   );

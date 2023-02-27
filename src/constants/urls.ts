@@ -1,10 +1,8 @@
 export const Urls = {
-  carouselLife: 'http://hlid.yonsei.ac.kr/',
-  carouselYonsei: 'https://www.yonsei.ac.kr/sc/',
-  carouselNrf: 'https://www.nrf.re.kr/index',
-  carouselYouth: 'https://yonsei-impact.weebly.com/',
-  carouselSsk: 'http://sskn.kr/main/main.php',
-  carouselChe: 'https://che.yonsei.ac.kr/che/index.do',
+  carouselYonsei: 'https://www.yonsei.ac.kr/sc/index.jsp',
+  carouselBrain: 'https://bk21four.nrf.re.kr/',
+  carouselFood: 'https://che.yonsei.ac.kr/che/departments/food_intro.do',
+  carouselResearch: 'https://research.yonsei.ac.kr/research/index.do',
   background3: '/assets/background3.png',
   background4: '/assets/background4.png',
 };

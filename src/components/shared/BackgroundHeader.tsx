@@ -1,18 +1,17 @@
-import { Colors, Fonts } from '@/styles';
+import { BoxShadows, Colors, Fonts } from '@/styles';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
 import Home from '../../../public/assets/home.png';
 import { Paths } from '@/constants/paths';
 
-export const BackgroundHeader = ({ title, sub_title, address }: TitleProps) => {
+export const BackgroundHeader = ({ title, address }: TitleProps) => {
   return (
     <>
       <S.Background>
         <S.TitleLayout>
           <S.Title>
             <div>{title}</div>
-            <div>{sub_title}</div>
           </S.Title>
           <S.Tab>
             <Link href={Paths.main}>
@@ -28,15 +27,24 @@ export const BackgroundHeader = ({ title, sub_title, address }: TitleProps) => {
 };
 
 namespace S {
+  export const S = styled.div`
+    position: absolute;
+    background-color: ${Colors.gray600};
+    opacity: 0.4;
+    width: 100%;
+    height: 100%;
+  `;
+
   export const Background = styled.div`
     width: 100%;
-    height: 29rem;
+    height: 20rem;
     display: flex;
     justify-content: center;
-    background-image: url(/assets/background3.png);
+    background-image: url(/assets/background1.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
+    position: relative;
   `;
 
   export const TitleLayout = styled.div`
@@ -58,11 +66,6 @@ namespace S {
       ${Fonts.bold40};
       color: ${Colors.white};
     }
-
-    > div:last-of-type {
-      ${Fonts.regular30};
-      color: ${Colors.white};
-    }
   `;
 
   export const Tab = styled.div`
@@ -76,6 +79,7 @@ namespace S {
       border: solid white;
       border-width: 0 0.5px 0 0.5px;
       padding: 1rem 1.5rem;
+      color: ${Colors.white};
     }
 
     > div:last-of-type {
@@ -84,6 +88,7 @@ namespace S {
       border: solid white;
       border-width: 0 0.5px 0 0;
       padding: 1rem 1.5rem;
+      color: ${Colors.white};
     }
   `;
 }

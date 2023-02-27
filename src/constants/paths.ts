@@ -2,9 +2,9 @@ export const Paths: PathsType = {
   main: '/main',
   intro: '/intro',
   member: '/member',
-  community: '/community',
+  notice: '/community',
   resource: '/community/resource',
-  business: '/business',
+  achievement: '/business',
   international: '/business/international',
-  industry: '/business/industry',
+  industrial: '/business/industrial',
 } as const;

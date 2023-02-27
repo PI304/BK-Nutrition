@@ -19,6 +19,8 @@ export const Fonts = {
 
   /* 600 */
   semibold16: 'font-size:1.6rem; font-weight:600',
+  semibold18: 'font-size:1.8rem; font-weight:600',
+  semibold20: 'font-size:2rem; font-weight:600',
 
   /* 700 */
   bold16: 'font-size:1.6rem; font-weight:700',

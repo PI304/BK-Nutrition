@@ -4,12 +4,25 @@ import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
 import { PageButton, Select } from '@/components/shared';
+import { useState, useEffect } from 'react';
+import { getPosts } from 'api/posts';
+import { PostsType } from '@/constants';
 
 export const ResourcePage = () => {
+  const [resource, setResource] = useState<ResponsePosts.Get>();
+
+  const getResource = async () => {
+    const resource = await getPosts(PostsType.resource);
+    setResource(resource);
+  };
+
+  useEffect(() => {
+    getResource();
+  }, []);
   return (
     <>
       <S.PageBox>
-        <S.Page href={Paths.community} title={Seo.Title.community}>
+        <S.Page href={Paths.notice} title={Seo.Title.notice}>
           공지사항
         </S.Page>
         <S.Page href={Paths.resource} title={Seo.Title.resource} isCurrent>
@@ -29,17 +42,16 @@ export const ResourcePage = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <S.BoardText>1</S.BoardText>
-              <S.BoardText>
-                <Link href='/main'>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                  incididunt ut labo
-                </Link>
-              </S.BoardText>
-              <S.BoardText>관리자</S.BoardText>
-              <S.BoardText>2023-02-22</S.BoardText>
-            </tr>
+            {resource?.map((resource, i) => (
+              <tr key={i}>
+                <S.BoardText>{resource.id}</S.BoardText>
+                <S.BoardText>
+                  <Link href='/main'>{resource.title}</Link>
+                </S.BoardText>
+                <S.BoardText>{resource.author_id}</S.BoardText>
+                <S.BoardText>{resource.created_at}</S.BoardText>
+              </tr>
+            ))}
           </tbody>
         </table>
         <PageButton />
@@ -69,10 +81,10 @@ namespace S {
   `;
 
   export const Page = styled(Link)<IsCurrentType>`
-    ${Fonts.bold20};
+    ${Fonts.semibold18};
     box-shadow: ${BoxShadows.smooth};
     background-color: ${(props) => (props.isCurrent ? Colors.table : Colors.gray)};
-    color: ${(props) => (props.isCurrent ? Colors.white : Colors.black)};
+    color: ${(props) => (props.isCurrent ? Colors.white : Colors.gray900)};
     width: 15rem;
     height: 5rem;
     display: flex;

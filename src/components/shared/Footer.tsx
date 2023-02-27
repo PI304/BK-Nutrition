@@ -8,13 +8,7 @@ export const Footer = () => {
     <S.FooterLayout>
       <div>
         <div>
-          <div>
-            <Image src={Footerlogo} alt='footerlogo1' />
-          </div>
-          <div>
-            <p>연세대학교</p>
-            <p>BK21 FOUR 웰니스 융합 인재 양성팀</p>
-          </div>
+          <Image src={Footerlogo} alt='footerlogo1' />
         </div>
 
         <S.Description>
@@ -35,15 +29,16 @@ namespace S {
   export const FooterLayout = styled.footer`
     display: flex;
     justify-content: center;
-    height: 17rem;
+    height: 20rem;
     background-color: ${Colors.footer};
 
     > div {
       width: 120rem;
+      flex-direction: column;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 10rem;
+      gap: 3rem;
 
       > div:first-child {
         display: flex;
@@ -76,18 +71,8 @@ namespace S {
     > div p:last-of-type {
       ${Fonts.regular10};
       color: ${Colors.gray800};
+      text-align: center;
       line-height: 1.5rem;
-    }
-  `;
-
-  export const ContactLayout = styled.div`
-    display: flex;
-    flex-direction: column;
-    margin-left: 6rem;
-    gap: 1rem;
-
-    > div:last-child {
-      padding-left: 0.5rem;
     }
   `;
 }

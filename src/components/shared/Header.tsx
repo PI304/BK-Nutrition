@@ -1,8 +1,8 @@
-import { Colors, Fonts } from '@/styles';
+import { Colors, Fonts, MainLogo } from '@/styles';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
-import Mainlogo from '../../../public/assets/main_logo.png';
+
 import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 
@@ -10,9 +10,7 @@ export const Header = () => {
   return (
     <S.HeaderLayout>
       <div>
-        <S.LogoLink href='/main'>
-          <Image src={Mainlogo} alt='mainlogo' />
-        </S.LogoLink>
+        <S.LogoLink href='/main'>{MainLogo}</S.LogoLink>
         <S.MenuWrapper>
           <S.MenuBox>
             <S.MenuLink href={Paths.intro} title={Seo.Title.intro}>
@@ -25,12 +23,12 @@ export const Header = () => {
             </S.MenuLink>
           </S.MenuBox>
           <S.MenuBox>
-            <S.MenuLink href={Paths.business} title={Seo.Title.business}>
+            <S.MenuLink href={Paths.achievement} title={Seo.Title.achievement}>
               사업성과
             </S.MenuLink>
           </S.MenuBox>
           <S.MenuBox>
-            <S.MenuLink href={Paths.community} title={Seo.Title.community}>
+            <S.MenuLink href={Paths.notice} title={Seo.Title.notice}>
               커뮤니티
             </S.MenuLink>
           </S.MenuBox>

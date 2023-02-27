@@ -18,7 +18,7 @@ export default function resource() {
 resource.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='Resource' sub_title='' address='Resource' />
+      <BackgroundHeader title='Community' address='Resource' />
       <SharedLayout>{page}</SharedLayout>
     </DefaultLayout>
   );
