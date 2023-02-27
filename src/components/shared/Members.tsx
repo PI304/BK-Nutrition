@@ -5,31 +5,46 @@ import Phone from '../../../public/assets/phone.png';
 import Message from '../../../public/assets/message.png';
 import Home from '../../../public/assets/home2.png';
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import { getProfessors } from 'api/professors';
 
 export const Members = () => {
+  const [professors, setProfessors] = useState<ResponseProfessors.Get>();
+
+  const getMember = async () => {
+    const professors = await getProfessors();
+    setProfessors(professors);
+  };
+
+  useEffect(() => {
+    getMember();
+  }, []);
   return (
-    <S.Member>
-      <Image src={Lee} alt='changmin'></Image>
-      <div>
-        <p>공동연구원</p>
-        <h2>XXXX 교수</h2>
-        <SC.Contact>
-          <Image src={Phone} alt='phone'></Image>
-          <div>010-0000-0000</div>
-        </SC.Contact>
-        <SC.Contact>
-          <Image src={Message} alt='message'></Image>
-          <div>1234567@yonsei.ac.kr</div>
-        </SC.Contact>
-        <SC.Home href='https://yonsei-impact.weebly.com/'>
-          <Image src={Home} alt='home'></Image>
-        </SC.Home>
-      </div>
-      <div>
-        <p>연세대학교 아동가족학과 인간생애와 혁신적 디자인 교수</p>
-        <p>청소년, 바이오마커 수집, 양적 연구 설계 전문성</p>
-      </div>
-    </S.Member>
+    <>
+      {professors?.map((professors, i) => (
+        <S.Member key={i}>
+          <Image src={Lee} alt='changmin'></Image>
+          <div>
+            <p>{professors.position}</p>
+            <h2>{professors.name}</h2>
+            <SC.Contact>
+              <Image src={Phone} alt='phone'></Image>
+              <div>{professors.phone_number}</div>
+            </SC.Contact>
+            <SC.Contact>
+              <Image src={Message} alt='message'></Image>
+              <div>{professors.email}</div>
+            </SC.Contact>
+            <SC.Home href='https://yonsei-impact.weebly.com/'>
+              <Image src={Home} alt='home'></Image>
+            </SC.Home>
+          </div>
+          <div>
+            <p>{professors.introduction}</p>
+          </div>
+        </S.Member>
+      ))}
+    </>
   );
 };
 
@@ -49,11 +64,11 @@ namespace S {
       gap: 1.5rem;
 
       > p {
-        ${Fonts.regular18};
+        ${Fonts.regular18}
       }
 
       > h2 {
-        ${Fonts.bold32};
+        ${Fonts.bold32}
         margin-bottom: 1rem;
       }
     }
@@ -70,6 +85,7 @@ namespace S {
 
       > p {
         ${Fonts.regular16}
+        word-break: break-all;
       }
     }
   `;
