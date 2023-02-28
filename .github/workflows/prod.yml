@@ -39,14 +39,13 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-  docker_pull_on_server:
-    needs: docker_build_and_push
-    runs-on: [self-hosted, BK-Nutrition-production]
-    steps:
-      - name: Deploy
-        run: |
-          docker stop ${{ env.DOCKER_NAME }} && docker rm ${{ env.DOCKER_NAME }}
-          docker system prune -a -f
-          docker pull ${{ env.DOCKER_IMAGE }}:production
-          docker run -d -p 3000:3000 --name ${{ env.DOCKER_NAME }} --restart always ${{ env.DOCKER_IMAGE }}:production
-   
+  # docker_pull_on_server:
+  #   needs: docker_build_and_push
+  #   runs-on: [self-hosted, BK-Nutrition-production]
+  #   steps:
+  #     - name: Deploy
+  #       run: |
+  #         docker stop bk-nutrition-front-production && docker rm bk-nutrition-front-production
+  #         docker system prune -a -f
+  #         docker pull sookyeong/bk-nutrition-front:production
+  #         docker run -d -p 3000:3000 --name bk-nutrition-front-production --restart always sookyeong/bk-nutrition-front:production
