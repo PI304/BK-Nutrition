@@ -7,6 +7,7 @@ import { PageButton, Select } from '@/components/shared';
 import { getPosts } from 'api/posts';
 import { useEffect, useState } from 'react';
 import { PostsType } from '@/constants';
+import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const NoticePage = () => {
   const [notice, setNotice] = useState<ResponsePosts.Get>();
@@ -50,7 +51,7 @@ export const NoticePage = () => {
                   <Link href='/main'>{notice.title}</Link>
                 </S.BoardText>
                 <S.BoardText>{notice.author_id}</S.BoardText>
-                <S.BoardText>{notice.created_at}</S.BoardText>
+                <S.BoardText>{parseSubmitDate(notice.created_at)}</S.BoardText>
               </tr>
             ))}
           </tbody>

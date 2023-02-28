@@ -1,17 +1,17 @@
 import useChangePage from '../../../hooks/useChangePage';
 import { useEffect, useState } from 'react';
 import { BoxShadows, Colors, Fonts, SC } from '@/styles';
-import { Download, Members, PageButton, Pagination } from '@/components/shared';
+import { Members, PageButton, Pagination } from '@/components/shared';
 import Image from 'next/image';
 import styled from 'styled-components';
+import Img from '../../../../public/assets/kimhyunkyung.png';
 import { getResearchers } from 'api/researchers';
-import University from '../../../../public/assets/universitymember.png';
-import Kim from '../../../../public/assets/kimhyunkyung.png';
 import Phone from '../../../../public/assets/phone.png';
 import Message from '../../../../public/assets/message.png';
 import Home from '../../../../public/assets/home2.png';
 import { getProfessors } from 'api/professors';
 import { getGraduates } from 'api/graduates';
+import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const MemberPage = () => {
   const [researchers, setResearchers] = useState<ResponseResearchers.Get>();
@@ -46,38 +46,39 @@ export const MemberPage = () => {
       <S.MemberBox>
         <S.Title>참여교수</S.Title>
 
-        {professors?.map((professors, i) => (
-          <S.TopMember key={i}>
-            <Image src={Kim} alt='kim'></Image>
-            <div>
-              <p>{professors.position}</p>
-              <h2>{professors.name}</h2>
+        <div>
+          {professors?.map((professors, i) => (
+            <S.TopMember key={i}>
+              <Image src={Img} alt='kim'></Image>
               <div>
-                <SC.Contact>
-                  <Image src={Message} alt='message'></Image>
-                  <div>{professors.email}</div>
-                </SC.Contact>
-                <SC.Contact>
-                  <Image src={Phone} alt='phone'></Image>
-                  <div>{professors.phone_number}</div>
-                </SC.Contact>
+                <p>{professors.position}</p>
+                <h2>{professors.name}</h2>
+                <div>
+                  <SC.Contact>
+                    <Image src={Message} alt='message'></Image>
+                    <div>{professors.email}</div>
+                  </SC.Contact>
+                  <SC.Contact>
+                    <Image src={Phone} alt='phone'></Image>
+                    <div>{professors.phone_number}</div>
+                  </SC.Contact>
+                </div>
+                <SC.Home href='https://yonsei-impact.weebly.com/'>
+                  <Image src={Home} alt='home'></Image>
+                </SC.Home>
               </div>
-              <SC.Home href='https://yonsei-impact.weebly.com/'>
-                <Image src={Home} alt='home'></Image>
-              </SC.Home>
-            </div>
-            <div>
-              <p>{professors.introduction}</p>
-            </div>
-          </S.TopMember>
-        ))}
-
-        <Members />
-        <Members />
-        <Members />
-        <Members />
-        <Members />
-        <Members />
+              <div>
+                <p>{professors.affiliation}</p>
+                <p>{professors.major}</p>
+              </div>
+            </S.TopMember>
+          ))}
+        </div>
+        <div>
+          <Members />
+          <Members />
+          <Members />
+        </div>
         <PageButton />
       </S.MemberBox>
       <SC.Line />
@@ -112,24 +113,24 @@ export const MemberPage = () => {
         <table>
           <thead>
             <tr>
-              <S.BoardText>연번</S.BoardText>
-              <S.BoardText>성명</S.BoardText>
-              <S.BoardText>학위과정</S.BoardText>
-              <S.BoardText>재학학기수</S.BoardText>
-              <S.BoardText>지도교수</S.BoardText>
-              <S.BoardText>참여/지원</S.BoardText>
+              <S.BoardText>학기</S.BoardText>
+              <S.BoardText>명단</S.BoardText>
+              <S.BoardText>생성일</S.BoardText>
+              <S.BoardText>수정일</S.BoardText>
             </tr>
           </thead>
           <tbody>
             {university?.map((university, i) => (
               <tr key={i}>
-                <S.BoardText>{university.id}</S.BoardText>
                 <S.BoardText>{university.semester}</S.BoardText>
                 <S.BoardText>{university.uuid}</S.BoardText>
+                <S.BoardText>{parseSubmitDate(university.created_at)}</S.BoardText>
+                <S.BoardText>{university.updated_at}</S.BoardText>
               </tr>
             ))}
           </tbody>
         </table>
+        <PageButton />
       </S.UniversityBox>
     </>
   );
@@ -150,46 +151,21 @@ namespace S {
 
   /* 참여 교수 */
   export const MemberBox = styled.div`
-    display: grid;
-    grid-template-rows: 10rem 40rem 30rem 30rem 30rem 2rem;
-    grid-template-columns: 58rem 58rem;
-    grid-row-gap: 5rem;
-    grid-column-gap: 4rem;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5rem;
+    gap: 5rem;
 
-    > div:first-child {
-      margin-top: 3.5rem;
+    > div:nth-child(2) {
+      display: flex;
+      flex-direction: column;
     }
 
     > div:nth-child(3) {
-      grid-row: 3 / 4;
-    }
-
-    > div:nth-child(4) {
-      grid-column: 2 / 3;
-      grid-row: -5 / -4;
-    }
-
-    > div:nth-child(5) {
-      grid-row: 4 / 5;
-    }
-
-    > div:nth-child(6) {
-      grid-column: 2 / 3;
-      grid-row: -4 / -3;
-    }
-
-    > div:nth-child(7) {
-      grid-row: 5 / 6;
-    }
-
-    > div:nth-child(8) {
-      grid-row: -3 / -2;
-      grid-column: 2 / 3;
-    }
-
-    > div:nth-child(9) {
-      grid-row: 6 / 7;
-      grid-column: -3 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2.7rem;
+      row-gap: 9rem;
     }
   `;
 
@@ -276,6 +252,7 @@ namespace S {
   export const UniversityBox = styled.div`
     display: flex;
     flex-direction: column;
+    gap: 4rem;
 
     > table {
       width: 100%;

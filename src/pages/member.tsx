@@ -18,7 +18,7 @@ export default function member() {
 member.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='Member' address='Member' />
+      <BackgroundHeader title='연구팀구성' address='Member' />
       <MemberLayout>{page}</MemberLayout>
     </DefaultLayout>
   );

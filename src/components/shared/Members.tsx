@@ -40,7 +40,8 @@ export const Members = () => {
             </SC.Home>
           </div>
           <div>
-            <p>{professors.introduction}</p>
+            <p>{professors.affiliation}</p>
+            <p>{professors.major}</p>
           </div>
         </S.Member>
       ))}
@@ -85,7 +86,6 @@ namespace S {
 
       > p {
         ${Fonts.regular16}
-        word-break: break-all;
       }
     }
   `;

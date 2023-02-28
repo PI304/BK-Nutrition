@@ -4,7 +4,9 @@ declare namespace ResponseProfessors {
   type GetById = {
     name: string;
     position: string;
-    introduction: string;
+    url: string;
+    affiliation: string;
+    major: string;
     email: string;
     phone_number: string;
     profile_image: string;

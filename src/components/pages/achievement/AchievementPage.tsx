@@ -7,6 +7,7 @@ import { PageButton, Select } from '@/components/shared';
 import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
+import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const AchievementPage = () => {
   const [achievement, setAchievement] = useState<ResponsePosts.Get>();
@@ -53,7 +54,7 @@ export const AchievementPage = () => {
                   <Link href='/main'>{achievement.title}</Link>
                 </S.BoardText>
                 <S.BoardText>{achievement.author_id}</S.BoardText>
-                <S.BoardText>{achievement.created_at}</S.BoardText>
+                <S.BoardText>{parseSubmitDate(achievement.created_at)}</S.BoardText>
               </tr>
             ))}
           </tbody>
