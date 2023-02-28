@@ -72,15 +72,17 @@ namespace S {
 
   export const MenuWrapper = styled.div`
     display: flex;
+    justify-content: flex-end;
     position: absolute;
     right: 0;
-    width: 60rem;
+    width: 65rem;
   `;
 
   export const MenuBox = styled.div`
     cursor: pointer;
     position: relative;
     height: 11rem;
+    width: 100%;
   `;
 
   export const MenuLink = styled(Link)`
@@ -89,7 +91,7 @@ namespace S {
     height: 100%;
     color: ${Colors.black};
     display: flex;
+    justify-content: center;
     align-items: center;
-    padding: 0 3.5rem;
   `;
 }
