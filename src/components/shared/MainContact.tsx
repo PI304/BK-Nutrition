@@ -6,6 +6,7 @@ import { Colors, Fonts } from '@/styles';
 import { getPosts } from 'api/posts';
 import { useEffect, useState } from 'react';
 import { PostsType } from '@/constants';
+import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const MainContact = ({ page }: MainContactProps) => {
   const [notice, setNotice] = useState<ResponsePosts.Get>();
@@ -33,7 +34,7 @@ export const MainContact = ({ page }: MainContactProps) => {
                 <tr key={i}>
                   <th>{notice.title}</th>
                   <th>{notice.content}</th>
-                  <th>{notice.created_at}</th>
+                  <th>{parseSubmitDate(notice.created_at)}</th>
                 </tr>
               ))}
             </tbody>
@@ -45,7 +46,7 @@ export const MainContact = ({ page }: MainContactProps) => {
             {notice?.map((notice, i) => (
               <tr key={i}>
                 <th>{notice.title}</th>
-                <th>{notice.created_at}</th>
+                <th>{parseSubmitDate(notice.created_at)}</th>
               </tr>
             ))}
           </tbody>
