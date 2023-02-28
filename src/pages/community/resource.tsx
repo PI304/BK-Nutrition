@@ -18,7 +18,7 @@ export default function resource() {
 resource.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='Community' address='Resource' />
+      <BackgroundHeader title='커뮤니티' address='자료실' />
       <SharedLayout>{page}</SharedLayout>
     </DefaultLayout>
   );

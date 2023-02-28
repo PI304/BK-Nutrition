@@ -1,8 +1,6 @@
 import { Colors, Fonts, MainLogo } from '@/styles';
 import Link from 'next/link';
-import Image from 'next/image';
 import styled from 'styled-components';
-
 import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 
@@ -86,7 +84,7 @@ namespace S {
   `;
 
   export const MenuLink = styled(Link)`
-    ${Fonts.medium18};
+    ${Fonts.semibold20};
     width: 15rem;
     height: 100%;
     color: ${Colors.black};

@@ -7,6 +7,7 @@ import { PageButton, Select } from '@/components/shared';
 import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
+import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const ResourcePage = () => {
   const [resource, setResource] = useState<ResponsePosts.Get>();
@@ -49,7 +50,7 @@ export const ResourcePage = () => {
                   <Link href='/main'>{resource.title}</Link>
                 </S.BoardText>
                 <S.BoardText>{resource.author_id}</S.BoardText>
-                <S.BoardText>{resource.created_at}</S.BoardText>
+                <S.BoardText>{parseSubmitDate(resource.created_at)}</S.BoardText>
               </tr>
             ))}
           </tbody>

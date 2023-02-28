@@ -18,7 +18,7 @@ export default function achievement() {
 achievement.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='Business' address='Achievement' />
+      <BackgroundHeader title='사업성과' address='연구업적' />
       <SharedLayout>{page}</SharedLayout>
     </DefaultLayout>
   );

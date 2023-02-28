@@ -18,7 +18,7 @@ export default function intro() {
 intro.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='Intro' address='Intro' />
+      <BackgroundHeader title='인사말' address='인사말' />
       <IntroLayout>{page}</IntroLayout>
     </DefaultLayout>
   );

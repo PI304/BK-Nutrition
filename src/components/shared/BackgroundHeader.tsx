@@ -1,4 +1,4 @@
-import { BoxShadows, Colors, Fonts } from '@/styles';
+import { BoxShadows, Colors, Fonts, HomeIcon } from '@/styles';
 import Link from 'next/link';
 import styled from 'styled-components';
 import Image from 'next/image';
@@ -14,9 +14,7 @@ export const BackgroundHeader = ({ title, address }: TitleProps) => {
             <div>{address}</div>
           </S.Title>
           <S.Tab>
-            <Link href={Paths.main}>
-              <Image src={Home} alt='home' />
-            </Link>
+            <Link href={Paths.main}>{HomeIcon}</Link>
             <div>{title}</div>
             <div>{address}</div>
           </S.Tab>
@@ -64,6 +62,7 @@ namespace S {
     background-color: ${Colors.shadow};
     color: ${Colors.white};
     display: flex;
+    height: 4rem;
 
     > div:first-of-type {
       display: flex;

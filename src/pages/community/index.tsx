@@ -18,7 +18,7 @@ export default function notice() {
 notice.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='Community' address='Notice' />
+      <BackgroundHeader title='커뮤니티' address='공지사항' />
       <SharedLayout>{page}</SharedLayout>
     </DefaultLayout>
   );

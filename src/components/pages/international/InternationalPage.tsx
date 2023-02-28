@@ -7,6 +7,7 @@ import { PageButton, Select } from '@/components/shared';
 import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
+import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const InternationalPage = () => {
   const [international, setInternational] = useState<ResponsePosts.Get>();
@@ -52,7 +53,7 @@ export const InternationalPage = () => {
                   <Link href='/main'>{international.title}</Link>
                 </S.BoardText>
                 <S.BoardText>{international.author_id}</S.BoardText>
-                <S.BoardText>{international.created_at}</S.BoardText>
+                <S.BoardText>{parseSubmitDate(international.created_at)}</S.BoardText>
               </tr>
             ))}
           </tbody>
