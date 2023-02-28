@@ -48,4 +48,5 @@ jobs:
           docker stop ${{ env.DOCKER_NAME }} && docker rm ${{ env.DOCKER_NAME }}
           docker system prune -a -f
           docker pull ${{ env.DOCKER_IMAGE }}:production
-          docker run -d -p 80:3000 --name ${{ env.DOCKER_NAME }} --restart always ${{ env.DOCKER_IMAGE }}:production
+          docker run -d -p 3000:3000 --name ${{ env.DOCKER_NAME }} --restart always ${{ env.DOCKER_IMAGE }}:production
+   
