@@ -3,7 +3,7 @@ import request from './core';
 const baseURL = '/posts';
 
 export const getPosts = (post: string) => {
-  const url = `${baseURL}?post_type=${post}`;
+  const url = `${baseURL}?post=${post}`;
   return request.get<ResponsePosts.Get>(url);
 };
 

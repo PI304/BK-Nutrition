@@ -7,6 +7,7 @@ import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
 import { Colors, Fonts, BoxShadows } from '@/styles';
 import { PageButton, Select } from '@/components/shared';
+import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const IndustrialPage = () => {
   const [industrial, setIndustrial] = useState<ResponsePosts.Get>();
@@ -52,7 +53,7 @@ export const IndustrialPage = () => {
                   <Link href='/main'>{industrial.title}</Link>
                 </S.BoardText>
                 <S.BoardText>{industrial.author_id}</S.BoardText>
-                <S.BoardText>{industrial.created_at}</S.BoardText>
+                <S.BoardText>{parseSubmitDate(industrial.created_at)}</S.BoardText>
               </tr>
             ))}
           </tbody>
