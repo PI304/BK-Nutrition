@@ -23,18 +23,22 @@ export const Members = () => {
     <>
       {professors?.map((professors, i) => (
         <S.Member key={i}>
-          <Image src={Lee} alt='changmin'></Image>
+          <div>
+            <Image src={Lee} alt='changmin'></Image>
+          </div>
           <div>
             <p>{professors.position}</p>
             <h2>{professors.name}</h2>
-            <SC.Contact>
-              <Image src={Phone} alt='phone'></Image>
-              <div>{professors.phone_number}</div>
-            </SC.Contact>
-            <SC.Contact>
-              <Image src={Message} alt='message'></Image>
-              <div>{professors.email}</div>
-            </SC.Contact>
+            <div>
+              <SC.Contact>
+                <Image src={Phone} alt='phone'></Image>
+                <div>{professors.phone_number}</div>
+              </SC.Contact>
+              <SC.Contact>
+                <Image src={Message} alt='message'></Image>
+                <div>{professors.email}</div>
+              </SC.Contact>
+            </div>
             <SC.Home href='https://yonsei-impact.weebly.com/'>
               <Image src={Home} alt='home'></Image>
             </SC.Home>
@@ -56,7 +60,7 @@ namespace S {
     grid-template-rows: 23rem 7rem;
     position: relative;
 
-    > div:first-of-type {
+    > div:nth-child(2) {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -64,13 +68,22 @@ namespace S {
       position: relative;
       gap: 1.5rem;
 
+      > div:first-of-type {
+        display: flex;
+        flex-direction: column;
+
+        > div:first-of-type {
+          margin-bottom: 2rem;
+        }
+      }
+
       > p {
-        ${Fonts.regular18}
+        ${Fonts.bold18}
       }
 
       > h2 {
         ${Fonts.bold32}
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
       }
     }
 
