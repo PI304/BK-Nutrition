@@ -29,18 +29,15 @@ export const MainPage = () => {
 
 namespace S {
   export const MainImg = styled.div`
-    background: url(/assets/background2.png) no-repeat;
-    position: relative;
+    background: url(/assets/background2.png) no-repeat center center;
+    background-size: cover;
 
     > div {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      position: absolute;
       width: 100%;
       height: 100%;
-      top: 0;
-      right: 0;
       padding: 7.6rem 10.2rem;
       background: linear-gradient(${BoxShadows.main});
 
