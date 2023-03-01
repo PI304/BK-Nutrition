@@ -24,6 +24,7 @@ export const Fonts = {
 
   /* 700 */
   bold16: 'font-size:1.6rem; font-weight:700;',
+  bold18: 'font-size:1.8rem; font-weight:700;',
   bold20: 'font-size:2rem; font-weight:700;',
   bold24: 'font-size:2.4rem; font-weight:700;',
   bold30: 'font-size:3rem; font-weight:700;',

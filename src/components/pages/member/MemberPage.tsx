@@ -2,13 +2,8 @@ import useChangePage from '../../../hooks/useChangePage';
 import { useEffect, useState } from 'react';
 import { BoxShadows, Colors, Fonts, SC } from '@/styles';
 import { Members, PageButton, Pagination } from '@/components/shared';
-import Image from 'next/image';
 import styled from 'styled-components';
-import Img from '../../../../public/assets/kimhyunkyung.png';
 import { getResearchers } from 'api/researchers';
-import Phone from '../../../../public/assets/phone.png';
-import Message from '../../../../public/assets/message.png';
-import Home from '../../../../public/assets/home2.png';
 import { getProfessors } from 'api/professors';
 import { getGraduates } from 'api/graduates';
 import parseSubmitDate from '@/utils/parseSubmitDate';
@@ -45,38 +40,7 @@ export const MemberPage = () => {
     <>
       <S.MemberBox>
         <S.Title>참여교수</S.Title>
-
         <div>
-          {professors?.map((professors, i) => (
-            <S.TopMember key={i}>
-              <Image src={Img} alt='kim'></Image>
-              <div>
-                <p>{professors.position}</p>
-                <h2>{professors.name}</h2>
-                <div>
-                  <SC.Contact>
-                    <Image src={Message} alt='message'></Image>
-                    <div>{professors.email}</div>
-                  </SC.Contact>
-                  <SC.Contact>
-                    <Image src={Phone} alt='phone'></Image>
-                    <div>{professors.phone_number}</div>
-                  </SC.Contact>
-                </div>
-                <SC.Home href='https://yonsei-impact.weebly.com/'>
-                  <Image src={Home} alt='home'></Image>
-                </SC.Home>
-              </div>
-              <div>
-                <p>{professors.affiliation}</p>
-                <p>{professors.major}</p>
-              </div>
-            </S.TopMember>
-          ))}
-        </div>
-        <div>
-          <Members />
-          <Members />
           <Members />
         </div>
         <PageButton />
@@ -157,58 +121,59 @@ namespace S {
     gap: 5rem;
 
     > div:nth-child(2) {
-      display: flex;
-      flex-direction: column;
-    }
-
-    > div:nth-child(3) {
       display: grid;
       grid-template-columns: 1fr 1fr;
       column-gap: 2.7rem;
       row-gap: 9rem;
-    }
-  `;
-
-  export const TopMember = styled.div`
-    grid-row: 2 / 3;
-    grid-column: 1 / 3;
-    display: grid;
-    grid-template-columns: 34.353rem 1fr;
-    grid-template-rows: 29.714rem 10.286rem;
-    box-shadow: ${BoxShadows.smooth};
-
-    > div:first-of-type {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0.7rem 4rem 4rem 4rem;
-      position: relative;
-
-      > p {
-        ${Fonts.regular18};
-        margin-bottom: 1rem;
-      }
-
-      > h2 {
-        ${Fonts.bold32};
-        margin-bottom: 3.7rem;
-      }
 
       > div:first-of-type {
-        display: flex;
-      }
-    }
+        grid-column: 1 / 3;
+        display: grid;
+        grid-template-columns: 34.353rem 1fr;
+        grid-template-rows: 29.714rem 10.286rem;
+        box-shadow: ${BoxShadows.smooth};
 
-    > div:last-child {
-      background-color: ${Colors.gray};
-      grid-row: -2 / -1;
-      grid-column: -2 / -1;
-      padding: 2.5rem 2rem;
+        > div:first-of-type {
+          grid-column: 1 / 2;
+          grid-row: 1 / 3;
 
-      > p {
-        ${Fonts.regular18};
-        line-height: 2.5rem;
-        word-break: break-all;
+          > img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        > div:nth-child(2) {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: 6rem 4rem 4rem 6rem;
+          position: relative;
+
+          > h2 {
+            margin-bottom: 2rem;
+          }
+
+          > div:first-of-type {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+            > div:first-of-type {
+              margin-bottom: 0;
+            }
+          }
+        }
+
+        > div:last-of-type {
+          grid-column: -2 / -1;
+          padding: 2.5rem 2rem;
+
+          > p {
+            line-height: 2.5rem;
+          }
+        }
       }
     }
   `;
