@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { getProfessors } from 'api/professors';
 import { getDownloadLinkFromS3 } from '@/s3';
-import { S3Folder } from '@/constants/s3folder';
+import { S3Folder } from '@/constants/folderS3';
 
 export const Members = () => {
   const [professors, setProfessors] = useState<ResponseProfessors.Get>();
