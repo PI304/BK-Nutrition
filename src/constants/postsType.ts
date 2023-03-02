@@ -4,4 +4,5 @@ export const PostsType = {
   industrial: 'industrial',
   international: 'international',
   achievement: 'achievement',
+  bis: 'bis',
 } as const;
