@@ -1,5 +1,6 @@
 export const Fonts = {
   /* 300 */
+  light12: 'font-size:1.2rem; font-weight:300;',
   light14: 'font-size:1.4rem; font-weight:300;',
 
   /* 400 */
@@ -17,6 +18,7 @@ export const Fonts = {
   medium14: 'font-size:1.4rem; font-weight:500;',
   medium16: 'font-size:1.6rem; font-weight:500;',
   medium18: 'font-size:1.8rem; font-weight:500;',
+  medium24: 'font-size:2.4rem; font-weight:500;',
 
   /* 600 */
   semibold16: 'font-size:1.6rem; font-weight:600;',

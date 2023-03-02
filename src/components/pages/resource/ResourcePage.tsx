@@ -47,7 +47,7 @@ export const ResourcePage = () => {
               <tr key={i}>
                 <S.BoardText>{resource.id}</S.BoardText>
                 <S.BoardText>
-                  <Link href='/main'>{resource.title}</Link>
+                  <Link href={Paths.resourceView}>{resource.title}</Link>
                 </S.BoardText>
                 <S.BoardText>{resource.author_id}</S.BoardText>
                 <S.BoardText>{parseSubmitDate(resource.created_at)}</S.BoardText>

@@ -48,7 +48,7 @@ export const NoticePage = () => {
               <tr key={i}>
                 <S.BoardText>{notice.id}</S.BoardText>
                 <S.BoardText>
-                  <Link href='/main'>{notice.title}</Link>
+                  <Link href={Paths.noticeView}>{notice.title}</Link>
                 </S.BoardText>
                 <S.BoardText>{notice.author_id}</S.BoardText>
                 <S.BoardText>{parseSubmitDate(notice.created_at)}</S.BoardText>
