@@ -7,7 +7,7 @@ import { getResearchers } from 'api/researchers';
 import { getGraduates } from 'api/graduates';
 import parseSubmitDate from '@/utils/parseSubmitDate';
 import Link from 'next/link';
-import { S3Folder } from '@/constants/s3folder';
+import { S3Folder } from '@/constants/folderS3';
 import { getDownloadLinkFromS3 } from '@/s3';
 
 export const MemberPage = () => {
