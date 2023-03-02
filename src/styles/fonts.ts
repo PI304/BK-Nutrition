@@ -14,6 +14,7 @@ export const Fonts = {
 
   /* 500 */
   medium12: 'font-size:1.2rem; font-weight:500;',
+  medium14: 'font-size:1.4rem; font-weight:500;',
   medium16: 'font-size:1.6rem; font-weight:500;',
   medium18: 'font-size:1.8rem; font-weight:500;',
 
