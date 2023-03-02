@@ -44,7 +44,7 @@ export const Members = () => {
                 <div>{professors.email}</div>
               </SC.Contact>
             </div>
-            <SC.Home href='https://yonsei-impact.weebly.com/'>
+            <SC.Home href={professors.url}>
               <Image src={Home} alt='home'></Image>
             </SC.Home>
           </div>
