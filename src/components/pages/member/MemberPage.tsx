@@ -7,7 +7,7 @@ import { getResearchers } from 'api/researchers';
 import { getGraduates } from 'api/graduates';
 import parseSubmitDate from '@/utils/parseSubmitDate';
 import Link from 'next/link';
-import { S3Folder } from '@/constants/folderS3';
+import { FolderS3 } from '@/constants/folderS3';
 import { getDownloadLinkFromS3 } from '@/s3';
 
 export const MemberPage = () => {
@@ -82,7 +82,7 @@ export const MemberPage = () => {
                 <S.BoardText>{university.semester}</S.BoardText>
 
                 <S.BoardText>
-                  <Link href={getDownloadLinkFromS3(S3Folder.resources, university.uuid)}>
+                  <Link href={getDownloadLinkFromS3(FolderS3.resources, university.uuid)}>
                     참여대학원생 명단 다운로드
                   </Link>
                 </S.BoardText>
