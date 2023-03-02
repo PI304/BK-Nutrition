@@ -4,13 +4,14 @@ import { BoxShadows, Colors, Fonts, SC } from '@/styles';
 import { Members, PageButton, Pagination } from '@/components/shared';
 import styled from 'styled-components';
 import { getResearchers } from 'api/researchers';
-import { getProfessors } from 'api/professors';
 import { getGraduates } from 'api/graduates';
 import parseSubmitDate from '@/utils/parseSubmitDate';
+import Link from 'next/link';
+import { S3Folder } from '@/constants/s3folder';
+import { getDownloadLinkFromS3 } from '@/s3';
 
 export const MemberPage = () => {
   const [researchers, setResearchers] = useState<ResponseResearchers.Get>();
-  const [professors, setProfessors] = useState<ResponseProfessors.Get>();
   const [university, setUniversity] = useState<ResponseGraduates.Get>();
 
   const getMembers = async () => {
@@ -19,14 +20,6 @@ export const MemberPage = () => {
   };
   useEffect(() => {
     getMembers();
-  }, []);
-
-  const getMember = async () => {
-    const professors = await getProfessors();
-    setProfessors(professors);
-  };
-  useEffect(() => {
-    getMember();
   }, []);
 
   const getUniversity = async () => {
@@ -87,7 +80,13 @@ export const MemberPage = () => {
             {university?.map((university, i) => (
               <tr key={i}>
                 <S.BoardText>{university.semester}</S.BoardText>
-                <S.BoardText>{university.uuid}</S.BoardText>
+
+                <S.BoardText>
+                  <Link href={getDownloadLinkFromS3(S3Folder.resources, university.uuid)}>
+                    참여대학원생 명단 다운로드
+                  </Link>
+                </S.BoardText>
+
                 <S.BoardText>{parseSubmitDate(university.created_at)}</S.BoardText>
                 <S.BoardText>{university.updated_at}</S.BoardText>
               </tr>

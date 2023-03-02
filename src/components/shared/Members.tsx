@@ -7,6 +7,8 @@ import Home from '../../../public/assets/home2.png';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { getProfessors } from 'api/professors';
+import { getDownloadLinkFromS3 } from '@/s3';
+import { S3Folder } from '@/constants/s3folder';
 
 export const Members = () => {
   const [professors, setProfessors] = useState<ResponseProfessors.Get>();
@@ -24,7 +26,10 @@ export const Members = () => {
       {professors?.map((professors, i) => (
         <S.Member key={i}>
           <div>
-            <Image src={Lee} alt='changmin'></Image>
+            <img
+              src={getDownloadLinkFromS3(S3Folder.profiles, professors.profile_image)}
+              alt='Img'
+            />
           </div>
           <div>
             <p>{professors.position}</p>
@@ -59,6 +64,14 @@ namespace S {
     grid-template-columns: 20rem 38rem;
     grid-template-rows: 23rem 7rem;
     position: relative;
+
+    > div:first-of-type {
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
 
     > div:nth-child(2) {
       display: flex;
