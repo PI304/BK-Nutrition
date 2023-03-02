@@ -1,4 +1,4 @@
-export const S3Folder = {
+export const FolderS3 = {
   profiles: 'profiles',
   resources: 'resources',
 } as const;

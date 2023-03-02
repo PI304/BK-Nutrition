@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { getProfessors } from 'api/professors';
 import { getDownloadLinkFromS3 } from '@/s3';
-import { S3Folder } from '@/constants/folderS3';
+import { FolderS3 } from '@/constants/folderS3';
 
 export const Members = () => {
   const [professors, setProfessors] = useState<ResponseProfessors.Get>();
@@ -27,7 +27,7 @@ export const Members = () => {
         <S.Member key={i}>
           <div>
             <img
-              src={getDownloadLinkFromS3(S3Folder.profiles, professors.profile_image)}
+              src={getDownloadLinkFromS3(FolderS3.profiles, professors.profile_image)}
               alt='Img'
             />
           </div>
