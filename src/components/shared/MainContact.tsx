@@ -21,6 +21,7 @@ export const MainContact = ({ page }: MainContactProps) => {
     const isCurrent = await getPosts(PostsType.notice);
     setIsCurrent(isCurrent);
   };
+
   useEffect(() => {
     page === 'NOTICE' ? getNotice() : page === 'BUSINESS' ? getBis() : null;
   }, [page]);
@@ -35,16 +36,24 @@ export const MainContact = ({ page }: MainContactProps) => {
           <Image src={Arrow} alt='arrow'></Image>
         </Link>
         <div>
-          <table>
-            <tbody>
-              {isCurrent?.map((isCurrent, i) => (
-                <tr key={i}>
-                  <th>{isCurrent.title}</th>
-                  <th>{parseSubmitDate(isCurrent.created_at)}</th>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {isCurrent?.slice(0, 1).map((isCurrent, i) => (
+            <S.ThumbNail key={i}>
+              <div>
+                <Image src={Notice} alt='Notice' />
+              </div>
+              <div>
+                <h1>{isCurrent.title}</h1>
+                <p>{isCurrent.content.slice(0, 130)}</p>
+                <div>{parseSubmitDate(isCurrent.created_at)}</div>
+              </div>
+            </S.ThumbNail>
+          ))}
+          {isCurrent?.slice(1).map((isCurrent, i) => (
+            <S.List key={i}>
+              <div>{isCurrent.title}</div>
+              <div>{parseSubmitDate(isCurrent.created_at)}</div>
+            </S.List>
+          ))}
         </div>
       </S.Container>
     </>
@@ -69,32 +78,55 @@ namespace S {
         color: ${Colors.gray800};
       }
     }
+  `;
+
+  export const ThumbNail = styled.div`
+    padding: 1.5rem;
+    display: flex;
+    gap: 2.2rem;
+
+    > div:nth-of-type(2) {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      > h1 {
+        ${Fonts.bold20}
+        line-height: 115%;
+      }
+
+      > p {
+        ${Fonts.regular14}
+        line-height: 130%;
+      }
+
+      > div {
+        ${Fonts.medium14}
+        color: ${Colors.gray800};
+        margin-top: auto;
+        margin-bottom: 0.3rem;
+      }
+    }
+  `;
+
+  export const List = styled.ul`
+    border-bottom: 0.1rem solid ${Colors.gray300};
+    display: flex;
+    justify-content: space-between;
+    padding: 1.3rem 0;
+
+    :first-of-type {
+      border-top: 0.1rem solid ${Colors.gray300};
+    }
+
+    > div:first-of-type {
+      ${Fonts.medium16};
+      color: ${Colors.gray900};
+    }
 
     > div:last-of-type {
-      > table {
-        width: 100%;
-      }
-
-      > table tbody tr {
-        border-bottom: 0.1rem solid ${Colors.gray300};
-        display: flex;
-        justify-content: space-between;
-        padding: 1.3rem 0;
-
-        > th:first-of-type {
-          ${Fonts.medium16};
-          color: ${Colors.gray900};
-        }
-
-        > th:last-of-type {
-          ${Fonts.medium12};
-          color: ${Colors.gray900};
-        }
-      }
-
-      > table tbody tr:first-of-type {
-        border-top: 0.1rem solid ${Colors.gray300};
-      }
+      ${Fonts.medium12};
+      color: ${Colors.gray900};
     }
   `;
 }
