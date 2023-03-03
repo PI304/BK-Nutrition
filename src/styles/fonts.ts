@@ -30,6 +30,7 @@ export const Fonts = {
   bold18: 'font-size:1.8rem; font-weight:700;',
   bold20: 'font-size:2rem; font-weight:700;',
   bold24: 'font-size:2.4rem; font-weight:700;',
+  bold28: 'font-size:2.8rem; font-weight:700;',
   bold30: 'font-size:3rem; font-weight:700;',
   bold32: 'font-size:3.2rem; font-weight:700;',
   bold40: 'font-size:4rem; font-weight:700;',

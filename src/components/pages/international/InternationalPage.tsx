@@ -50,7 +50,9 @@ export const InternationalPage = () => {
               <tr key={i}>
                 <S.BoardText>{international.id}</S.BoardText>
                 <S.BoardText>
-                  <Link href={Paths.internationalView}>{international.title}</Link>
+                  <Link href={Paths.international + '/' + international.id}>
+                    {international.title}
+                  </Link>
                 </S.BoardText>
                 <S.BoardText>{international.author_id}</S.BoardText>
                 <S.BoardText>{parseSubmitDate(international.created_at)}</S.BoardText>
