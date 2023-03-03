@@ -5,7 +5,9 @@ import { useState, useEffect } from 'react';
 import { getPostsById } from '../../../api/posts';
 import parseSubmitDate from '../../utils/parseSubmitDate';
 import Link from 'next/link';
-import { svgMenu } from '../../styles/svgs';
+import { svgMenu, svgDownload } from '../../styles/svgs';
+import { getDownloadLinkFromS3 } from '../../s3/index';
+import { FolderS3 } from '../../constants/folderS3';
 
 export default function View({ id, boardPath }: ViewProps) {
   const [post, setPost] = useState<ResponsePosts.GetById>();
@@ -31,7 +33,16 @@ export default function View({ id, boardPath }: ViewProps) {
       <S.Content>{post?.content}</S.Content>
       <S.File>
         <h3>첨부파일</h3>
-        <div></div>
+        <div>
+          {post?.resources.map((resource, i) => (
+            <Link href={getDownloadLinkFromS3(FolderS3.resources, resource.uuid)} key={i}>
+              <p>
+                {svgDownload}
+                {resource.filename}
+              </p>
+            </Link>
+          ))}
+        </div>
       </S.File>
       <Link href={boardPath}>
         <S.BoardButton>{svgMenu}목록으로</S.BoardButton>
@@ -74,7 +85,7 @@ namespace S {
     border-bottom: 0.1rem solid ${Colors.gray};
     padding: 2rem 3rem;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 3rem;
 
     > h3 {
@@ -87,8 +98,9 @@ namespace S {
       flex-direction: column;
       gap: 1rem;
 
-      > p {
+      > a > p {
         display: flex;
+        align-items: center;
         gap: 0.5rem;
         cursor: pointer;
         transition: 0.5s ease;
@@ -102,10 +114,10 @@ namespace S {
         }
 
         &:hover {
-          color: ${Colors.blue300};
+          color: ${Colors.blue500};
 
           > svg > path {
-            fill: ${Colors.blue300};
+            fill: ${Colors.blue500};
           }
         }
       }

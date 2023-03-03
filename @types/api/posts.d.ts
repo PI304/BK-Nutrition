@@ -11,5 +11,13 @@ declare namespace ResponsePosts {
     created_at: string;
     updated_at: string;
     uuid: string;
+    resources: {
+      id: number;
+      post_id: number;
+      filename: string;
+      created_at: string;
+      updated_at: string;
+      uuid: string;
+    }[];
   };
 }
