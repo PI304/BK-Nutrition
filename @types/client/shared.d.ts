@@ -37,3 +37,8 @@ type MainContactProps = {
   page?: string;
   title?: string;
 };
+
+type ViewProps = {
+  id: number;
+  boardPath: string;
+};
