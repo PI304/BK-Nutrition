@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { getPostsById } from '../../../api/posts';
 import parseSubmitDate from '../../utils/parseSubmitDate';
 import Link from 'next/link';
+import { svgMenu } from '../../styles/svgs';
 
 export default function View({ id, boardPath }: ViewProps) {
   const [post, setPost] = useState<ResponsePosts.GetById>();
@@ -28,24 +29,29 @@ export default function View({ id, boardPath }: ViewProps) {
         </h2>
       </S.Meta>
       <S.Content>{post?.content}</S.Content>
-      {/* <S.File>
+      <S.File>
         <h3>첨부파일</h3>
         <div></div>
-      </S.File> */}
+      </S.File>
       <Link href={boardPath}>
-        <S.BoardButton>목록으로</S.BoardButton>
+        <S.BoardButton>{svgMenu}목록으로</S.BoardButton>
       </Link>
     </S.Container>
   );
 }
 
 namespace S {
-  export const Container = styled.div``;
+  export const Container = styled.div`
+    margin-bottom: 5rem;
+  `;
 
   export const Meta = styled.div`
-    padding: 2.5rem;
-    padding-top: 3.5rem;
     background-color: ${Colors.gray};
+    display: flex;
+    flex-direction: column;
+    padding: 5rem 3rem;
+    padding-bottom: 2rem;
+    gap: 2rem;
 
     > h1 {
       ${Fonts.medium24}
@@ -53,25 +59,26 @@ namespace S {
     }
 
     > h2 {
-      ${Fonts.light12}
+      ${Fonts.light14}
       text-align: right;
     }
   `;
 
   export const Content = styled.pre`
-    padding: 5.8rem 3rem;
+    padding: 6rem 3rem;
+    line-height: 160%;
   `;
 
   export const File = styled.div`
-    background-color: ${Colors.gray};
-    min-height: 4.9rem;
-    padding: 1.5rem 3rem;
+    border-top: 0.1rem solid ${Colors.gray};
+    border-bottom: 0.1rem solid ${Colors.gray};
+    padding: 2rem 3rem;
     display: flex;
     align-items: flex-start;
     gap: 3rem;
 
     > h3 {
-      ${Fonts.medium16}
+      ${Fonts.semibold16}
       white-space: nowrap;
     }
 
@@ -105,5 +112,14 @@ namespace S {
     }
   `;
 
-  export const BoardButton = styled.button``;
+  export const BoardButton = styled.button`
+    ${Fonts.light14}
+    display: flex;
+    align-items: center;
+    gap: 0.67rem;
+    padding: 0.8rem 1.7rem;
+    border: 0.1rem solid ${Colors.gray150};
+    margin-left: auto;
+    margin-top: 3rem;
+  `;
 }
