@@ -13,7 +13,7 @@ export const IntroPage = () => {
         <S.Greeting>
           <p>
             <strong>Brain Korea 21 FOUR 웰니스 융합인재 양성팀</strong>은 국내외적으로
-            <br /> 연구 활동 및 교육 활동이 활발한 교수들로 구성되어 있습니다.
+            <br /> 연구 활동 및 교육 활동이 활발한 교수들로 구성되어 있습니다
           </p>
           <p>
             Brain Korea 21 FOUR 웰니스 융합인재 양성팀은 학문 후속세대에게 국제적 수준의 교육/연구를
