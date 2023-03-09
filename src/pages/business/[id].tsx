@@ -23,7 +23,7 @@ export default function view() {
 view.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='사업성과' address='연구업적' />
+      <BackgroundHeader nametitle='연구업적' title='사업성과' subtitle='연구업적' />
       <SharedLayout>{page}</SharedLayout>
     </DefaultLayout>
   );

@@ -18,7 +18,7 @@ export default function industrial() {
 industrial.getLayout = (page: ReactElement) => {
   return (
     <DefaultLayout>
-      <BackgroundHeader title='사업성과' address='산학협력' />
+      <BackgroundHeader nametitle='산학협력' title='사업성과' subtitle='산학협력' />
       <SharedLayout>{page}</SharedLayout>
     </DefaultLayout>
   );
