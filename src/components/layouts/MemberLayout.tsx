@@ -13,7 +13,7 @@ namespace S {
     width: 120rem;
     margin: 0 auto;
     display: grid;
-    grid-template-rows: 3fr 0 1fr 1fr;
+    grid-template-rows: 1fr 0 0.5fr 1fr;
     grid-row-gap: 5rem;
   `;
 }

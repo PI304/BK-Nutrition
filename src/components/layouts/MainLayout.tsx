@@ -12,7 +12,7 @@ namespace S {
   export const Layout = styled.section`
     margin: 0 auto;
     display: grid;
-    grid-template-rows: 46rem 15.9rem 1fr;
-    grid-row-gap: 10rem;
+    grid-template-rows: 46rem 2fr 1fr;
+    grid-row-gap: 5rem;
   `;
 }
