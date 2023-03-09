@@ -26,7 +26,6 @@ export const Colors = {
   blue700: '#003777',
   blue800: '#03162C',
 
-  yonsei: '#003777',
   table: '#0058A5',
   bluec: '#2E7DB6',
 
