@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { BoxShadows, Colors, Fonts, SC } from '@/styles';
-import Lee from '../../../public/assets/changmin.png';
 import Phone from '../../../public/assets/phone.png';
 import Message from '../../../public/assets/message.png';
 import Home from '../../../public/assets/home2.png';

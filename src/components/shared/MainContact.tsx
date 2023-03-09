@@ -64,7 +64,7 @@ namespace S {
   export const Container = styled.div`
     display: grid;
     grid-template-columns: 62rem;
-    grid-template-rows: 3rem 3fr 1fr;
+    grid-template-rows: 3rem 1fr;
     margin: 0 auto;
 
     > a {
@@ -74,8 +74,8 @@ namespace S {
       cursor: pointer;
 
       > div {
-        ${Fonts.semibold16};
-        color: ${Colors.gray800};
+        ${Fonts.bold20};
+        color: ${Colors.blue700};
       }
     }
   `;

@@ -17,19 +17,19 @@ export const MainPage = () => {
         </div>
       </S.MainImg>
 
-      <Carousel />
-
       <S.ContactLayout>
         <MainContact page='NOTICE' title='공지사항입니다.' />
         <MainContact page='BUSINESS' title='사업성과입니다.' />
       </S.ContactLayout>
+
+      <Carousel />
     </>
   );
 };
 
 namespace S {
   export const MainImg = styled.div`
-    background: url(/assets/background2.png) no-repeat center center;
+    background: url(/assets/main_background.png) no-repeat center center;
     background-size: cover;
 
     > div {
