@@ -1,22 +1,21 @@
 import { BoxShadows, Colors, Fonts, HomeIcon } from '@/styles';
 import Link from 'next/link';
 import styled from 'styled-components';
-import Image from 'next/image';
-import Home from '../../../public/assets/home.png';
 import { Paths } from '@/constants/paths';
+import { useEffect, useState } from 'react';
 
-export const BackgroundHeader = ({ title, address }: TitleProps) => {
+export const BackgroundHeader = ({ nametitle, title, subtitle }: TitleProps) => {
   return (
     <>
       <S.Background>
         <S.TitleLayout>
           <S.Title>
-            <div>{address}</div>
+            <div>{nametitle}</div>
           </S.Title>
           <S.Tab>
             <Link href={Paths.main}>{HomeIcon}</Link>
             <div>{title}</div>
-            <div>{address}</div>
+            <S.SubTitle subtitle={subtitle}>{subtitle}</S.SubTitle>
           </S.Tab>
         </S.TitleLayout>
       </S.Background>
@@ -30,7 +29,7 @@ namespace S {
     height: 20rem;
     display: flex;
     justify-content: center;
-    background-image: url(/assets/background1.png);
+    background-image: url(/assets/background.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -72,14 +71,14 @@ namespace S {
       padding: 1rem 1.5rem;
       color: ${Colors.white};
     }
+  `;
 
-    > div:last-of-type {
-      display: flex;
-      align-items: center;
-      border: solid white;
-      border-width: 0 0.5px 0 0;
-      padding: 1rem 1.5rem;
-      color: ${Colors.white};
-    }
+  export const SubTitle = styled.div<TitleProps>`
+    display: ${(props) => (props.subtitle === '' ? 'none' : 'flex')};
+    align-items: center;
+    border: solid white;
+    border-width: 0 0.5px 0 0;
+    padding: 1rem 1.5rem;
+    color: ${Colors.white};
   `;
 }
