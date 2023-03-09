@@ -7,3 +7,4 @@ export * from './Header';
 export * from './Footer';
 export * from './Carousel';
 export * from './MainContact';
+export * from './View';

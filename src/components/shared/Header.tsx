@@ -1,4 +1,4 @@
-import { Colors, Fonts, MainLogo } from '@/styles';
+import { BoxShadows, Colors, Fonts, MainLogo } from '@/styles';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
@@ -6,41 +6,45 @@ import { Seo } from '@/constants/seo';
 
 export const Header = () => {
   return (
-    <S.HeaderLayout>
-      <div>
-        <S.LogoLink href='/main'>{MainLogo}</S.LogoLink>
-        <S.MenuWrapper>
-          <S.MenuBox>
-            <S.MenuLink href={Paths.intro} title={Seo.Title.intro}>
-              교육팀소개
-            </S.MenuLink>
-          </S.MenuBox>
-          <S.MenuBox>
-            <S.MenuLink href={Paths.member} title={Seo.Title.member}>
-              연구팀구성
-            </S.MenuLink>
-          </S.MenuBox>
-          <S.MenuBox>
-            <S.MenuLink href={Paths.achievement} title={Seo.Title.achievement}>
-              사업성과
-            </S.MenuLink>
-          </S.MenuBox>
-          <S.MenuBox>
-            <S.MenuLink href={Paths.notice} title={Seo.Title.notice}>
-              커뮤니티
-            </S.MenuLink>
-          </S.MenuBox>
-        </S.MenuWrapper>
-      </div>
-    </S.HeaderLayout>
+    <>
+      <S.HeaderLayout>
+        <div>
+          <S.LogoLink href='/main'>{MainLogo}</S.LogoLink>
+          <S.MenuWrapper>
+            <S.MenuBox>
+              <S.MenuLink href={Paths.intro} title={Seo.Title.intro}>
+                교육팀소개
+              </S.MenuLink>
+            </S.MenuBox>
+            <S.MenuBox>
+              <S.MenuLink href={Paths.member} title={Seo.Title.member}>
+                연구팀구성
+              </S.MenuLink>
+            </S.MenuBox>
+            <S.MenuBox>
+              <S.MenuLink href={Paths.achievement} title={Seo.Title.achievement}>
+                사업성과
+              </S.MenuLink>
+            </S.MenuBox>
+            <S.MenuBox>
+              <S.MenuLink href={Paths.notice} title={Seo.Title.notice}>
+                커뮤니티
+              </S.MenuLink>
+            </S.MenuBox>
+          </S.MenuWrapper>
+        </div>
+      </S.HeaderLayout>
+      <S.DropDown>
+        <div>인사말</div>
+      </S.DropDown>
+    </>
   );
 };
 
 namespace S {
   export const HeaderLayout = styled.header`
     position: relative;
-    z-index: 1;
-    height: 11rem;
+    height: 8rem;
     display: flex;
     justify-content: space-around;
     background-color: ${Colors.white};
@@ -59,7 +63,7 @@ namespace S {
     align-self: center;
     position: absolute;
     left: 0;
-    width: 34.4rem;
+    width: 21.306rem;
 
     > img {
       width: 100%;
@@ -79,7 +83,7 @@ namespace S {
   export const MenuBox = styled.div`
     cursor: pointer;
     position: relative;
-    height: 11rem;
+    height: 8rem;
     width: 100%;
   `;
 
@@ -91,5 +95,13 @@ namespace S {
     display: flex;
     justify-content: center;
     align-items: center;
+  `;
+
+  export const DropDown = styled.div`
+    background-color: rgba(0, 0, 0, 0.55);
+    height: 13rem;
+    width: 100%;
+    position: relative;
+    top: 0;
   `;
 }
