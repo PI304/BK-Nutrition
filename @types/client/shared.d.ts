@@ -4,8 +4,9 @@
 
 /* BackgroundHeader */
 type TitleProps = {
-  title: string;
-  address?: string;
+  nametitle?: string;
+  title?: string;
+  subtitle?: string;
 };
 
 /* Pagination */
@@ -18,12 +19,6 @@ type PageButtonProps = {
 };
 
 type NumberButtonProps = IsCurrentType & {};
-
-/* Download */
-type DownloadProps = {
-  year: string;
-  semester: string;
-};
 
 /* Carousel */
 type IndicatorProps = IsCurrentType & {};

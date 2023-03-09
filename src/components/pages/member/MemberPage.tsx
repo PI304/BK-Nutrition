@@ -32,7 +32,10 @@ export const MemberPage = () => {
   return (
     <>
       <S.MemberBox>
-        <S.Title>참여교수</S.Title>
+        <S.Title>
+          <div>웰니스 융합인재양성팀</div>
+          <div>참여교수</div>
+        </S.Title>
         <div>
           <Members />
         </div>
@@ -41,7 +44,10 @@ export const MemberPage = () => {
       <SC.Line />
 
       <S.ResearchBox>
-        <S.Title>신진 연구 인력</S.Title>
+        <S.Title>
+          <div>웰니스융합인재 연구팀</div>
+          <div>신진 연구 인력</div>
+        </S.Title>
         <table>
           <thead>
             <tr>
@@ -66,14 +72,15 @@ export const MemberPage = () => {
       </S.ResearchBox>
 
       <S.UniversityBox>
-        <S.Title>지원 대학원생</S.Title>
+        <S.Title>
+          <div>BK21 FOUR</div>
+          <div>참여 대학원생</div>
+        </S.Title>
         <table>
           <thead>
             <tr>
               <S.BoardText>학기</S.BoardText>
               <S.BoardText>명단</S.BoardText>
-              <S.BoardText>생성일</S.BoardText>
-              <S.BoardText>수정일</S.BoardText>
             </tr>
           </thead>
           <tbody>
@@ -86,9 +93,6 @@ export const MemberPage = () => {
                     참여대학원생 명단 다운로드
                   </Link>
                 </S.BoardText>
-
-                <S.BoardText>{parseSubmitDate(university.created_at)}</S.BoardText>
-                <S.BoardText>{university.updated_at}</S.BoardText>
               </tr>
             ))}
           </tbody>
@@ -101,14 +105,24 @@ export const MemberPage = () => {
 
 namespace S {
   export const Title = styled.div`
-    ${Fonts.bold40};
+    display: flex;
+    flex-direction: column;
 
     &::after {
       content: '';
       display: block;
       width: 40rem;
-      margin-top: 2rem;
+      margin-top: 1rem;
       border-bottom: 0.3rem solid ${Colors.black};
+    }
+
+    > div:first-of-type {
+      ${Fonts.bold26}
+      margin-bottom: 1rem;
+    }
+
+    > div:last-of-type {
+      ${Fonts.bold40}
     }
   `;
 
@@ -124,56 +138,6 @@ namespace S {
       grid-template-columns: 1fr 1fr;
       column-gap: 2.7rem;
       row-gap: 9rem;
-
-      > div:first-of-type {
-        grid-column: 1 / 3;
-        display: grid;
-        grid-template-columns: 34.353rem 1fr;
-        grid-template-rows: 29.714rem 10.286rem;
-        box-shadow: ${BoxShadows.smooth};
-
-        > div:first-of-type {
-          grid-column: 1 / 2;
-          grid-row: 1 / 3;
-
-          > img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-
-        > div:nth-child(2) {
-          display: flex;
-          flex-direction: column;
-          justify-content: flex-end;
-          padding: 6rem 4rem 4rem 6rem;
-          position: relative;
-
-          > h2 {
-            margin-bottom: 2rem;
-          }
-
-          > div:first-of-type {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-
-            > div:first-of-type {
-              margin-bottom: 0;
-            }
-          }
-        }
-
-        > div:last-of-type {
-          grid-column: -2 / -1;
-          padding: 2.5rem 2rem;
-
-          > p {
-            line-height: 2.5rem;
-          }
-        }
-      }
     }
   `;
 
