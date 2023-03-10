@@ -238,7 +238,8 @@ namespace S {
       margin: 0 auto;
 
       > div:first-of-type {
-        background-color: gray;
+        background-image: url(/assets/map.png);
+        background-size: cover;
         width: 80rem;
         height: 45rem;
         margin-bottom: 2rem;

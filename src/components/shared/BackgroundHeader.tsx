@@ -2,7 +2,6 @@ import { BoxShadows, Colors, Fonts, HomeIcon } from '@/styles';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
-import { useEffect, useState } from 'react';
 
 export const BackgroundHeader = ({ nametitle, title, subtitle }: TitleProps) => {
   return (
@@ -15,7 +14,7 @@ export const BackgroundHeader = ({ nametitle, title, subtitle }: TitleProps) => 
           <S.Tab>
             <Link href={Paths.main}>{HomeIcon}</Link>
             <div>{title}</div>
-            <S.SubTitle subtitle={subtitle}>{subtitle}</S.SubTitle>
+            {subtitle && <S.SubTitle>{subtitle}</S.SubTitle>}
           </S.Tab>
         </S.TitleLayout>
       </S.Background>
@@ -73,8 +72,8 @@ namespace S {
     }
   `;
 
-  export const SubTitle = styled.div<TitleProps>`
-    display: ${(props) => (props.subtitle === '' ? 'none' : 'flex')};
+  export const SubTitle = styled.div`
+    display: flex;
     align-items: center;
     border: solid white;
     border-width: 0 0.5px 0 0;
