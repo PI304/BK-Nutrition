@@ -98,6 +98,7 @@ namespace S {
   `;
 
   export const DropDown = styled.div`
+    display: none;
     background-color: rgba(0, 0, 0, 0.55);
     height: 13rem;
     width: 100%;

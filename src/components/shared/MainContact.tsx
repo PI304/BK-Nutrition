@@ -48,7 +48,7 @@ export const MainContact = ({ page }: MainContactProps) => {
               </div>
             </S.ThumbNail>
           ))}
-          {isCurrent?.slice(1).map((isCurrent, i) => (
+          {isCurrent?.slice(1, 5).map((isCurrent, i) => (
             <S.List key={i}>
               <div>{isCurrent.title}</div>
               <div>{parseSubmitDate(isCurrent.created_at)}</div>
