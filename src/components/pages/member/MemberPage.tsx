@@ -5,7 +5,6 @@ import { Members, PageButton, Pagination } from '@/components/shared';
 import styled from 'styled-components';
 import { getResearchers } from 'api/researchers';
 import { getGraduates } from 'api/graduates';
-import parseSubmitDate from '@/utils/parseSubmitDate';
 import Link from 'next/link';
 import { FolderS3 } from '@/constants/folderS3';
 import { getDownloadLinkFromS3 } from '@/s3';
@@ -53,8 +52,8 @@ export const MemberPage = () => {
             <tr>
               <S.BoardText>이름</S.BoardText>
               <S.BoardText>직위</S.BoardText>
-              <S.BoardText>소속</S.BoardText>
               <S.BoardText>전공</S.BoardText>
+              <S.BoardText>연락처</S.BoardText>
             </tr>
           </thead>
           <tbody>
@@ -63,7 +62,7 @@ export const MemberPage = () => {
                 <S.BoardText>{researchers.name}</S.BoardText>
                 <S.BoardText>{researchers.position}</S.BoardText>
                 <S.BoardText>{researchers.affiliation}</S.BoardText>
-                <S.BoardText>{researchers.major}</S.BoardText>
+                <S.BoardText>{researchers.contact}</S.BoardText>
               </tr>
             ))}
           </tbody>

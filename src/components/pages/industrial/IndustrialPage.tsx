@@ -52,8 +52,8 @@ export const IndustrialPage = () => {
                 <S.BoardText>
                   <Link href={Paths.industrial + '/' + industrial.id}>{industrial.title}</Link>
                 </S.BoardText>
-                <S.BoardText>{industrial.author_id}</S.BoardText>
-                <S.BoardText>{parseSubmitDate(industrial.created_at)}</S.BoardText>
+                <S.BoardText>{industrial.author.name}</S.BoardText>
+                <S.BoardText>{industrial.date}</S.BoardText>
               </tr>
             ))}
           </tbody>

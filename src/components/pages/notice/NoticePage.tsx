@@ -50,8 +50,8 @@ export const NoticePage = () => {
                 <S.BoardText>
                   <Link href={Paths.notice + '/' + notice.id}>{notice.title}</Link>
                 </S.BoardText>
-                <S.BoardText>{notice.author_id}</S.BoardText>
-                <S.BoardText>{parseSubmitDate(notice.created_at)}</S.BoardText>
+                <S.BoardText>{notice.author.name}</S.BoardText>
+                <S.BoardText>{notice.date}</S.BoardText>
               </tr>
             ))}
           </tbody>

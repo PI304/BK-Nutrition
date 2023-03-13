@@ -29,7 +29,7 @@ namespace S {
   export const FooterLayout = styled.footer`
     display: flex;
     justify-content: center;
-    height: 20rem;
+    min-height: 20rem;
     background-color: ${Colors.footer};
 
     > div {
@@ -40,23 +40,9 @@ namespace S {
       align-items: center;
       gap: 3rem;
 
-      > div:first-child {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 2rem;
-
-        > div:last-of-type p {
-          ${Fonts.bold16};
-          color: ${Colors.white};
-          line-height: 2.2rem;
-        }
-      }
-
-      > div:nth-child(2) {
-        > p {
-          ${Fonts.bold16};
-        }
+      > div:first-child img {
+        width: 100%;
+        object-fit: contain;
       }
     }
   `;
@@ -66,6 +52,7 @@ namespace S {
       ${Fonts.regular14};
       color: ${Colors.white};
       line-height: 2.5rem;
+      word-break: keep-all;
     }
 
     > div p:last-of-type {
@@ -73,6 +60,12 @@ namespace S {
       color: ${Colors.gray800};
       text-align: center;
       line-height: 1.5rem;
+      word-break: keep-all;
+    }
+
+    @media (max-width: 1350px) {
+      text-align: center;
+      line-height: 90%;
     }
   `;
 }

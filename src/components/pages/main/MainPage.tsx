@@ -55,12 +55,32 @@ namespace S {
         line-height: 4rem;
       }
     }
+
+    @media (max-width: 1350px) {
+      width: 100vw;
+      > div {
+        padding: 5rem 2rem;
+        > p:first-of-type {
+          ${Fonts.bold20}
+          line-height: 2.5rem;
+        }
+
+        > p:last-of-type {
+          ${Fonts.bold12}
+          line-height: 2.5rem;
+        }
+      }
+    }
   `;
 
   export const ContactLayout = styled.div`
     display: flex;
     margin: 0 auto;
-    width: 130rem;
-    gap: 5rem;
+    width: 100vw;
+
+    @media (max-width: 1350px) {
+      display: flex;
+      flex-direction: column;
+    }
   `;
 }
