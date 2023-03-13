@@ -1,4 +1,4 @@
-import { BoxShadows, Colors, Fonts, MainLogo } from '@/styles';
+import { BoxShadows, Colors, Fonts, HeaderHamburger, MainLogo } from '@/styles';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
@@ -32,6 +32,7 @@ export const Header = () => {
               </S.MenuLink>
             </S.MenuBox>
           </S.MenuWrapper>
+          <div>{HeaderHamburger}</div>
         </div>
       </S.HeaderLayout>
       <S.DropDown>
@@ -50,19 +51,40 @@ namespace S {
     background-color: ${Colors.white};
 
     > div:first-of-type {
-      position: relative;
       width: 120rem;
       display: flex;
-      justify-content: space-around;
       align-items: center;
+      justify-content: space-between;
+
+      > div:last-of-type {
+        display: none;
+      }
+    }
+
+    @media (max-width: 1350px) {
+      > div:first-of-type {
+        justify-content: center;
+        > a {
+          position: static;
+        }
+
+        > div:nth-child(2) {
+          display: none;
+        }
+
+        > div:last-of-type {
+          display: block;
+          cursor: pointer;
+          position: absolute;
+          right: 2rem;
+        }
+      }
     }
   `;
 
   export const LogoLink = styled(Link)`
     display: flex;
     align-self: center;
-    position: absolute;
-    left: 0;
     width: 21.306rem;
 
     > img {
@@ -75,8 +97,6 @@ namespace S {
   export const MenuWrapper = styled.div`
     display: flex;
     justify-content: flex-end;
-    position: absolute;
-    right: 0;
     width: 65rem;
   `;
 

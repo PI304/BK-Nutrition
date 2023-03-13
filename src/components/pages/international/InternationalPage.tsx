@@ -54,8 +54,8 @@ export const InternationalPage = () => {
                     {international.title}
                   </Link>
                 </S.BoardText>
-                <S.BoardText>{international.author_id}</S.BoardText>
-                <S.BoardText>{parseSubmitDate(international.created_at)}</S.BoardText>
+                <S.BoardText>{international.author.name}</S.BoardText>
+                <S.BoardText>{international.date}</S.BoardText>
               </tr>
             ))}
           </tbody>

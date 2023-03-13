@@ -49,8 +49,8 @@ export const ResourcePage = () => {
                 <S.BoardText>
                   <Link href={Paths.resource + '/' + resource.id}>{resource.title}</Link>
                 </S.BoardText>
-                <S.BoardText>{resource.author_id}</S.BoardText>
-                <S.BoardText>{parseSubmitDate(resource.created_at)}</S.BoardText>
+                <S.BoardText>{resource.author.name}</S.BoardText>
+                <S.BoardText>{resource.date}</S.BoardText>
               </tr>
             ))}
           </tbody>

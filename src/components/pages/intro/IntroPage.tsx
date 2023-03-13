@@ -13,21 +13,16 @@ export const IntroPage = () => {
         <S.Title>인사말</S.Title>
         <S.Greeting>
           <p>
-            <strong>Brain Korea 21 FOUR 웰니스 융합인재 양성팀</strong>은 국내외적으로
-            <br /> 연구 활동 및 교육 활동이 활발한 교수들로 구성되어 있습니다.
+            <strong>Brain Korea 21 FOUR 웰니스 융합인재 양성팀</strong>은 국내외적으로 연구 활동 및
+            교육 활동이 활발한 교수들로 구성되어 있습니다.
           </p>
           <p>
             Brain Korea 21 FOUR 웰니스 융합인재 양성팀은 학문 후속세대에게{' '}
-            <strong>국제적 수준의 교육/연구를 제공</strong>하
-            <br /> 여,<strong>사회 문제 해결</strong>과{' '}
+            <strong>국제적 수준의 교육/연구를 제공</strong>하 여,<strong>사회 문제 해결</strong>과{' '}
             <strong>미래 웰니스 식품영양기술의 신산업화</strong>를 통해 건강한 사회 구현에 기여하고{' '}
-            <strong>
-              글로벌 임
-              <br /> 팩트를 발휘하는 대학원
-            </strong>
+            <strong>글로벌 임팩트를 발휘하는 대학원</strong>
             으로 발돋움함과 동시에 <strong>미래지향적인 융합혁신인재 양성과 배출의 요람</strong>
-            으로서 그
-            <br /> 역할을 다하고자 합니다.
+            으로서 그 역할을 다하고자 합니다.
           </p>
           <p>
             글로벌 웰니스문제 해결을 위한 교육과 연구에 관심을 가지고 있는 여러분이 많이 참여하시어
@@ -61,27 +56,31 @@ export const IntroPage = () => {
             <div>
               <ol>
                 <li>
-                  1) 글로벌 웰니스문제 해결을 위한 <strong>혁신적 융합 전문인력 양성</strong>
+                  글로벌 웰니스문제 해결을 위한 <strong>혁신적 융합 전문인력 양성</strong>
                 </li>
                 <li>
-                  2) 글로벌 웰니스융합문제 해결을 위한 <strong>국제적 수준의 교육연구 주도</strong>
+                  글로벌 웰니스융합문제 해결을 위한 <strong>국제적 수준의 교육연구 주도</strong>
                 </li>
                 <li>
-                  3) <strong>미래식품영양기술의 국제화 및 신산업화</strong>를 통한 사회적 기여 달성
+                  <strong>미래식품영양기술의 국제화 및 신산업화</strong>를 통한 사회적 기여 달성
                 </li>
               </ol>
               <ul>
                 <li>
                   <strong>
-                    목표 달성을 위한 과학기술·산업·사회 문제 해결과 관련된 교육 프로그램 운영
+                    목표 달성을 위한 과학기술·산업·사회 문제 해결과 관련된 교육 <br />
+                    프로그램 운영
                   </strong>
                 </li>
               </ul>
               <ul>
-                <li>1) 교육연구팀의 사회문제해결 관련 교과목 운영</li>
-                <li>2) 연세대 대학원의 과학기술·산업·사회 문제 해결 관련 공통 교육과정 운영</li>
-                <li>3) 사회문제해결 관련 교과목 개발 및 운영</li>
-                <li>4) 문제해결 역량 개발을 위한 비교과 프로그램 개발 및 운영</li>
+                <li>교육연구팀의 사회문제해결 관련 교과목 운영</li>
+                <li>
+                  연세대 대학원의 과학기술·산업·사회 문제 해결 관련 공통 <br />
+                  교육과정 운영
+                </li>
+                <li>사회문제해결 관련 교과목 개발 및 운영</li>
+                <li>문제해결 역량 개발을 위한 비교과 프로그램 개발 및 운영</li>
               </ul>
             </div>
           </S.Description>
@@ -128,6 +127,7 @@ namespace S {
 
   export const Greeting = styled.div`
     margin: 0 8rem;
+    width: 65.5rem;
 
     > p {
       ${Fonts.regular16};
@@ -168,9 +168,9 @@ namespace S {
 
     > div:nth-child(2) {
       ${Fonts.regular16}
-      width: 37rem;
+      width: 39rem;
       height: 16rem;
-      margin: 0 0 0 11rem;
+      margin: 0 0 0 10rem;
       line-height: 1.9rem;
     }
 
@@ -188,7 +188,7 @@ namespace S {
     }
 
     > div:last-of-type {
-      margin: 0 0 0 8rem;
+      margin: 0 0 0 11rem;
 
       > ol {
         margin-bottom: 2rem;
@@ -197,11 +197,24 @@ namespace S {
       > ol li {
         ${Fonts.regular16}
         line-height: 2.5rem;
+        list-style: decimal;
       }
 
-      > ul li {
+      > ul:first-of-type li {
         ${Fonts.regular16}
-        line-height: 2.5rem;
+        line-height: 2rem;
+        list-style: disc;
+        margin-bottom: 3rem;
+      }
+
+      > ul:last-of-type li {
+        ${Fonts.regular16}
+        line-height: 3rem;
+        list-style: decimal;
+      }
+
+      > ul:last-of-type li:nth-child(2) {
+        line-height: 1.9rem;
       }
 
       > ul:first-of-type li strong {
