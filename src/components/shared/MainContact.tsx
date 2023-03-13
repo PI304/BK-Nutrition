@@ -6,7 +6,6 @@ import { Colors, Fonts } from '@/styles';
 import { getPosts } from 'api/posts';
 import { useEffect, useState } from 'react';
 import { Paths, PostsType } from '@/constants';
-import parseSubmitDate from '@/utils/parseSubmitDate';
 import Link from 'next/link';
 
 export const MainContact = ({ page }: MainContactProps) => {
@@ -44,14 +43,14 @@ export const MainContact = ({ page }: MainContactProps) => {
               <div>
                 <h1>{isCurrent.title}</h1>
                 <p>{isCurrent.content.slice(0, 130)}</p>
-                <div>{parseSubmitDate(isCurrent.created_at)}</div>
+                <div>{isCurrent.date}</div>
               </div>
             </S.ThumbNail>
           ))}
           {isCurrent?.slice(1, 5).map((isCurrent, i) => (
             <S.List key={i}>
               <div>{isCurrent.title}</div>
-              <div>{parseSubmitDate(isCurrent.created_at)}</div>
+              <div>{isCurrent.date}</div>
             </S.List>
           ))}
         </div>
@@ -66,6 +65,8 @@ namespace S {
     grid-template-columns: 62rem;
     grid-template-rows: 3rem 1fr;
     margin: 0 auto;
+    width: 100vw;
+    justify-content: center;
 
     > a {
       display: flex;
@@ -78,6 +79,10 @@ namespace S {
         color: ${Colors.blue700};
       }
     }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 39rem;
+    }
   `;
 
   export const ThumbNail = styled.div`
@@ -85,7 +90,7 @@ namespace S {
     display: flex;
     gap: 2.2rem;
 
-    > div:nth-of-type(2) {
+    > div:last-of-type {
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -105,6 +110,30 @@ namespace S {
         color: ${Colors.gray800};
         margin-top: auto;
         margin-bottom: 0.3rem;
+      }
+    }
+
+    @media (max-width: 1350px) {
+      border-bottom: 0.1rem solid ${Colors.gray500};
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      > div:first-of-type {
+        > img {
+          width: 11rem;
+          height: 13rem;
+        }
+      }
+
+      > div:last-of-type {
+        > h1 {
+          ${Fonts.bold14}
+        }
+
+        > p {
+          ${Fonts.regular12}
+        }
       }
     }
   `;
@@ -127,6 +156,10 @@ namespace S {
     > div:last-of-type {
       ${Fonts.medium12};
       color: ${Colors.gray900};
+    }
+
+    @media (max-width: 1350px) {
+      display: none;
     }
   `;
 }
