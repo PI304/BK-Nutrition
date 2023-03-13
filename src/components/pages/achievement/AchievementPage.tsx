@@ -53,8 +53,8 @@ export const AchievementPage = () => {
                 <S.BoardText>
                   <Link href={Paths.achievement + '/' + achievement.id}>{achievement.title}</Link>
                 </S.BoardText>
-                <S.BoardText>{achievement.author_id}</S.BoardText>
-                <S.BoardText>{parseSubmitDate(achievement.created_at)}</S.BoardText>
+                <S.BoardText>{achievement.author.name}</S.BoardText>
+                <S.BoardText>{achievement.date}</S.BoardText>
               </tr>
             ))}
           </tbody>
