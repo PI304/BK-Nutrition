@@ -34,11 +34,11 @@ export default function View({ id, boardPath }: ViewProps) {
       <S.File>
         <h3>첨부파일</h3>
         <div>
-          {post?.resources.map((resource, i) => (
-            <Link href={getDownloadLinkFromS3(FolderS3.resources, resource.uuid)} key={i}>
+          {post?.resources.map((resources, i) => (
+            <Link href={getDownloadLinkFromS3(FolderS3.resources, resources.uuid)} key={i}>
               <p>
                 {svgDownload}
-                {resource.filename}
+                {resources.filename}
               </p>
             </Link>
           ))}
