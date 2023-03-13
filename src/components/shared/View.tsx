@@ -27,7 +27,7 @@ export default function View({ id, boardPath }: ViewProps) {
       <S.Meta>
         <h1>{post?.title}</h1>
         <h2>
-          {id} | 관리자 {post?.author_id} | {parseSubmitDate(post?.created_at + '')}
+          {id} | 관리자 {post?.author.name} | {parseSubmitDate(post?.created_at + '')}
         </h2>
       </S.Meta>
       <S.Content>{post?.content}</S.Content>
