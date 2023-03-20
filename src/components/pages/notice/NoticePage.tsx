@@ -3,23 +3,25 @@ import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
-import { PageButton, Select } from '@/components/shared';
+import { PageButton, Pagination, Select } from '@/components/shared';
 import { getPosts } from 'api/posts';
 import { useEffect, useState } from 'react';
 import { PostsType } from '@/constants';
-import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const NoticePage = () => {
   const [notice, setNotice] = useState<ResponsePosts.Get>();
+  const [page, setPage] = useState(1);
+  const onChangePage = (page: number) => setPage(page);
 
   const getNotice = async () => {
-    const notice = await getPosts(PostsType.notice);
+    const notice = await getPosts(PostsType.notice, 10);
     setNotice(notice);
   };
 
   useEffect(() => {
     getNotice();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   return (
     <>
@@ -44,19 +46,19 @@ export const NoticePage = () => {
             </tr>
           </thead>
           <tbody>
-            {notice?.map((notice, i) => (
+            {notice?.getById?.map((notice, i) => (
               <tr key={i}>
                 <S.BoardText>{notice.id}</S.BoardText>
                 <S.BoardText>
                   <Link href={Paths.notice + '/' + notice.id}>{notice.title}</Link>
                 </S.BoardText>
-                <S.BoardText>{notice.author_id}</S.BoardText>
-                <S.BoardText>{parseSubmitDate(notice.created_at)}</S.BoardText>
+                <S.BoardText>{notice.author.name}</S.BoardText>
+                <S.BoardText>{notice.date}</S.BoardText>
               </tr>
             ))}
           </tbody>
         </table>
-        <PageButton />
+        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
       </S.BoardBox>
     </>
   );

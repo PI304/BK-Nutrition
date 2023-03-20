@@ -7,19 +7,21 @@ import { PageButton, Select } from '@/components/shared';
 import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
-import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const InternationalPage = () => {
   const [international, setInternational] = useState<ResponsePosts.Get>();
+  const [page, setPage] = useState(1);
+  const onChangePage = (page: number) => setPage(page);
 
   const getInternational = async () => {
-    const international = await getPosts(PostsType.international);
+    const international = await getPosts(PostsType.international, 10);
     setInternational(international);
   };
 
   useEffect(() => {
     getInternational();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
   return (
     <>
       <S.PageBox>
@@ -46,7 +48,7 @@ export const InternationalPage = () => {
             </tr>
           </thead>
           <tbody>
-            {international?.map((international, i) => (
+            {international?.getById?.map((international, i) => (
               <tr key={i}>
                 <S.BoardText>{international.id}</S.BoardText>
                 <S.BoardText>
@@ -54,8 +56,8 @@ export const InternationalPage = () => {
                     {international.title}
                   </Link>
                 </S.BoardText>
-                <S.BoardText>{international.author_id}</S.BoardText>
-                <S.BoardText>{parseSubmitDate(international.created_at)}</S.BoardText>
+                <S.BoardText>{international.author.name}</S.BoardText>
+                <S.BoardText>{international.date}</S.BoardText>
               </tr>
             ))}
           </tbody>

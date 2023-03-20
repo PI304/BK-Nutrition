@@ -100,7 +100,7 @@ namespace S {
   export const HomeCarouselLayout = styled.section`
     margin-bottom: 7.6rem;
     width: 140rem;
-    margin: 0 auto;
+    margin: 0 auto 3rem;
 
     > div:first-of-type {
       padding: 3.4rem 6.2rem;
@@ -119,6 +119,16 @@ namespace S {
       gap: 1.3rem;
       padding: 1.2rem 0;
     }
+
+    @media (max-width: 1350px) {
+      width: 100vw;
+      display: block;
+
+      > div:first-of-type {
+        gap: 2.1rem;
+        padding: 0 2rem;
+      }
+    }
   `;
 
   export const CarouselWindow = styled.div`
@@ -132,6 +142,11 @@ namespace S {
     position: relative;
     left: calc((36.7rem + 4rem) * -1 * (${(props) => props.itemIdx} + 1));
     transition: 0.3s ease;
+
+    @media (max-width: 1350px) {
+      gap: unset;
+      left: calc(-100% * (${(props) => props.itemIdx} + 1));
+    }
   `;
 
   export const CarouselItem = styled.li`
@@ -146,6 +161,11 @@ namespace S {
         object-fit: contain;
       }
     }
+
+    @media (max-width: 1350px) {
+      width: 100%;
+      padding: 1rem;
+    }
   `;
 
   export const ItemIndicator = styled.div<IndicatorProps>`
@@ -154,5 +174,10 @@ namespace S {
     border-radius: 50%;
     border: 0.1rem solid ${Colors.front};
     background-color: ${(props) => props.isCurrent && Colors.front};
+
+    @media (max-width: 1350px) {
+      width: 0.8rem;
+      height: 0.8rem;
+    }
   `;
 }

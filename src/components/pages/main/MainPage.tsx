@@ -5,7 +5,7 @@ import { MainContact } from '@/components/shared';
 
 export const MainPage = () => {
   return (
-    <>
+    <S.Container>
       <S.MainImg>
         <div>
           <p>
@@ -23,12 +23,24 @@ export const MainPage = () => {
       </S.ContactLayout>
 
       <Carousel />
-    </>
+    </S.Container>
   );
 };
 
 namespace S {
+  export const Container = styled.div`
+    display: grid;
+    grid-template-rows: 46rem 2fr 1.2fr;
+    grid-row-gap: 5rem;
+
+    @media (max-width: 1350px) {
+      grid-template-rows: 20rem 4fr 1fr;
+      justify-content: center;
+    }
+  `;
+
   export const MainImg = styled.div`
+    width: 100%;
     background: url(/assets/main_background.png) no-repeat center center;
     background-size: cover;
 
@@ -55,6 +67,22 @@ namespace S {
         line-height: 4rem;
       }
     }
+
+    @media (max-width: 1350px) {
+      width: 100vw;
+      > div {
+        padding: 5rem 2rem;
+        > p:first-of-type {
+          ${Fonts.bold20}
+          line-height: 2.5rem;
+        }
+
+        > p:last-of-type {
+          ${Fonts.bold12}
+          line-height: 2.5rem;
+        }
+      }
+    }
   `;
 
   export const ContactLayout = styled.div`
@@ -62,5 +90,11 @@ namespace S {
     margin: 0 auto;
     width: 130rem;
     gap: 5rem;
+
+    @media (max-width: 1350px) {
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+    }
   `;
 }

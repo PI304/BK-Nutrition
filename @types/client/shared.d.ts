@@ -37,3 +37,13 @@ type ViewProps = {
   id: number;
   boardPath: string;
 };
+
+/* Header */
+type isHoverType = {
+  isHover: boolean;
+};
+
+/* Map */
+interface WindowType {
+  kakao: any;
+}

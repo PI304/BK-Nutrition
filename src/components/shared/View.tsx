@@ -27,18 +27,18 @@ export default function View({ id, boardPath }: ViewProps) {
       <S.Meta>
         <h1>{post?.title}</h1>
         <h2>
-          {id} | 관리자 {post?.author_id} | {parseSubmitDate(post?.created_at + '')}
+          {id} | 관리자 {post?.author.name} | {parseSubmitDate(post?.created_at + '')}
         </h2>
       </S.Meta>
       <S.Content>{post?.content}</S.Content>
       <S.File>
         <h3>첨부파일</h3>
         <div>
-          {post?.resources.map((resource, i) => (
-            <Link href={getDownloadLinkFromS3(FolderS3.resources, resource.uuid)} key={i}>
+          {post?.resources.map((resources, i) => (
+            <Link href={getDownloadLinkFromS3(FolderS3.resources, resources.uuid)} key={i}>
               <p>
                 {svgDownload}
-                {resource.filename}
+                {resources.filename}
               </p>
             </Link>
           ))}

@@ -3,27 +3,27 @@ import Arrow from '../../../public/assets/main_arrow.png';
 import Notice from '../../../public/assets/main_notice.png';
 import Image from 'next/image';
 import { Colors, Fonts } from '@/styles';
-import { getPosts } from 'api/posts';
+import { getAllPosts, getPosts } from 'api/posts';
 import { useEffect, useState } from 'react';
 import { Paths, PostsType } from '@/constants';
-import parseSubmitDate from '@/utils/parseSubmitDate';
 import Link from 'next/link';
 
 export const MainContact = ({ page }: MainContactProps) => {
   const [isCurrent, setIsCurrent] = useState<ResponsePosts.Get>();
 
   const getBis = async () => {
-    const isCurrent = await getPosts(PostsType.bis);
+    const isCurrent = await getAllPosts(PostsType.bis);
     setIsCurrent(isCurrent);
   };
 
   const getNotice = async () => {
-    const isCurrent = await getPosts(PostsType.notice);
+    const isCurrent = await getPosts(PostsType.notice, 0);
     setIsCurrent(isCurrent);
   };
 
   useEffect(() => {
     page === 'NOTICE' ? getNotice() : page === 'BUSINESS' ? getBis() : null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
   return (
     <>
@@ -36,7 +36,7 @@ export const MainContact = ({ page }: MainContactProps) => {
           <Image src={Arrow} alt='arrow'></Image>
         </Link>
         <div>
-          {isCurrent?.slice(0, 1).map((isCurrent, i) => (
+          {isCurrent?.getById?.slice(0, 1).map((isCurrent, i) => (
             <S.ThumbNail key={i}>
               <div>
                 <Image src={Notice} alt='Notice' />
@@ -44,14 +44,14 @@ export const MainContact = ({ page }: MainContactProps) => {
               <div>
                 <h1>{isCurrent.title}</h1>
                 <p>{isCurrent.content.slice(0, 130)}</p>
-                <div>{parseSubmitDate(isCurrent.created_at)}</div>
+                <div>{isCurrent.date}</div>
               </div>
             </S.ThumbNail>
           ))}
-          {isCurrent?.slice(1).map((isCurrent, i) => (
+          {isCurrent?.getById?.slice(1, 5).map((isCurrent, i) => (
             <S.List key={i}>
               <div>{isCurrent.title}</div>
-              <div>{parseSubmitDate(isCurrent.created_at)}</div>
+              <div>{isCurrent.date}</div>
             </S.List>
           ))}
         </div>
@@ -66,6 +66,8 @@ namespace S {
     grid-template-columns: 62rem;
     grid-template-rows: 3rem 1fr;
     margin: 0 auto;
+    width: 100vw;
+    justify-content: center;
 
     > a {
       display: flex;
@@ -78,6 +80,10 @@ namespace S {
         color: ${Colors.blue700};
       }
     }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 39rem;
+    }
   `;
 
   export const ThumbNail = styled.div`
@@ -85,7 +91,7 @@ namespace S {
     display: flex;
     gap: 2.2rem;
 
-    > div:nth-of-type(2) {
+    > div:last-of-type {
       display: flex;
       flex-direction: column;
       gap: 1rem;
@@ -105,6 +111,30 @@ namespace S {
         color: ${Colors.gray800};
         margin-top: auto;
         margin-bottom: 0.3rem;
+      }
+    }
+
+    @media (max-width: 1350px) {
+      border-bottom: 0.1rem solid ${Colors.gray500};
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 768px) {
+      > div:first-of-type {
+        > img {
+          width: 11rem;
+          height: 13rem;
+        }
+      }
+
+      > div:last-of-type {
+        > h1 {
+          ${Fonts.bold14}
+        }
+
+        > p {
+          ${Fonts.regular12}
+        }
       }
     }
   `;
@@ -127,6 +157,10 @@ namespace S {
     > div:last-of-type {
       ${Fonts.medium12};
       color: ${Colors.gray900};
+    }
+
+    @media (max-width: 1350px) {
+      display: none;
     }
   `;
 }

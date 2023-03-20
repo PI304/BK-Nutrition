@@ -5,7 +5,7 @@ declare namespace ResponseResearchers {
     name: string;
     position: string;
     affiliation: string;
-    major: string;
+    contact: string;
     id: number;
     created_at: string;
     updated_at: string;

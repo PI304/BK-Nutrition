@@ -1,10 +1,8 @@
-import { ReactElement } from 'react';
-import { DefaultLayout } from '@/components/layouts/DefaultLayout';
 import { NoticePage } from '@/components/pages/notice/NoticePage';
 import { CustomHead } from '@/components/seo/CustomHead';
 import { Seo } from '@/constants/seo';
-import { SharedLayout } from '@/components/layouts';
-import { BackgroundHeader } from '@/components/shared';
+import { WithBackgroundHeaderLayout } from '@/components/layouts';
+import { setLayout } from '@/utils/setLayout';
 
 export default function notice() {
   return (
@@ -15,11 +13,4 @@ export default function notice() {
   );
 }
 
-notice.getLayout = (page: ReactElement) => {
-  return (
-    <DefaultLayout>
-      <BackgroundHeader nametitle='공지사항' title='커뮤니티' subtitle='공지사항' />
-      <SharedLayout>{page}</SharedLayout>
-    </DefaultLayout>
-  );
-};
+setLayout(notice, WithBackgroundHeaderLayout);

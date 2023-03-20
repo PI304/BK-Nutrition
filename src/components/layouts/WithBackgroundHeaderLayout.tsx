@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import { BackgroundHeader } from '../shared';
 import { DefaultLayout } from './DefaultLayout';
 
-export const MainLayout = ({ children }: ChildrenType) => {
+export const WithBackgroundHeaderLayout = ({ children }: ChildrenType) => {
   return (
     <DefaultLayout>
+      <BackgroundHeader />
       <S.Layout>{children}</S.Layout>
     </DefaultLayout>
   );
@@ -11,8 +13,8 @@ export const MainLayout = ({ children }: ChildrenType) => {
 
 namespace S {
   export const Layout = styled.section`
-    width: 100%;
-    margin: 0 auto;
+    width: 120rem;
+    margin: 7rem auto;
 
     @media (max-width: 1350px) {
       width: 100%;

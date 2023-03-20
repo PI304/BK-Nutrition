@@ -7,19 +7,21 @@ import { PageButton, Select } from '@/components/shared';
 import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
-import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const ResourcePage = () => {
   const [resource, setResource] = useState<ResponsePosts.Get>();
+  const [page, setPage] = useState(1);
+  const onChangePage = (page: number) => setPage(page);
 
   const getResource = async () => {
-    const resource = await getPosts(PostsType.resource);
+    const resource = await getPosts(PostsType.resource, 10);
     setResource(resource);
   };
 
   useEffect(() => {
     getResource();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
   return (
     <>
       <S.PageBox>
@@ -43,14 +45,14 @@ export const ResourcePage = () => {
             </tr>
           </thead>
           <tbody>
-            {resource?.map((resource, i) => (
+            {resource?.getById?.map((resource, i) => (
               <tr key={i}>
                 <S.BoardText>{resource.id}</S.BoardText>
                 <S.BoardText>
                   <Link href={Paths.resource + '/' + resource.id}>{resource.title}</Link>
                 </S.BoardText>
-                <S.BoardText>{resource.author_id}</S.BoardText>
-                <S.BoardText>{parseSubmitDate(resource.created_at)}</S.BoardText>
+                <S.BoardText>{resource.author.name}</S.BoardText>
+                <S.BoardText>{resource.date}</S.BoardText>
               </tr>
             ))}
           </tbody>

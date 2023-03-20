@@ -11,15 +11,18 @@ import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const AchievementPage = () => {
   const [achievement, setAchievement] = useState<ResponsePosts.Get>();
+  const [page, setPage] = useState(1);
+  const onChangePage = (page: number) => setPage(page);
 
   const getAchievement = async () => {
-    const achievement = await getPosts(PostsType.achievement);
+    const achievement = await getPosts(PostsType.achievement, 10);
     setAchievement(achievement);
   };
 
   useEffect(() => {
     getAchievement();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   return (
     <>
@@ -47,14 +50,14 @@ export const AchievementPage = () => {
             </tr>
           </thead>
           <tbody>
-            {achievement?.map((achievement, i) => (
+            {achievement?.getById?.map((achievement, i) => (
               <tr key={i}>
                 <S.BoardText>{achievement.id}</S.BoardText>
                 <S.BoardText>
                   <Link href={Paths.achievement + '/' + achievement.id}>{achievement.title}</Link>
                 </S.BoardText>
-                <S.BoardText>{achievement.author_id}</S.BoardText>
-                <S.BoardText>{parseSubmitDate(achievement.created_at)}</S.BoardText>
+                <S.BoardText>{achievement.author.name}</S.BoardText>
+                <S.BoardText>{achievement.date}</S.BoardText>
               </tr>
             ))}
           </tbody>
