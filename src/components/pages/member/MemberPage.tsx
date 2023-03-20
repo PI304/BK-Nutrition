@@ -1,6 +1,5 @@
-import useChangePage from '../../../hooks/useChangePage';
 import { useEffect, useState } from 'react';
-import { BoxShadows, Colors, Fonts, SC } from '@/styles';
+import { Colors, Fonts, SC } from '@/styles';
 import { Members, PageButton, Pagination } from '@/components/shared';
 import styled from 'styled-components';
 import { getResearchers } from 'api/researchers';
@@ -29,8 +28,8 @@ export const MemberPage = () => {
     getUniversity();
   }, []);
   return (
-    <>
-      <S.MemberBox>
+    <S.Container>
+      <S.MemberBox id='member'>
         <S.Title>
           <div>웰니스 융합인재양성팀</div>
           <div>참여교수</div>
@@ -42,7 +41,7 @@ export const MemberPage = () => {
       </S.MemberBox>
       <SC.Line />
 
-      <S.ResearchBox>
+      <S.ResearchBox id='research'>
         <S.Title>
           <div>웰니스융합인재 연구팀</div>
           <div>신진 연구 인력</div>
@@ -70,7 +69,7 @@ export const MemberPage = () => {
         <PageButton />
       </S.ResearchBox>
 
-      <S.UniversityBox>
+      <S.UniversityBox id='university'>
         <S.Title>
           <div>BK21 FOUR</div>
           <div>참여 대학원생</div>
@@ -96,13 +95,18 @@ export const MemberPage = () => {
             ))}
           </tbody>
         </table>
-        <PageButton />
       </S.UniversityBox>
-    </>
+    </S.Container>
   );
 };
 
 namespace S {
+  export const Container = styled.div`
+    display: grid;
+    grid-template-rows: 2.5fr 0 1fr 1.5fr;
+    grid-row-gap: 5rem;
+  `;
+
   export const Title = styled.div`
     display: flex;
     flex-direction: column;

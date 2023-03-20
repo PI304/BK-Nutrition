@@ -2,19 +2,45 @@ import { BoxShadows, Colors, Fonts, HomeIcon } from '@/styles';
 import Link from 'next/link';
 import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { NameTitles, SubTitles, Titles } from '@/constants/titles';
 
-export const BackgroundHeader = ({ nametitle, title, subtitle }: TitleProps) => {
+export const BackgroundHeader = () => {
+  const router = useRouter();
+
+  const [title, setTitle] = useState('');
+  const [nameTitle, setNameTitle] = useState('');
+  const [subTitle, setSubTitle] = useState('');
+
+  useEffect(() => {
+    const path = router.pathname; //path 안에 주소를 넣어줌
+    if (Titles.hasOwnProperty(path)) {
+      const key = path as keyof typeof Titles;
+      setTitle(Titles[key]);
+    }
+    if (NameTitles.hasOwnProperty(path)) {
+      const key = path as keyof typeof NameTitles;
+      setNameTitle(NameTitles[key]);
+    }
+
+    if (SubTitles.hasOwnProperty(path)) {
+      const key = path as keyof typeof SubTitles;
+      setSubTitle(SubTitles[key]);
+    } else setSubTitle('');
+  }, [router.pathname]); // 주소가 바뀔 때 마다 실행됨
+
   return (
     <>
       <S.Background>
         <S.TitleLayout>
           <S.Title>
-            <div>{nametitle}</div>
+            <div>{title}</div>
           </S.Title>
           <S.Tab>
             <Link href={Paths.main}>{HomeIcon}</Link>
-            <div>{title}</div>
-            {subtitle && <S.SubTitle>{subtitle}</S.SubTitle>}
+            <div>{nameTitle}</div>
+            {subTitle && <S.SubTitle>{subTitle}</S.SubTitle>}
           </S.Tab>
         </S.TitleLayout>
       </S.Background>
@@ -33,6 +59,10 @@ namespace S {
     background-repeat: no-repeat;
     background-position: center center;
     position: relative;
+
+    @media (max-width: 1350px) {
+      height: 12rem;
+    }
   `;
 
   export const TitleLayout = styled.div`
@@ -41,6 +71,10 @@ namespace S {
     justify-content: flex-end;
     gap: 0.5rem;
     width: 120rem;
+
+    @media (max-width: 1350px) {
+      justify-content: center;
+    }
   `;
 
   export const Title = styled.div`
@@ -53,6 +87,14 @@ namespace S {
     > div:first-of-type {
       ${Fonts.bold40};
       color: ${Colors.white};
+    }
+
+    @media (max-width: 1350px) {
+      justify-content: center;
+
+      > div:first-of-type {
+        ${Fonts.bold26}
+      }
     }
   `;
 
@@ -69,6 +111,10 @@ namespace S {
       border-width: 0 0.5px 0 0.5px;
       padding: 1rem 1.5rem;
       color: ${Colors.white};
+    }
+
+    @media (max-width: 1350px) {
+      display: none;
     }
   `;
 

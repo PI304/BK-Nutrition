@@ -100,7 +100,7 @@ namespace S {
   export const HomeCarouselLayout = styled.section`
     margin-bottom: 7.6rem;
     width: 140rem;
-    margin: 0 auto;
+    margin: 0 auto 3rem;
 
     > div:first-of-type {
       padding: 3.4rem 6.2rem;

@@ -3,7 +3,7 @@ import Arrow from '../../../public/assets/main_arrow.png';
 import Notice from '../../../public/assets/main_notice.png';
 import Image from 'next/image';
 import { Colors, Fonts } from '@/styles';
-import { getPosts } from 'api/posts';
+import { getAllPosts, getPosts } from 'api/posts';
 import { useEffect, useState } from 'react';
 import { Paths, PostsType } from '@/constants';
 import Link from 'next/link';
@@ -12,17 +12,18 @@ export const MainContact = ({ page }: MainContactProps) => {
   const [isCurrent, setIsCurrent] = useState<ResponsePosts.Get>();
 
   const getBis = async () => {
-    const isCurrent = await getPosts(PostsType.bis);
+    const isCurrent = await getAllPosts(PostsType.bis);
     setIsCurrent(isCurrent);
   };
 
   const getNotice = async () => {
-    const isCurrent = await getPosts(PostsType.notice);
+    const isCurrent = await getPosts(PostsType.notice, 0);
     setIsCurrent(isCurrent);
   };
 
   useEffect(() => {
     page === 'NOTICE' ? getNotice() : page === 'BUSINESS' ? getBis() : null;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
   return (
     <>
@@ -35,7 +36,7 @@ export const MainContact = ({ page }: MainContactProps) => {
           <Image src={Arrow} alt='arrow'></Image>
         </Link>
         <div>
-          {isCurrent?.slice(0, 1).map((isCurrent, i) => (
+          {isCurrent?.getById?.slice(0, 1).map((isCurrent, i) => (
             <S.ThumbNail key={i}>
               <div>
                 <Image src={Notice} alt='Notice' />
@@ -47,7 +48,7 @@ export const MainContact = ({ page }: MainContactProps) => {
               </div>
             </S.ThumbNail>
           ))}
-          {isCurrent?.slice(1, 5).map((isCurrent, i) => (
+          {isCurrent?.getById?.slice(1, 5).map((isCurrent, i) => (
             <S.List key={i}>
               <div>{isCurrent.title}</div>
               <div>{isCurrent.date}</div>

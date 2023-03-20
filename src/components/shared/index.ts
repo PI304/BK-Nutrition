@@ -8,3 +8,5 @@ export * from './Footer';
 export * from './Carousel';
 export * from './MainContact';
 export * from './View';
+export * from './SideBar';
+export * from './KaKaoMap';

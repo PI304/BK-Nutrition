@@ -1,5 +1,8 @@
 declare namespace ResponsePosts {
-  type Get = GetById[];
+  type Get = {
+    count: number;
+    getById: GetById[];
+  };
 
   type GetById = {
     title: string;

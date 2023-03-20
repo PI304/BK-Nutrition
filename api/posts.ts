@@ -2,8 +2,8 @@ import request from './core';
 
 const baseURL = '/posts';
 
-export const getPosts = (post: string) => {
-  const url = `${baseURL}?post=${post}`;
+export const getPosts = (post: string, skip: number) => {
+  const url = `${baseURL}?post=${post}&skip=${skip}&limit=10`;
   return request.get<ResponsePosts.Get>(url);
 };
 

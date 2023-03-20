@@ -1,10 +1,8 @@
-import { ReactElement } from 'react';
-import { DefaultLayout } from '@/components/layouts/DefaultLayout';
 import { AchievementPage } from '@/components/pages/achievement/AchievementPage';
 import { CustomHead } from '@/components/seo/CustomHead';
 import { Seo } from '@/constants/seo';
-import { SharedLayout } from '@/components/layouts';
-import { BackgroundHeader } from '@/components/shared';
+import { WithBackgroundHeaderLayout } from '@/components/layouts';
+import { setLayout } from '@/utils/setLayout';
 
 export default function achievement() {
   return (
@@ -15,11 +13,4 @@ export default function achievement() {
   );
 }
 
-achievement.getLayout = (page: ReactElement) => {
-  return (
-    <DefaultLayout>
-      <BackgroundHeader nametitle='연구업적' title='사업성과' subtitle='연구업적' />
-      <SharedLayout>{page}</SharedLayout>
-    </DefaultLayout>
-  );
-};
+setLayout(achievement, WithBackgroundHeaderLayout);
