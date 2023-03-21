@@ -7,6 +7,10 @@ export namespace SC {
     width: 30rem;
     margin: 0 auto;
     border-bottom: 0.3rem solid ${Colors.line};
+
+    @media (max-width: 1250px) {
+      width: 100%;
+    }
   `;
 
   export const Contact = styled.div`

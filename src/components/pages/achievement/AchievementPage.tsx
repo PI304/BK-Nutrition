@@ -3,11 +3,10 @@ import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
-import { PageButton, Select } from '@/components/shared';
+import { Pagination, Select } from '@/components/shared';
 import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
-import parseSubmitDate from '@/utils/parseSubmitDate';
 
 export const AchievementPage = () => {
   const [achievement, setAchievement] = useState<ResponsePosts.Get>();
@@ -15,7 +14,7 @@ export const AchievementPage = () => {
   const onChangePage = (page: number) => setPage(page);
 
   const getAchievement = async () => {
-    const achievement = await getPosts(PostsType.achievement, 10);
+    const achievement = await getPosts(PostsType.achievement, (page - 1) * 10);
     setAchievement(achievement);
   };
 
@@ -50,7 +49,7 @@ export const AchievementPage = () => {
             </tr>
           </thead>
           <tbody>
-            {achievement?.getById?.map((achievement, i) => (
+            {achievement?.results?.map((achievement, i) => (
               <tr key={i}>
                 <S.BoardText>{achievement.id}</S.BoardText>
                 <S.BoardText>
@@ -62,7 +61,7 @@ export const AchievementPage = () => {
             ))}
           </tbody>
         </table>
-        <PageButton />
+        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
       </S.BoardBox>
     </>
   );

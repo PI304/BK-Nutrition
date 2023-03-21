@@ -1,13 +1,13 @@
 declare namespace ResponsePosts {
   type Get = {
     count: number;
-    getById: GetById[];
+    results: GetById[];
   };
 
   type GetById = {
     title: string;
     content: string;
-    type: string;
+    type: '연구업적' | '국제협력' | '산학협력' | '공지사항';
     is_fixed: boolean;
     date: string;
     author: {

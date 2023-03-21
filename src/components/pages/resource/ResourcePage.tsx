@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
-import { PageButton, Select } from '@/components/shared';
+import { Pagination, Select } from '@/components/shared';
 import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
@@ -14,7 +14,7 @@ export const ResourcePage = () => {
   const onChangePage = (page: number) => setPage(page);
 
   const getResource = async () => {
-    const resource = await getPosts(PostsType.resource, 10);
+    const resource = await getPosts(PostsType.resource, (page - 1) * 10);
     setResource(resource);
   };
 
@@ -45,7 +45,7 @@ export const ResourcePage = () => {
             </tr>
           </thead>
           <tbody>
-            {resource?.getById?.map((resource, i) => (
+            {resource?.results?.map((resource, i) => (
               <tr key={i}>
                 <S.BoardText>{resource.id}</S.BoardText>
                 <S.BoardText>
@@ -57,7 +57,7 @@ export const ResourcePage = () => {
             ))}
           </tbody>
         </table>
-        <PageButton />
+        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
       </S.BoardBox>
     </>
   );

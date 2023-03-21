@@ -14,7 +14,7 @@ export const NoticePage = () => {
   const onChangePage = (page: number) => setPage(page);
 
   const getNotice = async () => {
-    const notice = await getPosts(PostsType.notice, 10);
+    const notice = await getPosts(PostsType.notice, (page - 1) * 10);
     setNotice(notice);
   };
 
@@ -46,7 +46,7 @@ export const NoticePage = () => {
             </tr>
           </thead>
           <tbody>
-            {notice?.getById?.map((notice, i) => (
+            {notice?.results.map((notice, i) => (
               <tr key={i}>
                 <S.BoardText>{notice.id}</S.BoardText>
                 <S.BoardText>
@@ -58,7 +58,7 @@ export const NoticePage = () => {
             ))}
           </tbody>
         </table>
-        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
+        <PageButton />
       </S.BoardBox>
     </>
   );

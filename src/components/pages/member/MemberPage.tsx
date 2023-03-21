@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Colors, Fonts, SC } from '@/styles';
-import { Members, PageButton, Pagination } from '@/components/shared';
+import { Members, Pagination } from '@/components/shared';
 import styled from 'styled-components';
 import { getResearchers } from 'api/researchers';
 import { getGraduates } from 'api/graduates';
@@ -11,6 +11,8 @@ import { getDownloadLinkFromS3 } from '@/s3';
 export const MemberPage = () => {
   const [researchers, setResearchers] = useState<ResponseResearchers.Get>();
   const [university, setUniversity] = useState<ResponseGraduates.Get>();
+  const [page, setPage] = useState(1);
+  const onChangePage = (page: number) => setPage(page);
 
   const getMembers = async () => {
     const researchers = await getResearchers();
@@ -37,9 +39,8 @@ export const MemberPage = () => {
         <div>
           <Members />
         </div>
-        <PageButton />
+        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
       </S.MemberBox>
-      <SC.Line />
 
       <S.ResearchBox id='research'>
         <S.Title>
@@ -66,7 +67,7 @@ export const MemberPage = () => {
             ))}
           </tbody>
         </table>
-        <PageButton />
+        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
       </S.ResearchBox>
 
       <S.UniversityBox id='university'>
@@ -103,7 +104,7 @@ export const MemberPage = () => {
 namespace S {
   export const Container = styled.div`
     display: grid;
-    grid-template-rows: 2.5fr 0 1fr 1.5fr;
+    grid-template-rows: 2.5fr 1fr 1.5fr;
     grid-row-gap: 5rem;
   `;
 

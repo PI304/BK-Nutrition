@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Colors, Fonts } from '@/styles';
 import { getAllPosts, getPosts } from 'api/posts';
 import { useEffect, useState } from 'react';
-import { Paths, PostsType } from '@/constants';
+import { Paths, PostsLabel, PostsType } from '@/constants';
 import Link from 'next/link';
 
 export const MainContact = ({ page }: MainContactProps) => {
@@ -36,8 +36,8 @@ export const MainContact = ({ page }: MainContactProps) => {
           <Image src={Arrow} alt='arrow'></Image>
         </Link>
         <div>
-          {isCurrent?.getById?.slice(0, 1).map((isCurrent, i) => (
-            <S.ThumbNail key={i}>
+          {isCurrent?.results?.slice(0, 1).map((isCurrent, i) => (
+            <S.ThumbNail href={PostsLabel[isCurrent.type] + isCurrent.id} key={i}>
               <div>
                 <Image src={Notice} alt='Notice' />
               </div>
@@ -48,8 +48,8 @@ export const MainContact = ({ page }: MainContactProps) => {
               </div>
             </S.ThumbNail>
           ))}
-          {isCurrent?.getById?.slice(1, 5).map((isCurrent, i) => (
-            <S.List key={i}>
+          {isCurrent?.results?.slice(1, 5).map((isCurrent, i) => (
+            <S.List href={PostsLabel[isCurrent.type] + isCurrent.id} key={i}>
               <div>{isCurrent.title}</div>
               <div>{isCurrent.date}</div>
             </S.List>
@@ -82,11 +82,11 @@ namespace S {
     }
 
     @media (max-width: 768px) {
-      grid-template-columns: 39rem;
+      grid-template-columns: 35rem;
     }
   `;
 
-  export const ThumbNail = styled.div`
+  export const ThumbNail = styled(Link)`
     padding: 1.5rem;
     display: flex;
     gap: 2.2rem;
@@ -139,7 +139,7 @@ namespace S {
     }
   `;
 
-  export const List = styled.ul`
+  export const List = styled(Link)`
     border-bottom: 0.1rem solid ${Colors.gray300};
     display: flex;
     justify-content: space-between;

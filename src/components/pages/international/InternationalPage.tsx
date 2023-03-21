@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
-import { PageButton, Select } from '@/components/shared';
+import { Pagination, Select } from '@/components/shared';
 import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
@@ -14,7 +14,7 @@ export const InternationalPage = () => {
   const onChangePage = (page: number) => setPage(page);
 
   const getInternational = async () => {
-    const international = await getPosts(PostsType.international, 10);
+    const international = await getPosts(PostsType.international, (page - 1) * 10);
     setInternational(international);
   };
 
@@ -48,7 +48,7 @@ export const InternationalPage = () => {
             </tr>
           </thead>
           <tbody>
-            {international?.getById?.map((international, i) => (
+            {international?.results?.map((international, i) => (
               <tr key={i}>
                 <S.BoardText>{international.id}</S.BoardText>
                 <S.BoardText>
@@ -62,7 +62,7 @@ export const InternationalPage = () => {
             ))}
           </tbody>
         </table>
-        <PageButton />
+        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
       </S.BoardBox>
     </>
   );

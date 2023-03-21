@@ -42,6 +42,13 @@ type ViewProps = {
 type isHoverType = {
   isHover: boolean;
 };
+type HeaderProps = {
+  onClickTrue: () => void;
+};
+
+type MobileSideBarProps = {
+  onClickFalse: () => void;
+};
 
 /* Map */
 interface WindowType {

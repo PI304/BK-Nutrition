@@ -6,8 +6,7 @@ import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
 import { Colors, Fonts, BoxShadows } from '@/styles';
-import { PageButton, Select } from '@/components/shared';
-import parseSubmitDate from '@/utils/parseSubmitDate';
+import { Pagination, Select } from '@/components/shared';
 
 export const IndustrialPage = () => {
   const [industrial, setIndustrial] = useState<ResponsePosts.Get>();
@@ -15,7 +14,7 @@ export const IndustrialPage = () => {
   const onChangePage = (page: number) => setPage(page);
 
   const getIndustrial = async () => {
-    const industrial = await getPosts(PostsType.industrial, 10);
+    const industrial = await getPosts(PostsType.industrial, (page - 1) * 10);
     setIndustrial(industrial);
   };
 
@@ -49,7 +48,7 @@ export const IndustrialPage = () => {
             </tr>
           </thead>
           <tbody>
-            {industrial?.getById?.map((industrial, i) => (
+            {industrial?.results?.map((industrial, i) => (
               <tr key={i}>
                 <S.BoardText>{industrial.id}</S.BoardText>
                 <S.BoardText>
@@ -61,7 +60,7 @@ export const IndustrialPage = () => {
             ))}
           </tbody>
         </table>
-        <PageButton />
+        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
       </S.BoardBox>
     </>
   );

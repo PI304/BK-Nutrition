@@ -5,7 +5,7 @@ import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { useState } from 'react';
 
-export const Header = () => {
+export const Header = ({ onClickTrue }: HeaderProps) => {
   const [isHover, setIsHover] = useState(false);
   const onMouseEnter = () => {
     setIsHover(true);
@@ -18,7 +18,7 @@ export const Header = () => {
       <S.HeaderLayout>
         <div>
           <S.LogoLink href='/main'>{MainLogo}</S.LogoLink>
-          <S.MenuWrapper onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+          <S.MenuWrapper onMouseEnter={onMouseEnter}>
             <S.MenuBox>
               <S.MenuLink href={Paths.intro} title={Seo.Title.intro}>
                 교육팀소개
@@ -40,9 +40,9 @@ export const Header = () => {
               </S.MenuLink>
             </S.MenuBox>
           </S.MenuWrapper>
-          <div>{HeaderHamburger}</div>
+          <div onClick={onClickTrue}>{HeaderHamburger}</div>
         </div>
-        <S.DropDown isHover={isHover} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <S.DropDown isHover={isHover} onMouseLeave={onMouseLeave}>
           <div>
             <div>
               <div>
@@ -96,6 +96,7 @@ namespace S {
     @media (max-width: 1350px) {
       > div:first-of-type {
         justify-content: center;
+        margin-right: 1rem;
         > a {
           position: static;
         }

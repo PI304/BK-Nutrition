@@ -118,7 +118,11 @@ namespace S {
   export const IntroLayout = styled.div`
     display: grid;
     grid-template-columns: 10rem 120rem;
-    gap: 6rem;
+    gap: 3rem;
+
+    @media (max-width: 1250px) {
+      display: block;
+    }
   `;
 
   export const Container = styled.div`
@@ -128,7 +132,7 @@ namespace S {
     grid-column: 2 / 3;
 
     @media (max-width: 1250px) {
-      margin: 7rem 2rem;
+      grid-template-rows: 0.5fr 0 3fr 0 1fr 0 1fr;
     }
   `;
 
@@ -183,7 +187,7 @@ namespace S {
 
     > div:last-of-type {
       display: flex;
-      gap: 6rem;
+      gap: 3rem;
 
       > img {
         height: 100%;
@@ -310,21 +314,21 @@ namespace S {
       > div:nth-child(2) {
         display: flex;
         align-items: center;
-        gap: 3rem;
+        gap: 1rem;
         margin-bottom: 1rem;
 
         > div {
-          ${Fonts.bold20}
+          ${Fonts.bold18}
         }
       }
 
       > div:last-of-type {
         display: flex;
         align-items: center;
-        gap: 3rem;
+        gap: 1rem;
 
         > div {
-          ${Fonts.bold20}
+          ${Fonts.bold18}
         }
       }
     }
