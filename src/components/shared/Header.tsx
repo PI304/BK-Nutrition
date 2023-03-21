@@ -5,6 +5,7 @@ import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { useState } from 'react';
 
+
 export const Header = ({ onClickTrue }: HeaderProps) => {
   const [isHover, setIsHover] = useState(false);
   const onMouseEnter = () => {

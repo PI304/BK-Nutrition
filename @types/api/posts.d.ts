@@ -2,6 +2,7 @@ declare namespace ResponsePosts {
   type Get = {
     count: number;
     results: GetById[];
+
   };
 
   type GetById = {

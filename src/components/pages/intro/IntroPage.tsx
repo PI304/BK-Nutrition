@@ -369,5 +369,42 @@ namespace S {
         }
       }
     }
+
+    @media (max-width: 1250px) {
+      > div:last-of-type {
+        margin: 0 2rem;
+        > div:first-of-type {
+          width: 35.8rem;
+          height: 30rem;
+        }
+
+        > div:nth-child(2) {
+          width: 28rem;
+          gap: 1rem;
+          > img {
+            width: 3rem;
+            height: 3rem;
+          }
+
+          > div {
+            ${Fonts.semibold12}
+            line-height: 120%;
+          }
+        }
+
+        > div:last-of-type {
+          width: 35.8rem;
+          gap: 1rem;
+          > img {
+            width: 3rem;
+            height: 3rem;
+          }
+
+          > div {
+            ${Fonts.semibold12}
+          }
+        }
+      }
+    }
   `;
 }

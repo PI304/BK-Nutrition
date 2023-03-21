@@ -50,6 +50,7 @@ export const AchievementPage = () => {
           </thead>
           <tbody>
             {achievement?.results?.map((achievement, i) => (
+
               <tr key={i}>
                 <S.BoardText>{achievement.id}</S.BoardText>
                 <S.BoardText>

@@ -58,7 +58,7 @@ export const NoticePage = () => {
             ))}
           </tbody>
         </table>
-        <PageButton />
+        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
       </S.BoardBox>
     </>
   );
