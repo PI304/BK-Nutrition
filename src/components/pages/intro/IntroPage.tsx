@@ -30,8 +30,7 @@ export const IntroPage = () => {
               글로벌 웰니스문제 해결을 위한 교육과 연구에 관심을 가지고 있는 여러분이 많이
               참여하시어 맞춤 영양, 항노화, 건강기능식품, 오믹스, 식품안전 등{' '}
               <strong>
-                활용 가능한 미래 식품영양 지식과 기술을 통한 국민건강 및 인<br />
-                류복지 실현에 함께 공헌
+                활용 가능한 미래 식품영양 지식과 기술을 통한 국민건강 및 인류복지 실현에 함께 공헌
               </strong>
               할 수 있기를 바랍니다.
             </p>
@@ -148,7 +147,7 @@ namespace S {
   export const GreetingBox = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 4rem;
   `;
 
   export const Greeting = styled.div`

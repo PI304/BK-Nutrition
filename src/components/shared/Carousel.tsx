@@ -43,42 +43,42 @@ export default function Carousel() {
         <S.CarouselWindow>
           <S.CarouselWrapper itemIdx={itemIdx} ref={carouselWrapperRef}>
             <S.CarouselItem>
-              <Link href={Urls.carouselResearch}>
+              <Link href={Urls.carouselResearch} target='_blank'>
                 <Image src={Carousel4} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselYonsei}>
+              <Link href={Urls.carouselYonsei} target='_blank'>
                 <Image src={Carousel1} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselBrain}>
+              <Link href={Urls.carouselBrain} target='_blank'>
                 <Image src={Carousel2} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselFood}>
+              <Link href={Urls.carouselFood} target='_blank'>
                 <Image src={Carousel3} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselResearch}>
+              <Link href={Urls.carouselResearch} target='_blank'>
                 <Image src={Carousel4} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselYonsei}>
+              <Link href={Urls.carouselYonsei} target='_blank'>
                 <Image src={Carousel1} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselBrain}>
+              <Link href={Urls.carouselBrain} target='_blank'>
                 <Image src={Carousel2} alt='carousel' />
               </Link>
             </S.CarouselItem>
             <S.CarouselItem>
-              <Link href={Urls.carouselFood}>
+              <Link href={Urls.carouselFood} target='_blank'>
                 <Image src={Carousel3} alt='carousel' />
               </Link>
             </S.CarouselItem>
