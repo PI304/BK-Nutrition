@@ -38,7 +38,7 @@ namespace S {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 3rem;
+      gap: 1rem;
 
       > div:first-child img {
         width: 100%;

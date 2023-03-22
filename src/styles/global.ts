@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   html, body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', '맑은 고딕', 'malgun gothic', 'AppleGothicNeoSD', 'Apple SD 산돌고딕 Neo', 'Microsoft NeoGothic',  'Droid sans', sans-serif;
     font-style: normal;
     
   }

@@ -104,6 +104,7 @@ namespace S {
       > p {
         ${Fonts.regular14}
         line-height: 130%;
+        text-align: justify;
       }
 
       > div {
