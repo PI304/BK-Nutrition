@@ -8,8 +8,8 @@ export namespace SC {
     margin: 0 auto;
     border-bottom: 0.3rem solid ${Colors.line};
 
-    @media (max-width: 1250px) {
-      width: 100%;
+    @media (max-width: 1200px) {
+      width: 95%;
     }
   `;
 
