@@ -119,7 +119,7 @@ namespace S {
     grid-template-columns: 10rem 120rem;
     gap: 3rem;
 
-    @media (max-width: 1250px) {
+    @media (max-width: 1200px) {
       display: block;
     }
   `;
@@ -130,16 +130,17 @@ namespace S {
     grid-row-gap: 5rem;
     grid-column: 2 / 3;
 
-    @media (max-width: 1250px) {
-      grid-template-rows: 0.5fr 0 3fr 0 1fr 0 1fr;
+    @media (max-width: 1200px) {
+      grid-template-rows: 0.5fr 0 2fr 0 1fr 0 1fr;
     }
   `;
 
   export const Title = styled.div`
     ${Fonts.bold40};
 
-    @media (max-width: 1250px) {
+    @media (max-width: 1200px) {
       ${Fonts.bold20}
+      margin-left: 1rem;
     }
   `;
 
@@ -164,7 +165,7 @@ namespace S {
       }
     }
 
-    @media (max-width: 1250px) {
+    @media (max-width: 1200px) {
       margin: 0 2rem;
       width: 33.7rem;
 
@@ -194,9 +195,16 @@ namespace S {
       }
     }
 
-    @media (max-width: 1250px) {
+    @media (max-width: 1200px) {
       > div:last-of-type {
         flex-direction: column;
+      }
+
+      > div {
+        > img {
+          width: 80%;
+          margin: 0 auto;
+        }
       }
     }
   `;
@@ -275,7 +283,80 @@ namespace S {
       }
     }
 
-    @media (max-width: 1250px) {
+    @media (max-width: 1200px) {
+      > div:first-child {
+        ${Fonts.bold16};
+        margin: 1rem 0 1rem 3rem;
+
+        &::after {
+          content: '';
+          width: 28rem;
+          margin: 1rem 0 0 0;
+          display: block;
+          border-bottom: 0.2rem solid ${Colors.black};
+        }
+      }
+
+      > div:nth-child(2) {
+        ${Fonts.regular12}
+        width: 32rem;
+        height: 16rem;
+        margin: 0 0 0 4rem;
+        line-height: 1.9rem;
+      }
+
+      > div:nth-child(3) {
+        ${Fonts.bold16};
+        margin: 3rem 0 1rem 3rem;
+
+        &::after {
+          content: '';
+          width: 28rem;
+          margin: 1rem 0 0 0;
+          display: block;
+          border-bottom: 0.2rem solid ${Colors.black};
+        }
+      }
+
+      > div:last-of-type {
+        margin: 0 0 0 5.5rem;
+        width: 32rem;
+
+        > ol {
+          margin-bottom: 2rem;
+        }
+
+        > ol li {
+          ${Fonts.regular12}
+          line-height: 150%;
+          list-style: decimal;
+        }
+
+        > ul:first-of-type li {
+          ${Fonts.regular12}
+          line-height: 150%;
+          list-style: disc;
+          margin-bottom: 1rem;
+        }
+
+        > ul:last-of-type li {
+          ${Fonts.regular12}
+          line-height: 160%;
+          list-style: decimal;
+        }
+
+        > ul:last-of-type li:nth-child(2) {
+          line-height: 150%;
+        }
+
+        > ul:first-of-type li strong {
+          ${Fonts.bold12}
+        }
+
+        > ol strong {
+          ${Fonts.bold12}
+        }
+      }
     }
   `;
 
@@ -292,10 +373,10 @@ namespace S {
       margin: 0 auto;
     }
 
-    @media (max-width: 1250px) {
+    @media (max-width: 1200px) {
       > img {
         margin: 0 1rem;
-        width: 35.8rem;
+        width: 34.8rem;
         height: 33.1rem;
       }
     }
@@ -332,57 +413,21 @@ namespace S {
       }
     }
 
-    @media (max-width: 1250px) {
+    @media (max-width: 1200px) {
       > div:last-of-type {
-        margin: 0 2rem;
         > div:first-of-type {
-          width: 35.8rem;
-          height: 30rem;
+          width: 33rem;
+          height: 28rem;
+          margin: 0 auto;
         }
 
         > div:nth-child(2) {
           width: 28rem;
           gap: 1rem;
-          > img {
-            width: 3rem;
-            height: 3rem;
-          }
-
-          > div {
-            ${Fonts.semibold12}
-            line-height: 120%;
-          }
-        }
-
-        > div:last-of-type {
-          width: 35.8rem;
-          gap: 1rem;
-          > img {
-            width: 3rem;
-            height: 3rem;
-          }
-
-          > div {
-            ${Fonts.semibold12}
-          }
-        }
-      }
-    }
-
-    @media (max-width: 1250px) {
-      > div:last-of-type {
-        margin: 0 2rem;
-        > div:first-of-type {
-          width: 35.8rem;
-          height: 30rem;
-        }
-
-        > div:nth-child(2) {
-          width: 28rem;
-          gap: 1rem;
-          > img {
-            width: 3rem;
-            height: 3rem;
+          margin-bottom: unset;
+          > svg {
+            width: 5rem;
+            height: 5rem;
           }
 
           > div {

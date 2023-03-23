@@ -60,7 +60,7 @@ namespace S {
     background-position: center center;
     position: relative;
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1200px) {
       height: 12rem;
     }
   `;
@@ -72,7 +72,7 @@ namespace S {
     gap: 0.5rem;
     width: 120rem;
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1200px) {
       justify-content: center;
     }
   `;
@@ -89,7 +89,7 @@ namespace S {
       color: ${Colors.white};
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1200px) {
       justify-content: center;
 
       > div:first-of-type {
@@ -113,7 +113,7 @@ namespace S {
       color: ${Colors.white};
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1200px) {
       display: none;
     }
   `;
