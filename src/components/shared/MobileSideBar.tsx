@@ -21,7 +21,7 @@ export const MobileSideBar = ({ onClickFalse }: MobileSideBarProps) => {
         </div>
         <div>
           <S.MobileTitle>
-            교육팀 소개
+            <Link href={Paths.intro}>교육팀 소개</Link>
             <S.MobileLink>
               <Link href={Paths.intro + '#greeting'}>인사말</Link>
               <Link href={Paths.intro + '#goal'}>목표 및 비전</Link>
@@ -30,7 +30,7 @@ export const MobileSideBar = ({ onClickFalse }: MobileSideBarProps) => {
             </S.MobileLink>
           </S.MobileTitle>
           <S.MobileTitle>
-            연구팀 구성
+            <Link href={Paths.member}>연구팀 구성</Link>
             <S.MobileLink>
               <Link href={Paths.member + '#member'}>참여 교수</Link>
               <Link href={Paths.member + '#research'}>신진 연구 인력</Link>
@@ -38,7 +38,7 @@ export const MobileSideBar = ({ onClickFalse }: MobileSideBarProps) => {
             </S.MobileLink>
           </S.MobileTitle>
           <S.MobileTitle>
-            사업 성과
+            <Link href={Paths.achievement}>사업 성과</Link>
             <S.MobileLink>
               <Link href={Paths.achievement}>연구 업적</Link>
               <Link href={Paths.international}> 국제 협력</Link>
@@ -46,7 +46,7 @@ export const MobileSideBar = ({ onClickFalse }: MobileSideBarProps) => {
             </S.MobileLink>
           </S.MobileTitle>
           <S.MobileTitle>
-            커뮤니티
+            <Link href={Paths.notice}>커뮤니티</Link>
             <S.MobileLink>
               <Link href={Paths.notice}>공지사항</Link>
               <Link href={Paths.resource}>자료실</Link>
@@ -65,7 +65,8 @@ namespace S {
     height: 100vh;
     background-color: ${BoxShadows.mobileSideBar};
     position: fixed;
-    z-index: 100;
+    z-index: 10;
+    top: 0;
 
     @media (max-width: 1350px) {
       display: block;
@@ -78,7 +79,7 @@ namespace S {
     display: flex;
     flex-direction: column;
     position: fixed;
-    z-index: 200;
+    z-index: 20;
     right: 0;
     top: 0;
     background-color: ${Colors.white};
@@ -104,8 +105,10 @@ namespace S {
   `;
 
   export const MobileTitle = styled.div`
-    ${Fonts.bold20}
-    color: ${Colors.blue700};
+    > a {
+      ${Fonts.bold20}
+      color: ${Colors.blue700};
+    }
   `;
 
   export const MobileLink = styled.div`

@@ -40,7 +40,7 @@ namespace S {
       gap: 2rem;
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1200px) {
       display: none;
     }
   `;

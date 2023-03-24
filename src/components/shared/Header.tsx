@@ -5,7 +5,6 @@ import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { useState } from 'react';
 
-
 export const Header = ({ onClickTrue }: HeaderProps) => {
   const [isHover, setIsHover] = useState(false);
   const onMouseEnter = () => {
@@ -94,13 +93,10 @@ namespace S {
       }
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1200px) {
       > div:first-of-type {
         justify-content: center;
-        margin-right: 1rem;
-        > a {
-          position: static;
-        }
+        margin-right: 3rem;
 
         > div:nth-child(2) {
           display: none;
@@ -196,7 +192,7 @@ namespace S {
       }
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1200px) {
       display: none;
     }
   `;

@@ -6,7 +6,7 @@ export * from './Select';
 export * from './Header';
 export * from './Footer';
 export * from './Carousel';
-export * from './MainContact';
+export * from './MainBoard';
 export * from './View';
 export * from './SideBar';
 export * from './KaKaoMap';

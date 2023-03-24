@@ -8,8 +8,8 @@ export namespace SC {
     margin: 0 auto;
     border-bottom: 0.3rem solid ${Colors.line};
 
-    @media (max-width: 1250px) {
-      width: 100%;
+    @media (max-width: 1200px) {
+      width: 95%;
     }
   `;
 
@@ -30,6 +30,24 @@ export namespace SC {
       top: 0;
       right: 0;
       cursor: pointer;
+      z-index: 1;
+    }
+    > svg {
+      display: none;
+    }
+
+    @media (max-width: 1200px) {
+      > img {
+        display: none;
+      }
+
+      > svg {
+        display: block;
+        position: absolute;
+        bottom: 12rem;
+        right: 0;
+        cursor: pointer;
+      }
     }
   `;
 }

@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { Paths, PostsLabel, PostsType } from '@/constants';
 import Link from 'next/link';
 
-export const MainContact = ({ page }: MainContactProps) => {
+export const MainBoard = ({ page }: MainContactProps) => {
   const [isCurrent, setIsCurrent] = useState<ResponsePosts.Get>();
 
   const getBis = async () => {
@@ -39,11 +39,11 @@ export const MainContact = ({ page }: MainContactProps) => {
           {isCurrent?.results?.slice(0, 1).map((isCurrent, i) => (
             <S.ThumbNail href={PostsLabel[isCurrent.type] + isCurrent.id} key={i}>
               <div>
-                <Image src={Notice} alt='Notice' />
+                <Image src={Notice} alt='IMG' />
               </div>
               <div>
-                <h1>{isCurrent.title}</h1>
-                <p>{isCurrent.content.slice(0, 130)}</p>
+                <h1>{isCurrent.title.slice(0, 20)}</h1>
+                <p>{isCurrent.content.slice(0, 80) + '...'}</p>
                 <div>{isCurrent.date}</div>
               </div>
             </S.ThumbNail>
@@ -63,7 +63,7 @@ export const MainContact = ({ page }: MainContactProps) => {
 namespace S {
   export const Container = styled.div`
     display: grid;
-    grid-template-columns: 62rem;
+    grid-template-columns: 55rem;
     grid-template-rows: 3rem 1fr;
     margin: 0 auto;
     width: 100vw;
@@ -115,7 +115,7 @@ namespace S {
       }
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1200px) {
       border-bottom: 0.1rem solid ${Colors.gray500};
       margin-bottom: 3rem;
     }
@@ -160,7 +160,7 @@ namespace S {
       color: ${Colors.gray900};
     }
 
-    @media (max-width: 1350px) {
+    @media (max-width: 1200px) {
       display: none;
     }
   `;
