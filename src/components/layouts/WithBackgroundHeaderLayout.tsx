@@ -18,6 +18,7 @@ namespace S {
 
     @media (max-width: 1200px) {
       width: 100%;
+      margin: 2rem auto;
     }
   `;
 }

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { BoxShadows, Colors, Fonts, SC } from '@/styles';
+import { BoxShadows, Colors, Fonts, MobileMemberHome, SC } from '@/styles';
 import Phone from '../../../public/assets/phone.png';
 import Message from '../../../public/assets/message.png';
 import Home from '../../../public/assets/home2.png';
@@ -45,6 +45,7 @@ export const Members = () => {
             </div>
             <SC.Home href={professors.url}>
               <Image src={Home} alt='home'></Image>
+              {MobileMemberHome}
             </SC.Home>
           </div>
           <div>
@@ -111,6 +112,78 @@ namespace S {
 
       > p {
         ${Fonts.regular16}
+      }
+    }
+
+    @media (max-width: 1200px) {
+      display: grid;
+      grid-template-columns: 15rem;
+      grid-template-rows: 21rem 12rem;
+      border: 0.1rem solid ${BoxShadows.mobile_border};
+      box-shadow: ${BoxShadows.mobile_shadow};
+      position: relative;
+
+      > div:first-of-type {
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      > div:nth-child(2) {
+        padding: unset;
+        position: unset;
+        gap: unset;
+
+        > div:first-of-type {
+          width: 100%;
+
+          > div:first-of-type {
+            margin-bottom: 1.5rem;
+            margin-right: unset;
+
+            > img {
+              width: 3rem;
+              height: 2.375rem;
+            }
+
+            > div {
+              ${Fonts.medium14}
+            }
+          }
+
+          > div:last-of-type {
+            margin-right: unset;
+            word-break: break-word;
+            padding: 0 2rem 0 0;
+
+            > img {
+              width: 3rem;
+              height: 2.375rem;
+            }
+
+            > div {
+              ${Fonts.medium14}
+            }
+          }
+        }
+
+        > p {
+          ${Fonts.medium14}
+          text-align: center;
+          line-height: 150%;
+        }
+
+        > h2 {
+          ${Fonts.bold16}
+          margin-bottom: 0.5rem;
+          text-align: center;
+        }
+      }
+
+      > div:last-of-type {
+        display: none;
       }
     }
   `;

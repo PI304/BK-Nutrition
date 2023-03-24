@@ -50,19 +50,19 @@ export const MemberPage = () => {
         <table>
           <thead>
             <tr>
-              <S.BoardText>이름</S.BoardText>
-              <S.BoardText>직위</S.BoardText>
-              <S.BoardText>전공</S.BoardText>
-              <S.BoardText>연락처</S.BoardText>
+              <S.BoardTitle>이름</S.BoardTitle>
+              <S.BoardTitle>직위</S.BoardTitle>
+              <S.BoardTitle>전공</S.BoardTitle>
+              <S.BoardTitle>연락처</S.BoardTitle>
             </tr>
           </thead>
           <tbody>
             {researchers?.map((researchers, i) => (
               <tr key={i}>
-                <S.BoardText>{researchers.name}</S.BoardText>
-                <S.BoardText>{researchers.position}</S.BoardText>
-                <S.BoardText>{researchers.affiliation}</S.BoardText>
-                <S.BoardText>{researchers.contact}</S.BoardText>
+                <S.ResearchBoardText>{researchers.name}</S.ResearchBoardText>
+                <S.ResearchBoardText>{researchers.position}</S.ResearchBoardText>
+                <S.ResearchBoardText>{researchers.affiliation}</S.ResearchBoardText>
+                <S.ResearchBoardText>{researchers.contact}</S.ResearchBoardText>
               </tr>
             ))}
           </tbody>
@@ -78,20 +78,20 @@ export const MemberPage = () => {
         <table>
           <thead>
             <tr>
-              <S.BoardText>학기</S.BoardText>
-              <S.BoardText>명단</S.BoardText>
+              <S.BoardTitle>학기</S.BoardTitle>
+              <S.BoardTitle>명단</S.BoardTitle>
             </tr>
           </thead>
           <tbody>
             {university?.map((university, i) => (
               <tr key={i}>
-                <S.BoardText>{university.semester}</S.BoardText>
+                <S.UniversityBoardText>{university.semester}</S.UniversityBoardText>
 
-                <S.BoardText>
+                <S.UniversityBoardText>
                   <Link href={getDownloadLinkFromS3(FolderS3.resources, university.uuid)}>
-                    참여대학원생 명단 다운로드
+                    참여대학원생 명단
                   </Link>
-                </S.BoardText>
+                </S.UniversityBoardText>
               </tr>
             ))}
           </tbody>
@@ -104,8 +104,14 @@ export const MemberPage = () => {
 namespace S {
   export const Container = styled.div`
     display: grid;
-    grid-template-rows: 2.5fr 1fr 1.5fr;
-    grid-row-gap: 5rem;
+    grid-template-rows: 3fr 1fr 1.5fr;
+    grid-row-gap: 4.5rem;
+
+    @media (max-width: 1200px) {
+      display: grid;
+      grid-template-rows: 2fr 0.5fr 1fr;
+      grid-row-gap: 3rem;
+    }
   `;
 
   export const Title = styled.div`
@@ -128,6 +134,26 @@ namespace S {
     > div:last-of-type {
       ${Fonts.bold40}
     }
+
+    @media (max-width: 1200px) {
+      margin-left: 2rem;
+      &::after {
+        content: '';
+        display: block;
+        width: 20rem;
+        margin-top: 1rem;
+        border-bottom: 0.3rem solid ${Colors.black};
+      }
+
+      > div:first-of-type {
+        ${Fonts.bold16}
+        margin-bottom: 1rem;
+      }
+
+      > div:last-of-type {
+        ${Fonts.bold20}
+      }
+    }
   `;
 
   /* 참여 교수 */
@@ -135,7 +161,7 @@ namespace S {
     display: flex;
     flex-direction: column;
     margin-top: 5rem;
-    gap: 5rem;
+    gap: 2rem;
 
     > div:nth-child(2) {
       display: grid;
@@ -143,13 +169,25 @@ namespace S {
       column-gap: 2.7rem;
       row-gap: 9rem;
     }
+
+    @media (max-width: 1200px) {
+      width: 100vw;
+
+      > div:nth-child(2) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 1.5rem;
+        row-gap: 1.5rem;
+        margin: 0 auto;
+      }
+    }
   `;
 
   /* 신진 연구 인력 */
   export const ResearchBox = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
 
     > div:last-child {
       display: flex;
@@ -172,19 +210,65 @@ namespace S {
         }
       }
     }
+
+    @media (max-width: 1200px) {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      > div:last-child {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      > table {
+        width: 36rem;
+        text-align: center;
+        margin: 0 auto;
+
+        > thead {
+          background-color: ${Colors.gray};
+          height: 3rem;
+        }
+
+        > tbody {
+          > tr {
+            border-bottom: 0.3rem solid ${Colors.line};
+          }
+        }
+      }
+    }
   `;
 
-  export const BoardText = styled.th`
+  export const BoardTitle = styled.th`
     width: 10rem;
     padding: 1.5rem;
     white-space: nowrap;
+
+    @media (max-width: 1200px) {
+      ${Fonts.bold14}
+    }
+  `;
+
+  export const ResearchBoardText = styled.th`
+    width: 10rem;
+    white-space: nowrap;
+
+    @media (max-width: 1200px) {
+      ${Fonts.regular12}
+      padding: 0.5rem 0;
+      white-space: unset;
+      word-break: keep-all;
+      vertical-align: middle;
+    }
   `;
 
   /* 지원 대학원생 */
   export const UniversityBox = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 2rem;
 
     > table {
       width: 100%;
@@ -200,6 +284,40 @@ namespace S {
           border-bottom: 0.3rem solid ${Colors.line};
         }
       }
+    }
+
+    @media (max-width: 1200px) {
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+
+      > table {
+        width: 36rem;
+        text-align: center;
+        margin: 0 auto;
+
+        > thead {
+          background-color: ${Colors.gray};
+          height: 4.5rem;
+        }
+
+        > tbody {
+          > tr {
+            border-bottom: 0.3rem solid ${Colors.line};
+          }
+        }
+      }
+    }
+  `;
+
+  export const UniversityBoardText = styled.th`
+    width: 10rem;
+    padding: 1.5rem;
+    white-space: nowrap;
+
+    @media (max-width: 1200px) {
+      ${Fonts.regular12}
+      white-space: unset;
     }
   `;
 }

@@ -170,6 +170,23 @@ export const IntroPhone = (
   </svg>
 );
 
+export const MobileMemberHome = (
+  <svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <g clip-path='url(#clip0_771_1304)'>
+      <rect width='30' height='30' fill='#E2EDFB' />
+      <path
+        d='M24.375 10.2387V2.8125H19.6875V6.2373L15 1.875L0 15.9375H3.75V28.125H12.1875V18.75H17.8125V28.125H26.25V15.9375H30L24.375 10.2387Z'
+        fill='#6E98D4'
+      />
+    </g>
+    <defs>
+      <clipPath id='clip0_771_1304'>
+        <rect width='30' height='30' fill='white' />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
 export const MainLogo = (
   <svg
     width='214'

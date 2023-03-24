@@ -30,6 +30,24 @@ export namespace SC {
       top: 0;
       right: 0;
       cursor: pointer;
+      z-index: 1;
+    }
+    > svg {
+      display: none;
+    }
+
+    @media (max-width: 1200px) {
+      > img {
+        display: none;
+      }
+
+      > svg {
+        display: block;
+        position: absolute;
+        bottom: 12rem;
+        right: 0;
+        cursor: pointer;
+      }
     }
   `;
 }
