@@ -31,7 +31,7 @@ export default function View({ id, boardPath }: ViewProps) {
           {id} | {post?.author.name} | {parseSubmitDate(post?.created_at + '')}
         </h2>
       </S.Meta>
-      {<S.Img src={getDownloadLinkFromS3(FolderS3.images, post?.image_file)} alt='IMG'></S.Img>}
+      {/* {<S.Img src={getDownloadLinkFromS3(FolderS3.images, post?.image_file)} alt='IMG'></S.Img>} */}
       <S.Content>{post?.content}</S.Content>
       <S.File>
         <h3>첨부파일</h3>

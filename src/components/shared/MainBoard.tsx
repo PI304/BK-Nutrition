@@ -42,7 +42,7 @@ export const MainBoard = ({ page }: MainContactProps) => {
                 <Image src={Notice} alt='IMG' />
               </div>
               <div>
-                <h1>{isCurrent.title.slice(0, 20)}</h1>
+                <h1>{isCurrent.title.slice(0, 30) + '...'}</h1>
                 <p>{isCurrent.content.slice(0, 80) + '...'}</p>
                 <div>{isCurrent.date}</div>
               </div>
