@@ -156,7 +156,7 @@ namespace S {
           > div:last-of-type {
             margin-right: unset;
             word-break: break-word;
-            padding: 0 2rem 0 0;
+            padding: 0 1rem 0 0;
 
             > img {
               width: 3rem;
