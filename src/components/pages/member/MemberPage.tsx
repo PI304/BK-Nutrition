@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Colors, Fonts, SC } from '@/styles';
+import { Colors, Fonts } from '@/styles';
 import { Members, Pagination } from '@/components/shared';
 import styled from 'styled-components';
 import { getResearchers } from 'api/researchers';
@@ -254,6 +254,7 @@ namespace S {
   export const ResearchBoardText = styled.th`
     width: 10rem;
     white-space: nowrap;
+    padding: 1.5rem;
 
     @media (max-width: 1200px) {
       ${Fonts.regular12}

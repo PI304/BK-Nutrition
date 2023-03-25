@@ -134,6 +134,7 @@ namespace S {
       width: 100vw;
       display: flex;
       flex-direction: column;
+      gap: revert;
     }
   `;
 }

@@ -81,6 +81,27 @@ namespace S {
       position: absolute;
       right: 0;
     }
+
+    @media (max-width: 1200px) {
+      position: relative;
+      display: flex;
+      width: 100%;
+
+      > a:first-of-type {
+        width: 11rem;
+        border-radius: 1.5rem 0.5rem 0 0;
+      }
+
+      > a:last-of-type {
+        width: 11rem;
+        border-radius: 0.5rem 1.5rem 0 0;
+      }
+
+      > div:last-of-type {
+        position: absolute;
+        right: 1rem;
+      }
+    }
   `;
 
   export const Page = styled(Link)<IsCurrentType>`
@@ -116,11 +137,49 @@ namespace S {
     > div:last-of-type {
       margin: 6rem 0;
     }
+
+    @media (max-width: 1200px) {
+      > table {
+        width: 100%;
+        text-align: center;
+
+        > thead {
+          background-color: ${Colors.gray};
+          height: 4.5rem;
+        }
+
+        > tbody {
+          > tr {
+            border-bottom: 0.3rem solid ${Colors.line};
+            text-align: left;
+          }
+        }
+      }
+      > div:last-of-type {
+        margin: 3rem 0;
+      }
+    }
   `;
 
   export const BoardText = styled.th`
     width: 10rem;
     padding: 1.5rem;
     white-space: nowrap;
+
+    @media (max-width: 1200px) {
+      &:first-child {
+        display: none;
+      }
+      &:nth-child(2) {
+        text-overflow: ellipsis;
+        white-space: pre-line;
+      }
+      &:nth-child(3) {
+        display: none;
+      }
+      &:last-child {
+        display: none;
+      }
+    }
   `;
 }

@@ -22,6 +22,7 @@ export const Fonts = {
 
   /* 600 */
   semibold12: 'font-size:1.2rem; font-weight:600;',
+  semibold14: 'font-size:1.4rem; font-weight:600;',
   semibold16: 'font-size:1.6rem; font-weight:600;',
   semibold18: 'font-size:1.8rem; font-weight:600;',
   semibold20: 'font-size:2rem; font-weight:600;',

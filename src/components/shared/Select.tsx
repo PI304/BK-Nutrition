@@ -41,5 +41,34 @@ namespace S {
       display: flex;
       align-items: center;
     }
+
+    @media (max-width: 1200px) {
+      width: fit-content;
+      align-self: center;
+      position: relative;
+      top: 1rem;
+
+      > select {
+        ${Fonts.regular12};
+        align-self: center;
+        width: 9rem;
+        padding: 0.5rem 0.8rem;
+        border-radius: 0;
+        border: 0.1rem solid ${Colors.gray150};
+        color: ${Colors.back};
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+      }
+
+      > div {
+        position: absolute;
+        right: 0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+      }
+    }
   `;
 }
