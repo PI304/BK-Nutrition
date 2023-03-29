@@ -34,6 +34,7 @@ namespace S {
     }
 
     > div:last-of-type {
+      ${Fonts.regular14}
       display: flex;
       flex-direction: column;
       margin-top: 2rem;

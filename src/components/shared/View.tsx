@@ -11,7 +11,6 @@ import { FolderS3 } from '../../constants/folderS3';
 
 export default function View({ id, boardPath }: ViewProps) {
   const [post, setPost] = useState<ResponsePosts.GetById>();
-  const [postAll, setPostAll] = useState<ResponsePosts.Get>();
 
   const fetchPost = async () => {
     const post = await getPostsById(id);
@@ -31,7 +30,11 @@ export default function View({ id, boardPath }: ViewProps) {
           {id} | {post?.author.name} | {parseSubmitDate(post?.created_at + '')}
         </h2>
       </S.Meta>
-      {/* {<S.Img src={getDownloadLinkFromS3(FolderS3.images, post?.image_file)} alt='IMG'></S.Img>} */}
+      {post?.image_file && (
+        <S.Img
+          src={getDownloadLinkFromS3(FolderS3.images, post?.image_file ?? '')}
+          alt='IMG'></S.Img>
+      )}
       <S.Content>{post?.content}</S.Content>
       <S.File>
         <h3>첨부파일</h3>
@@ -77,7 +80,9 @@ namespace S {
     }
   `;
 
-  export const Img = styled.img``;
+  export const Img = styled.img`
+    margin: 2rem 0 0 3rem;
+  `;
 
   export const Content = styled.pre`
     padding: 6rem 3rem;

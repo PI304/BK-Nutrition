@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
-import { PageButton, Pagination, Select } from '@/components/shared';
+import { PageButton, Select } from '@/components/shared';
 import { getPosts } from 'api/posts';
 import { useEffect, useState } from 'react';
 import { PostsType } from '@/constants';
+import { PageLimit } from '@/constants/pageLimit';
 
 export const NoticePage = () => {
   const [notice, setNotice] = useState<ResponsePosts.Get>();
@@ -14,7 +15,7 @@ export const NoticePage = () => {
   const onChangePage = (page: number) => setPage(page);
 
   const getNotice = async () => {
-    const notice = await getPosts(PostsType.notice, (page - 1) * 10);
+    const notice = await getPosts(PostsType.notice, PageLimit.limit * (page - 1));
     setNotice(notice);
   };
 
@@ -48,7 +49,7 @@ export const NoticePage = () => {
           <tbody>
             {notice?.results.map((notice, i) => (
               <tr key={i}>
-                <S.BoardText>{notice.id}</S.BoardText>
+                <S.BoardText>{notice.id - 7}</S.BoardText>
                 <S.BoardText>
                   <Link href={Paths.notice + '/' + notice.id}>{notice.title}</Link>
                 </S.BoardText>
@@ -58,7 +59,12 @@ export const NoticePage = () => {
             ))}
           </tbody>
         </table>
-        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
+
+        <PageButton
+          totalPage={notice?.count ? Math.ceil(notice?.count / PageLimit.limit) : 0}
+          currentPage={page}
+          onChangePage={onChangePage}
+        />
       </S.BoardBox>
     </>
   );

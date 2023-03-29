@@ -1,9 +1,10 @@
+import { PageLimit } from '@/constants/pageLimit';
 import request from './core';
 
 const baseURL = '/posts';
 
 export const getPosts = (post: string, skip: number) => {
-  const url = `${baseURL}?post=${post}&skip=${skip}&limit=10`;
+  const url = `${baseURL}?post=${post}&skip=${skip}&limit=${PageLimit.limit}`;
   return request.get<ResponsePosts.Get>(url);
 };
 

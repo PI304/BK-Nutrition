@@ -6,7 +6,8 @@ import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
 import { Colors, Fonts, BoxShadows } from '@/styles';
-import { Pagination, Select } from '@/components/shared';
+import { PageButton, Select } from '@/components/shared';
+import { PageLimit } from '@/constants/pageLimit';
 
 export const IndustrialPage = () => {
   const [industrial, setIndustrial] = useState<ResponsePosts.Get>();
@@ -60,7 +61,11 @@ export const IndustrialPage = () => {
             ))}
           </tbody>
         </table>
-        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
+        <PageButton
+          totalPage={industrial?.count ? Math.ceil(industrial?.count / PageLimit.limit) : 0}
+          currentPage={page}
+          onChangePage={onChangePage}
+        />
       </S.BoardBox>
     </>
   );

@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 import Arrow from '../../../public/assets/main_arrow.png';
-import Notice from '../../../public/assets/main_notice.png';
 import Image from 'next/image';
 import { Colors, Fonts } from '@/styles';
 import { getAllPosts, getPosts } from 'api/posts';
 import { useEffect, useState } from 'react';
-import { FolderS3, Paths, PostsLabel, PostsType } from '@/constants';
+import { Paths, PostsLabel, PostsType } from '@/constants';
 import Link from 'next/link';
-import { getDownloadLinkFromS3 } from '@/s3';
-// getDownloadLinkFromS3(FolderS3.images, isCurrent.image_file)
 
 export const MainBoard = ({ page }: MainContactProps) => {
   const [isCurrent, setIsCurrent] = useState<ResponsePosts.Get>();
@@ -41,7 +38,10 @@ export const MainBoard = ({ page }: MainContactProps) => {
           {isCurrent?.results?.slice(0, 1).map((isCurrent, i) => (
             <S.ThumbNail href={PostsLabel[isCurrent.type] + isCurrent.id} key={i}>
               <div>
-                <img src='assets/main_notice.png' alt='IMG' />
+                <img
+                  src={page === 'NOTICE' ? 'assets/main_notice.png' : 'assets/main_bis.png'}
+                  alt='IMG'
+                />
               </div>
               <div>
                 <h1>{isCurrent.title.slice(0, 30) + '...'}</h1>

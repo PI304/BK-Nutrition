@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
-import { Pagination, Select } from '@/components/shared';
+import { PageButton, Select } from '@/components/shared';
 import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
+import { PageLimit } from '@/constants/pageLimit';
 
 export const ResourcePage = () => {
   const [resource, setResource] = useState<ResponsePosts.Get>();
@@ -47,7 +48,7 @@ export const ResourcePage = () => {
           <tbody>
             {resource?.results?.map((resource, i) => (
               <tr key={i}>
-                <S.BoardText>{resource.id}</S.BoardText>
+                <S.BoardText>{resource.id - 20}</S.BoardText>
                 <S.BoardText>
                   <Link href={Paths.resource + '/' + resource.id}>{resource.title}</Link>
                 </S.BoardText>
@@ -57,7 +58,11 @@ export const ResourcePage = () => {
             ))}
           </tbody>
         </table>
-        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
+        <PageButton
+          totalPage={resource?.count ? Math.ceil(resource?.count / PageLimit.limit) : 0}
+          currentPage={page}
+          onChangePage={onChangePage}
+        />
       </S.BoardBox>
     </>
   );
