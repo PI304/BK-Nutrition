@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Colors, Fonts } from '@/styles';
-import { Members, Pagination } from '@/components/shared';
+import { Members } from '@/components/shared';
 import styled from 'styled-components';
 import { getResearchers } from 'api/researchers';
 import { getGraduates } from 'api/graduates';
@@ -39,7 +39,6 @@ export const MemberPage = () => {
         <div>
           <Members />
         </div>
-        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
       </S.MemberBox>
 
       <S.ResearchBox id='research'>
@@ -67,7 +66,6 @@ export const MemberPage = () => {
             ))}
           </tbody>
         </table>
-        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
       </S.ResearchBox>
 
       <S.UniversityBox id='university'>
