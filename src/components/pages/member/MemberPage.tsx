@@ -11,8 +11,6 @@ import { getDownloadLinkFromS3 } from '@/s3';
 export const MemberPage = () => {
   const [researchers, setResearchers] = useState<ResponseResearchers.Get>();
   const [university, setUniversity] = useState<ResponseGraduates.Get>();
-  const [page, setPage] = useState(1);
-  const onChangePage = (page: number) => setPage(page);
 
   const getMembers = async () => {
     const researchers = await getResearchers();
