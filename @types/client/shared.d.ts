@@ -12,9 +12,8 @@ type TitleProps = {
 /* Pagination */
 
 type PageButtonProps = {
+  totalPage: number;
   currentPage: number;
-  totalPosts: number | undefined;
-  size: number | undefined;
   onChangePage: (page: number) => void;
 };
 

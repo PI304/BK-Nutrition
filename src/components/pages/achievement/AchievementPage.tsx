@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import { Paths } from '@/constants/paths';
 import { Seo } from '@/constants/seo';
 import { Colors, Fonts, BoxShadows } from '@/styles';
-import { Pagination, Select } from '@/components/shared';
+import { PageButton, Select } from '@/components/shared';
 import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
+import { PageLimit } from '@/constants/pageLimit';
 
 export const AchievementPage = () => {
   const [achievement, setAchievement] = useState<ResponsePosts.Get>();
@@ -51,7 +52,7 @@ export const AchievementPage = () => {
           <tbody>
             {achievement?.results?.map((achievement, i) => (
               <tr key={i}>
-                <S.BoardText>{achievement.id}</S.BoardText>
+                <S.BoardText>{achievement.id - 17}</S.BoardText>
                 <S.BoardText>
                   <Link href={Paths.achievement + '/' + achievement.id}>{achievement.title}</Link>
                 </S.BoardText>
@@ -61,7 +62,11 @@ export const AchievementPage = () => {
             ))}
           </tbody>
         </table>
-        <Pagination currentPage={page} size={10} onChangePage={onChangePage} totalPosts={10} />
+        <PageButton
+          totalPage={achievement?.count ? Math.ceil(achievement?.count / PageLimit.limit) : 0}
+          currentPage={page}
+          onChangePage={onChangePage}
+        />
       </S.BoardBox>
     </>
   );

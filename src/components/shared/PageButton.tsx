@@ -2,14 +2,31 @@ import styled from 'styled-components';
 import { Colors, Fonts } from '@/styles';
 import { svgDoubleLeft7, svgLeft7, svgRight7, svgDoubleRight7 } from '../../styles/svgs';
 
-export const PageButton = () => {
+export const PageButton = ({ onChangePage, currentPage, totalPage }: PageButtonProps) => {
   return (
     <>
       <S.PageButtonLayout>
         <button>{svgDoubleLeft7}</button>
         <button>{svgLeft7}</button>
         <S.NumberWrapper>
-          <S.NumberButton></S.NumberButton>
+          {Array(totalPage)
+            .fill(0) // [0, 0]
+            .map((_, i) => i + 1) // [1, 2]
+            .map((page) => (
+              <S.NumberButton
+                onClick={() => onChangePage(page)}
+                key={page}
+                isCurrent={currentPage === page}>
+                {page}
+              </S.NumberButton>
+            ))}
+          {/* {Array(totalPage)
+            .fill(0) //[0, 0]
+            .map((_, i) => (
+              <S.NumberButton onClick={() => onChangePage(i + 1)} key={i}>
+                {i + 1}
+              </S.NumberButton>
+            ))} */}
         </S.NumberWrapper>
         <button>{svgRight7}</button>
         <button>{svgDoubleRight7}</button>

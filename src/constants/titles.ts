@@ -19,3 +19,5 @@ export const SubTitles = {
   '/business/international': '국제협력',
   '/business/industrial': '산학협력',
 } as const;
+
+export const PublicPathRegex = '/community';
