@@ -2,7 +2,7 @@ import { Colors } from '@/styles';
 import { Fonts } from '@/styles/fonts';
 import styled from 'styled-components';
 import { useState, useEffect } from 'react';
-import { getPosts, getPostsById } from '../../../api/posts';
+import { getPostsById } from '../../../api/posts';
 import parseSubmitDate from '../../utils/parseSubmitDate';
 import Link from 'next/link';
 import { svgMenu, svgDownload } from '../../styles/svgs';
@@ -30,7 +30,7 @@ export default function View({ id, boardPath }: ViewProps) {
           {id} | {post?.author.name} | {parseSubmitDate(post?.created_at + '')}
         </h2>
       </S.Meta>
-      {post?.image_file && (
+      {post?.image_file && ( //img가 없으면 S.Img컴포넌트가 사라지고 img가 있으면 S.Img 컴포넌트가 나타남
         <S.Img
           src={getDownloadLinkFromS3(FolderS3.images, post?.image_file ?? '')}
           alt='IMG'></S.Img>
@@ -82,6 +82,13 @@ namespace S {
 
   export const Img = styled.img`
     margin: 2rem 0 0 3rem;
+    object-fit: cover;
+
+    @media (max-width: 1200px) {
+      width: 100vw;
+      margin: unset;
+      padding: 1.5rem;
+    }
   `;
 
   export const Content = styled.pre`
