@@ -44,15 +44,27 @@ export const MainBoard = ({ page }: MainContactProps) => {
                 />
               </div>
               <div>
-                <h1>{isCurrent.title.slice(0, 30) + '...'}</h1>
-                <p>{isCurrent.content.slice(0, 80) + '...'}</p>
+                <h1>
+                  {isCurrent.title.length >= 45
+                    ? isCurrent.title.slice(0, 30) + '...'
+                    : isCurrent.title}
+                </h1>
+                <p>
+                  {isCurrent.content.length >= 70
+                    ? isCurrent.content.slice(0, 80) + '...'
+                    : isCurrent.content}
+                </p>
                 <div>{isCurrent.date}</div>
               </div>
             </S.ThumbNail>
           ))}
           {isCurrent?.results?.slice(1, 5).map((isCurrent, i) => (
             <S.List href={PostsLabel[isCurrent.type] + isCurrent.id} key={i}>
-              <div>{isCurrent.title}</div>
+              <div>
+                {isCurrent.title.length >= 45
+                  ? isCurrent.title.slice(0, 39) + '...'
+                  : isCurrent.title}
+              </div>
               <div>{isCurrent.date}</div>
             </S.List>
           ))}

@@ -43,7 +43,6 @@ export const AchievementPage = () => {
         <table>
           <thead>
             <tr>
-              <S.BoardText>번호</S.BoardText>
               <S.BoardText>제목</S.BoardText>
               <S.BoardText>작성자</S.BoardText>
               <S.BoardText>날짜</S.BoardText>
@@ -52,9 +51,12 @@ export const AchievementPage = () => {
           <tbody>
             {achievement?.results?.map((achievement, i) => (
               <tr key={i}>
-                <S.BoardText>{achievement.id - 17}</S.BoardText>
                 <S.BoardText>
-                  <Link href={Paths.achievement + '/' + achievement.id}>{achievement.title}</Link>
+                  <Link href={Paths.achievement + '/' + achievement.id}>
+                    {achievement.title.length >= 51
+                      ? achievement.title.slice(0, 50) + '...'
+                      : achievement.title}
+                  </Link>
                 </S.BoardText>
                 <S.BoardText>{achievement.author.name}</S.BoardText>
                 <S.BoardText>{achievement.date}</S.BoardText>
@@ -190,11 +192,11 @@ namespace S {
 
     @media (max-width: 1200px) {
       &:first-child {
-        display: none;
-      }
-      &:nth-child(2) {
         text-overflow: ellipsis;
         white-space: pre-line;
+      }
+      &:nth-child(2) {
+        display: none;
       }
       &:nth-child(3) {
         display: none;

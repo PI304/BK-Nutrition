@@ -42,7 +42,6 @@ export const InternationalPage = () => {
         <table>
           <thead>
             <tr>
-              <S.BoardText>번호</S.BoardText>
               <S.BoardText>제목</S.BoardText>
               <S.BoardText>작성자</S.BoardText>
               <S.BoardText>날짜</S.BoardText>
@@ -51,10 +50,11 @@ export const InternationalPage = () => {
           <tbody>
             {international?.results?.map((international, i) => (
               <tr key={i}>
-                <S.BoardText>{international.id - 12}</S.BoardText>
                 <S.BoardText>
                   <Link href={Paths.international + '/' + international.id}>
-                    {international.title}
+                    {international.title.length >= 51
+                      ? international.title.slice(0, 50) + '...'
+                      : international.title}
                   </Link>
                 </S.BoardText>
                 <S.BoardText>{international.author.name}</S.BoardText>
@@ -191,11 +191,11 @@ namespace S {
 
     @media (max-width: 1200px) {
       &:first-child {
-        display: none;
-      }
-      &:nth-child(2) {
         text-overflow: ellipsis;
         white-space: pre-line;
+      }
+      &:nth-child(2) {
+        display: none;
       }
       &:nth-child(3) {
         display: none;

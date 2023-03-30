@@ -42,7 +42,6 @@ export const IndustrialPage = () => {
         <table>
           <thead>
             <tr>
-              <S.BoardText>번호</S.BoardText>
               <S.BoardText>제목</S.BoardText>
               <S.BoardText>작성자</S.BoardText>
               <S.BoardText>날짜</S.BoardText>
@@ -51,9 +50,12 @@ export const IndustrialPage = () => {
           <tbody>
             {industrial?.results?.map((industrial, i) => (
               <tr key={i}>
-                <S.BoardText>{industrial.id}</S.BoardText>
                 <S.BoardText>
-                  <Link href={Paths.industrial + '/' + industrial.id}>{industrial.title}</Link>
+                  <Link href={Paths.industrial + '/' + industrial.id}>
+                    {industrial.title.length >= 51
+                      ? industrial.title.slice(0, 50) + '...'
+                      : industrial.title}
+                  </Link>
                 </S.BoardText>
                 <S.BoardText>{industrial.author.name}</S.BoardText>
                 <S.BoardText>{industrial.date}</S.BoardText>
@@ -189,11 +191,11 @@ namespace S {
 
     @media (max-width: 1200px) {
       &:first-child {
-        display: none;
-      }
-      &:nth-child(2) {
         text-overflow: ellipsis;
         white-space: pre-line;
+      }
+      &:nth-child(2) {
+        display: none;
       }
       &:nth-child(3) {
         display: none;
