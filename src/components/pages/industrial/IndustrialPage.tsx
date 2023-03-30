@@ -15,7 +15,7 @@ export const IndustrialPage = () => {
   const onChangePage = (page: number) => setPage(page);
 
   const getIndustrial = async () => {
-    const industrial = await getPosts(PostsType.industrial, (page - 1) * 10);
+    const industrial = await getPosts(PostsType.industrial, PageLimit.limit * (page - 1));
     setIndustrial(industrial);
   };
 

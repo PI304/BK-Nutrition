@@ -15,7 +15,7 @@ export const ResourcePage = () => {
   const onChangePage = (page: number) => setPage(page);
 
   const getResource = async () => {
-    const resource = await getPosts(PostsType.resource, (page - 1) * 10);
+    const resource = await getPosts(PostsType.resource, PageLimit.limit * (page - 1));
     setResource(resource);
   };
 

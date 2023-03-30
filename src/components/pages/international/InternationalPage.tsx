@@ -15,7 +15,7 @@ export const InternationalPage = () => {
   const onChangePage = (page: number) => setPage(page);
 
   const getInternational = async () => {
-    const international = await getPosts(PostsType.international, (page - 1) * 10);
+    const international = await getPosts(PostsType.international, PageLimit.limit * (page - 1));
     setInternational(international);
   };
 

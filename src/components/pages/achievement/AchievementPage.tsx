@@ -15,7 +15,7 @@ export const AchievementPage = () => {
   const onChangePage = (page: number) => setPage(page);
 
   const getAchievement = async () => {
-    const achievement = await getPosts(PostsType.achievement, (page - 1) * 10);
+    const achievement = await getPosts(PostsType.achievement, PageLimit.limit * (page - 1));
     setAchievement(achievement);
   };
 

@@ -1,36 +1,86 @@
 import styled from 'styled-components';
 import { Colors, Fonts } from '@/styles';
 import { svgDoubleLeft7, svgLeft7, svgRight7, svgDoubleRight7 } from '../../styles/svgs';
+import { useEffect, useState } from 'react';
+import { PageLimit } from '@/constants';
 
 export const PageButton = ({ onChangePage, currentPage, totalPage }: PageButtonProps) => {
+  const [pages, setPages] = useState<number[]>([]);
+  const [block, setBlock] = useState(1);
+
+  const getLastBlock = () => Math.ceil(pages.length / 5);
+
+  const getPagesInCurrentBlock = () => pages.slice((block - 1) * 5, (block - 1) * 5 + 5);
+
+  const onFirst = () => {
+    setBlock(1);
+    onChangePage(1);
+  };
+
+  const onLast = () => {
+    setBlock(getLastBlock());
+    onChangePage(pages.length);
+  };
+
+  const onPrev = () => {
+    if (block !== 1) {
+      const prevBlock = block - 1;
+      setBlock(prevBlock);
+      /* 이전 블록의 마지막 페이지로 이동 */
+      onChangePage((prevBlock - 1) * 5 + 5);
+    }
+  };
+
+  const onNext = () => {
+    if (block !== getLastBlock()) {
+      const nextBlock = block + 1;
+      setBlock(nextBlock);
+      /* 다음 블록의 첫 페이지로 이동 */
+      onChangePage((nextBlock - 1) * 5 + 1);
+    }
+  };
+
+  useEffect(() => {
+    if (totalPage) {
+      const pagesCnt = Math.ceil(totalPage / PageLimit.limit);
+      const pages = [
+        ...Array(pagesCnt)
+          .fill(0)
+          .map((v, i) => i + 1),
+      ];
+      setPages(pages);
+    }
+  }, [totalPage]);
   return (
     <>
-      <S.PageButtonLayout>
-        <button>{svgDoubleLeft7}</button>
-        <button>{svgLeft7}</button>
-        <S.NumberWrapper>
-          {Array(totalPage)
-            .fill(0) // [0, 0]
-            .map((_, i) => i + 1) // [1, 2]
-            .map((page) => (
-              <S.NumberButton
-                onClick={() => onChangePage(page)}
-                key={page}
-                isCurrent={currentPage === page}>
-                {page}
-              </S.NumberButton>
-            ))}
-          {/* {Array(totalPage)
+      {!!totalPage && (
+        <S.PageButtonLayout>
+          <button onClick={onFirst}>{svgDoubleLeft7}</button>
+          <button onClick={onPrev}>{svgLeft7}</button>
+          <S.NumberWrapper>
+            {Array(totalPage)
+              .fill(0) // [0, 0]
+              .map((_, i) => i + 1) // [1, 2]
+              .map((page) => (
+                <S.NumberButton
+                  onClick={() => onChangePage(page)}
+                  key={page}
+                  isCurrent={currentPage === page}>
+                  {page}
+                </S.NumberButton>
+              ))}
+            {/* {Array(totalPage)
             .fill(0) //[0, 0]
             .map((_, i) => (
               <S.NumberButton onClick={() => onChangePage(i + 1)} key={i}>
                 {i + 1}
               </S.NumberButton>
             ))} */}
-        </S.NumberWrapper>
-        <button>{svgRight7}</button>
-        <button>{svgDoubleRight7}</button>
-      </S.PageButtonLayout>
+          </S.NumberWrapper>
+          <button onClick={onNext}>{svgRight7}</button>
+          <button onClick={onLast}>{svgDoubleRight7}</button>
+        </S.PageButtonLayout>
+      )}
     </>
   );
 };
