@@ -8,6 +8,7 @@ import { NameTitles, SubTitles, Titles } from '@/constants/titles';
 
 export const BackgroundHeader = () => {
   const router = useRouter();
+  // const { id } = router.query;
 
   const [title, setTitle] = useState('');
   const [nameTitle, setNameTitle] = useState('');
@@ -29,6 +30,18 @@ export const BackgroundHeader = () => {
       setSubTitle(SubTitles[key]);
     } else setSubTitle('');
   }, [router.pathname]); // 주소가 바뀔 때 마다 실행됨
+
+  // useEffect(() => {
+  //   if (id) {
+  //     const regex = /^\/community\/[a-zA-Z0-9]+$/;
+  //     const url = `/community/${id}`;
+
+  //     if (regex.test(url)) {
+  //       setTitle('공지사항');
+  //       setNameTitle('커뮤니티');
+  //     }
+  //   }
+  // }, [id]);
 
   return (
     <>

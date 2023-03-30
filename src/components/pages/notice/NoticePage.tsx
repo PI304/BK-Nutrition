@@ -10,13 +10,13 @@ import { PostsType } from '@/constants';
 import { PageLimit } from '@/constants/pageLimit';
 
 export const NoticePage = () => {
-  const [notice, setNotice] = useState<ResponsePosts.Get>();
+  const [notices, setNotices] = useState<ResponsePosts.Get>();
   const [page, setPage] = useState(1);
   const onChangePage = (page: number) => setPage(page);
 
   const getNotice = async () => {
-    const notice = await getPosts(PostsType.notice, PageLimit.limit * (page - 1));
-    setNotice(notice);
+    const notices = await getPosts(PostsType.notice, PageLimit.limit * (page - 1));
+    setNotices(notices);
   };
 
   useEffect(() => {
@@ -40,28 +40,30 @@ export const NoticePage = () => {
         <table>
           <thead>
             <tr>
-              <S.BoardText>번호</S.BoardText>
               <S.BoardText>제목</S.BoardText>
               <S.BoardText>작성자</S.BoardText>
               <S.BoardText>날짜</S.BoardText>
             </tr>
           </thead>
           <tbody>
-            {notice?.results.map((notice, i) => (
+            {notices?.results.map((notices, i) => (
               <tr key={i}>
-                <S.BoardText>{notice.id - 7}</S.BoardText>
                 <S.BoardText>
-                  <Link href={Paths.notice + '/' + notice.id}>{notice.title}</Link>
+                  <Link href={Paths.notice + '/' + notices.id}>
+                    {notices.title.length >= 51
+                      ? notices.title.slice(0, 50) + '...'
+                      : notices.title}
+                  </Link>
                 </S.BoardText>
-                <S.BoardText>{notice.author.name}</S.BoardText>
-                <S.BoardText>{notice.date}</S.BoardText>
+                <S.BoardText>{notices.author.name}</S.BoardText>
+                <S.BoardText>{notices.date}</S.BoardText>
               </tr>
             ))}
           </tbody>
         </table>
 
         <PageButton
-          totalPage={notice?.count ? Math.ceil(notice?.count / PageLimit.limit) : 0}
+          totalPage={notices?.count ? Math.ceil(notices?.count / PageLimit.limit) : 0}
           currentPage={page}
           onChangePage={onChangePage}
         />
@@ -176,11 +178,11 @@ namespace S {
 
     @media (max-width: 1200px) {
       &:first-child {
-        display: none;
-      }
-      &:nth-child(2) {
         text-overflow: ellipsis;
         white-space: pre-line;
+      }
+      &:nth-child(2) {
+        display: none;
       }
       &:nth-child(3) {
         display: none;

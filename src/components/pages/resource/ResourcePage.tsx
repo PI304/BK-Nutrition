@@ -15,7 +15,7 @@ export const ResourcePage = () => {
   const onChangePage = (page: number) => setPage(page);
 
   const getResource = async () => {
-    const resource = await getPosts(PostsType.resource, (page - 1) * 10);
+    const resource = await getPosts(PostsType.resource, PageLimit.limit * (page - 1));
     setResource(resource);
   };
 
@@ -39,7 +39,6 @@ export const ResourcePage = () => {
         <table>
           <thead>
             <tr>
-              <S.BoardText>번호</S.BoardText>
               <S.BoardText>제목</S.BoardText>
               <S.BoardText>작성자</S.BoardText>
               <S.BoardText>날짜</S.BoardText>
@@ -48,9 +47,12 @@ export const ResourcePage = () => {
           <tbody>
             {resource?.results?.map((resource, i) => (
               <tr key={i}>
-                <S.BoardText>{resource.id - 20}</S.BoardText>
                 <S.BoardText>
-                  <Link href={Paths.resource + '/' + resource.id}>{resource.title}</Link>
+                  <Link href={Paths.resource + '/' + resource.id}>
+                    {resource.title.length >= 51
+                      ? resource.title.slice(0, 50) + '...'
+                      : resource.title}
+                  </Link>
                 </S.BoardText>
                 <S.BoardText>{resource.author.name}</S.BoardText>
                 <S.BoardText>{resource.date}</S.BoardText>
@@ -173,11 +175,11 @@ namespace S {
 
     @media (max-width: 1200px) {
       &:first-child {
-        display: none;
-      }
-      &:nth-child(2) {
         text-overflow: ellipsis;
         white-space: pre-line;
+      }
+      &:nth-child(2) {
+        display: none;
       }
       &:nth-child(3) {
         display: none;
