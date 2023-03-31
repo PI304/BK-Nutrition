@@ -8,40 +8,33 @@ import { NameTitles, SubTitles, Titles } from '@/constants/titles';
 
 export const BackgroundHeader = () => {
   const router = useRouter();
-  // const { id } = router.query;
 
   const [title, setTitle] = useState('');
   const [nameTitle, setNameTitle] = useState('');
   const [subTitle, setSubTitle] = useState('');
 
   useEffect(() => {
+    const titlePattern =
+      /^\/(intro|member|community|business)\/(resource|international|industrial)?\/?[0-9]*/;
+    const namePattern =
+      /^\/(intro|member|community|business)\/(resource|international|industrial)?\/?[0-9]*/;
+    const subTitlePattern =
+      /^\/(intro|member|community|business)\/(resource|international|industrial)?\/?[0-9]*/;
     const path = router.pathname; //path 안에 주소를 넣어줌
-    if (Titles.hasOwnProperty(path)) {
+    if (titlePattern.test(path)) {
       const key = path as keyof typeof Titles;
       setTitle(Titles[key]);
     }
-    if (NameTitles.hasOwnProperty(path)) {
+    if (namePattern.test(path)) {
       const key = path as keyof typeof NameTitles;
       setNameTitle(NameTitles[key]);
     }
 
-    if (SubTitles.hasOwnProperty(path)) {
+    if (subTitlePattern.test(path)) {
       const key = path as keyof typeof SubTitles;
       setSubTitle(SubTitles[key]);
     } else setSubTitle('');
   }, [router.pathname]); // 주소가 바뀔 때 마다 실행됨
-
-  // useEffect(() => {
-  //   if (id) {
-  //     const regex = /^\/community\/[a-zA-Z0-9]+$/;
-  //     const url = `/community/${id}`;
-
-  //     if (regex.test(url)) {
-  //       setTitle('공지사항');
-  //       setNameTitle('커뮤니티');
-  //     }
-  //   }
-  // }, [id]);
 
   return (
     <>
