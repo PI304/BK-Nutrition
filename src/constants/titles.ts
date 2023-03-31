@@ -4,8 +4,8 @@ export const Titles = {
   '/community': '공지사항',
   '/community/resource': '자료실',
   '/business': '연구업적',
-  '/business/international': '연구업적',
-  '/business/industrial': '연구업적',
+  '/business/international': '국제협력',
+  '/business/industrial': '산학협력',
 } as const;
 
 export const NameTitles = {
