@@ -8,15 +8,16 @@ import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
 import { PageLimit } from '@/constants/pageLimit';
+import { boardIdCalc } from '@/utils/boardIdCalc';
 
 export const InternationalPage = () => {
-  const [international, setInternational] = useState<ResponsePosts.Get>();
+  const [internationals, setInternationals] = useState<ResponsePosts.Get>();
   const [page, setPage] = useState(1);
   const onChangePage = (page: number) => setPage(page);
 
   const getInternational = async () => {
-    const international = await getPosts(PostsType.international, PageLimit.limit * (page - 1));
-    setInternational(international);
+    const internationals = await getPosts(PostsType.international, PageLimit.limit * (page - 1));
+    setInternationals(internationals);
   };
 
   useEffect(() => {
@@ -42,14 +43,16 @@ export const InternationalPage = () => {
         <table>
           <thead>
             <tr>
+              <S.BoardText>번호</S.BoardText>
               <S.BoardText>제목</S.BoardText>
               <S.BoardText>작성자</S.BoardText>
               <S.BoardText>날짜</S.BoardText>
             </tr>
           </thead>
           <tbody>
-            {international?.results?.map((international, i) => (
+            {internationals?.results?.map((international, i) => (
               <tr key={i}>
+                <S.BoardText>{boardIdCalc(internationals.count, page, i)}</S.BoardText>
                 <S.BoardText>
                   <Link href={Paths.international + '/' + international.id}>
                     {international.title.length >= 51
@@ -64,7 +67,7 @@ export const InternationalPage = () => {
           </tbody>
         </table>
         <PageButton
-          totalPage={international?.count ? Math.ceil(international?.count / PageLimit.limit) : 0}
+          totalPage={internationals?.count ? Math.ceil(internationals?.count / PageLimit.limit) : 0}
           currentPage={page}
           onChangePage={onChangePage}
         />

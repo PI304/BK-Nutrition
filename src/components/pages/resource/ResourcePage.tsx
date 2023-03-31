@@ -8,15 +8,16 @@ import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
 import { PageLimit } from '@/constants/pageLimit';
+import { boardIdCalc } from '@/utils/boardIdCalc';
 
 export const ResourcePage = () => {
-  const [resource, setResource] = useState<ResponsePosts.Get>();
+  const [resources, setResources] = useState<ResponsePosts.Get>();
   const [page, setPage] = useState(1);
   const onChangePage = (page: number) => setPage(page);
 
   const getResource = async () => {
-    const resource = await getPosts(PostsType.resource, PageLimit.limit * (page - 1));
-    setResource(resource);
+    const resources = await getPosts(PostsType.resource, PageLimit.limit * (page - 1));
+    setResources(resources);
   };
 
   useEffect(() => {
@@ -39,14 +40,16 @@ export const ResourcePage = () => {
         <table>
           <thead>
             <tr>
+              <S.BoardText>번호</S.BoardText>
               <S.BoardText>제목</S.BoardText>
               <S.BoardText>작성자</S.BoardText>
               <S.BoardText>날짜</S.BoardText>
             </tr>
           </thead>
           <tbody>
-            {resource?.results?.map((resource, i) => (
+            {resources?.results?.map((resource, i) => (
               <tr key={i}>
+                <S.BoardText>{boardIdCalc(resources.count, page, i)}</S.BoardText>
                 <S.BoardText>
                   <Link href={Paths.resource + '/' + resource.id}>
                     {resource.title.length >= 51
@@ -61,7 +64,7 @@ export const ResourcePage = () => {
           </tbody>
         </table>
         <PageButton
-          totalPage={resource?.count ? Math.ceil(resource?.count / PageLimit.limit) : 0}
+          totalPage={resources?.count ? Math.ceil(resources?.count / PageLimit.limit) : 0}
           currentPage={page}
           onChangePage={onChangePage}
         />
