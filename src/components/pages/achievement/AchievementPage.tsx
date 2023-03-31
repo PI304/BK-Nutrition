@@ -8,15 +8,16 @@ import { useState, useEffect } from 'react';
 import { getPosts } from 'api/posts';
 import { PostsType } from '@/constants';
 import { PageLimit } from '@/constants/pageLimit';
+import { boardIdCalc } from '@/utils/boardIdCalc';
 
 export const AchievementPage = () => {
-  const [achievement, setAchievement] = useState<ResponsePosts.Get>();
+  const [achievements, setAchievements] = useState<ResponsePosts.Get>();
   const [page, setPage] = useState(1);
   const onChangePage = (page: number) => setPage(page);
 
   const getAchievement = async () => {
-    const achievement = await getPosts(PostsType.achievement, PageLimit.limit * (page - 1));
-    setAchievement(achievement);
+    const achievements = await getPosts(PostsType.achievement, PageLimit.limit * (page - 1));
+    setAchievements(achievements);
   };
 
   useEffect(() => {
@@ -43,14 +44,16 @@ export const AchievementPage = () => {
         <table>
           <thead>
             <tr>
+              <S.BoardText>번호</S.BoardText>
               <S.BoardText>제목</S.BoardText>
               <S.BoardText>작성자</S.BoardText>
               <S.BoardText>날짜</S.BoardText>
             </tr>
           </thead>
           <tbody>
-            {achievement?.results?.map((achievement, i) => (
+            {achievements?.results?.map((achievement, i) => (
               <tr key={i}>
+                <S.BoardText>{boardIdCalc(achievements.count, page, i)}</S.BoardText>
                 <S.BoardText>
                   <Link href={Paths.achievement + '/' + achievement.id}>
                     {achievement.title.length >= 51
@@ -65,7 +68,7 @@ export const AchievementPage = () => {
           </tbody>
         </table>
         <PageButton
-          totalPage={achievement?.count ? Math.ceil(achievement?.count / PageLimit.limit) : 0}
+          totalPage={achievements?.count ? Math.ceil(achievements?.count / PageLimit.limit) : 0}
           currentPage={page}
           onChangePage={onChangePage}
         />

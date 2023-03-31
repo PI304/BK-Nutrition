@@ -8,7 +8,7 @@ import { getPosts } from 'api/posts';
 import { useEffect, useState } from 'react';
 import { PostsType } from '@/constants';
 import { PageLimit } from '@/constants/pageLimit';
-import { boardIdCalc } from '@/utils/BoardIdCalc';
+import { boardIdCalc } from '@/utils/boardIdCalc';
 
 export const NoticePage = () => {
   const [notices, setNotices] = useState<ResponsePosts.Get>();

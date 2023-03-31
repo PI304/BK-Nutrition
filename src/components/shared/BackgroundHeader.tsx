@@ -1,10 +1,10 @@
-import { BoxShadows, Colors, Fonts, HomeIcon } from '@/styles';
-import Link from 'next/link';
+import { Colors, Fonts, HomeIcon } from '@/styles';
 import styled from 'styled-components';
-import { Paths } from '@/constants/paths';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { NameTitles, SubTitles, Titles } from '@/constants/titles';
+import { Paths } from '@/constants';
+import Link from 'next/link';
 
 export const BackgroundHeader = () => {
   const router = useRouter();
@@ -14,23 +14,17 @@ export const BackgroundHeader = () => {
   const [subTitle, setSubTitle] = useState('');
 
   useEffect(() => {
-    const titlePattern =
-      /^\/(intro|member|community|business)\/(resource|international|industrial)?\/?[0-9]*/;
-    const namePattern =
-      /^\/(intro|member|community|business)\/(resource|international|industrial)?\/?[0-9]*/;
-    const subTitlePattern =
-      /^\/(intro|member|community|business)\/(resource|international|industrial)?\/?[0-9]*/;
-    const path = router.pathname; //path 안에 주소를 넣어줌
-    if (titlePattern.test(path)) {
+    const path = router.pathname.replace('/[id]', ''); //path 안에 주소를 넣어줌
+    console.log(path);
+    if (path in Titles) {
       const key = path as keyof typeof Titles;
       setTitle(Titles[key]);
     }
-    if (namePattern.test(path)) {
+    if (path in NameTitles) {
       const key = path as keyof typeof NameTitles;
       setNameTitle(NameTitles[key]);
     }
-
-    if (subTitlePattern.test(path)) {
+    if (path in SubTitles) {
       const key = path as keyof typeof SubTitles;
       setSubTitle(SubTitles[key]);
     } else setSubTitle('');
