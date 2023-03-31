@@ -65,6 +65,7 @@ export const NoticePage = () => {
         <PageButton
           totalPage={notices?.count ? Math.ceil(notices?.count / PageLimit.limit) : 0}
           currentPage={page}
+          setCurrentPage={setPage}
           onChangePage={onChangePage}
         />
       </S.BoardBox>

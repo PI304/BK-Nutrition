@@ -64,6 +64,7 @@ export const ResourcePage = () => {
           totalPage={resource?.count ? Math.ceil(resource?.count / PageLimit.limit) : 0}
           currentPage={page}
           onChangePage={onChangePage}
+          setCurrentPage={setPage}
         />
       </S.BoardBox>
     </>

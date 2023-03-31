@@ -68,6 +68,7 @@ export const AchievementPage = () => {
           totalPage={achievement?.count ? Math.ceil(achievement?.count / PageLimit.limit) : 0}
           currentPage={page}
           onChangePage={onChangePage}
+          setCurrentPage={setPage}
         />
       </S.BoardBox>
     </>
