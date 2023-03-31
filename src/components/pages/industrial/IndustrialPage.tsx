@@ -8,15 +8,16 @@ import { PostsType } from '@/constants';
 import { Colors, Fonts, BoxShadows } from '@/styles';
 import { PageButton, Select } from '@/components/shared';
 import { PageLimit } from '@/constants/pageLimit';
+import { boardIdCalc } from '@/utils/boardIdCalc';
 
 export const IndustrialPage = () => {
-  const [industrial, setIndustrial] = useState<ResponsePosts.Get>();
+  const [industrials, setIndustrials] = useState<ResponsePosts.Get>();
   const [page, setPage] = useState(1);
   const onChangePage = (page: number) => setPage(page);
 
   const getIndustrial = async () => {
-    const industrial = await getPosts(PostsType.industrial, PageLimit.limit * (page - 1));
-    setIndustrial(industrial);
+    const industrials = await getPosts(PostsType.industrial, PageLimit.limit * (page - 1));
+    setIndustrials(industrials);
   };
 
   useEffect(() => {
@@ -42,14 +43,16 @@ export const IndustrialPage = () => {
         <table>
           <thead>
             <tr>
+              <S.BoardText>번호</S.BoardText>
               <S.BoardText>제목</S.BoardText>
               <S.BoardText>작성자</S.BoardText>
               <S.BoardText>날짜</S.BoardText>
             </tr>
           </thead>
           <tbody>
-            {industrial?.results?.map((industrial, i) => (
+            {industrials?.results?.map((industrial, i) => (
               <tr key={i}>
+                <S.BoardText>{boardIdCalc(industrials.count, page, i)}</S.BoardText>
                 <S.BoardText>
                   <Link href={Paths.industrial + '/' + industrial.id}>
                     {industrial.title.length >= 51
@@ -64,10 +67,9 @@ export const IndustrialPage = () => {
           </tbody>
         </table>
         <PageButton
-          totalPage={industrial?.count ? Math.ceil(industrial?.count / PageLimit.limit) : 0}
+          totalPage={industrials?.count ? Math.ceil(industrials?.count / PageLimit.limit) : 0}
           currentPage={page}
           onChangePage={onChangePage}
-          setCurrentPage={setPage}
         />
       </S.BoardBox>
     </>
@@ -192,11 +194,11 @@ namespace S {
 
     @media (max-width: 1200px) {
       &:first-child {
-        text-overflow: ellipsis;
-        white-space: pre-line;
+        display: none;
       }
       &:nth-child(2) {
-        display: none;
+        text-overflow: ellipsis;
+        white-space: pre-line;
       }
       &:nth-child(3) {
         display: none;

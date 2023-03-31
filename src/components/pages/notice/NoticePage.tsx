@@ -8,6 +8,7 @@ import { getPosts } from 'api/posts';
 import { useEffect, useState } from 'react';
 import { PostsType } from '@/constants';
 import { PageLimit } from '@/constants/pageLimit';
+import { boardIdCalc } from '@/utils/boardIdCalc';
 
 export const NoticePage = () => {
   const [notices, setNotices] = useState<ResponsePosts.Get>();
@@ -40,23 +41,28 @@ export const NoticePage = () => {
         <table>
           <thead>
             <tr>
+              <S.BoardText>번호</S.BoardText>
               <S.BoardText>제목</S.BoardText>
               <S.BoardText>작성자</S.BoardText>
               <S.BoardText>날짜</S.BoardText>
             </tr>
           </thead>
           <tbody>
-            {notices?.results.map((notices, i) => (
+            {notices?.results.map((notice, i) => (
               <tr key={i}>
                 <S.BoardText>
-                  <Link href={Paths.notice + '/' + notices.id}>
-                    {notices.title.length >= 51
-                      ? notices.title.slice(0, 50) + '...'
-                      : notices.title}
+                  {/* {(Math.ceil(notices?.count / PageLimit.limit) - page) * PageLimit.limit +
+                    notices.count -
+                    i} */}
+                  {boardIdCalc(notices.count, page, i)}
+                </S.BoardText>
+                <S.BoardText>
+                  <Link href={Paths.notice + '/' + notice.id}>
+                    {notice.title.length >= 51 ? notice.title.slice(0, 50) + '...' : notice.title}
                   </Link>
                 </S.BoardText>
-                <S.BoardText>{notices.author.name}</S.BoardText>
-                <S.BoardText>{notices.date}</S.BoardText>
+                <S.BoardText>{notice.author.name}</S.BoardText>
+                <S.BoardText>{notice.date}</S.BoardText>
               </tr>
             ))}
           </tbody>
@@ -65,7 +71,6 @@ export const NoticePage = () => {
         <PageButton
           totalPage={notices?.count ? Math.ceil(notices?.count / PageLimit.limit) : 0}
           currentPage={page}
-          setCurrentPage={setPage}
           onChangePage={onChangePage}
         />
       </S.BoardBox>
@@ -179,11 +184,11 @@ namespace S {
 
     @media (max-width: 1200px) {
       &:first-child {
-        text-overflow: ellipsis;
-        white-space: pre-line;
+        display: none;
       }
       &:nth-child(2) {
-        display: none;
+        text-overflow: ellipsis;
+        white-space: pre-line;
       }
       &:nth-child(3) {
         display: none;

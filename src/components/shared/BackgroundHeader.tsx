@@ -1,47 +1,34 @@
-import { BoxShadows, Colors, Fonts, HomeIcon } from '@/styles';
-import Link from 'next/link';
+import { Colors, Fonts, HomeIcon } from '@/styles';
 import styled from 'styled-components';
-import { Paths } from '@/constants/paths';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { NameTitles, SubTitles, Titles } from '@/constants/titles';
+import { Paths } from '@/constants';
+import Link from 'next/link';
 
 export const BackgroundHeader = () => {
   const router = useRouter();
-  // const { id } = router.query;
 
   const [title, setTitle] = useState('');
   const [nameTitle, setNameTitle] = useState('');
   const [subTitle, setSubTitle] = useState('');
 
   useEffect(() => {
-    const path = router.pathname; //path 안에 주소를 넣어줌
-    if (Titles.hasOwnProperty(path)) {
+    const path = router.pathname.replace('/[id]', ''); //path 안에 주소를 넣어줌
+    console.log(path);
+    if (path in Titles) {
       const key = path as keyof typeof Titles;
       setTitle(Titles[key]);
     }
-    if (NameTitles.hasOwnProperty(path)) {
+    if (path in NameTitles) {
       const key = path as keyof typeof NameTitles;
       setNameTitle(NameTitles[key]);
     }
-
-    if (SubTitles.hasOwnProperty(path)) {
+    if (path in SubTitles) {
       const key = path as keyof typeof SubTitles;
       setSubTitle(SubTitles[key]);
     } else setSubTitle('');
   }, [router.pathname]); // 주소가 바뀔 때 마다 실행됨
-
-  // useEffect(() => {
-  //   if (id) {
-  //     const regex = /^\/community\/[a-zA-Z0-9]+$/;
-  //     const url = `/community/${id}`;
-
-  //     if (regex.test(url)) {
-  //       setTitle('공지사항');
-  //       setNameTitle('커뮤니티');
-  //     }
-  //   }
-  // }, [id]);
 
   return (
     <>

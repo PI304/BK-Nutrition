@@ -4,12 +4,7 @@ import { svgDoubleLeft7, svgLeft7, svgRight7, svgDoubleRight7 } from '../../styl
 import { useState } from 'react';
 import { PageLimit } from '@/constants';
 
-export const PageButton = ({
-  onChangePage,
-  currentPage,
-  totalPage,
-  setCurrentPage,
-}: PageButtonProps) => {
+export const PageButton = ({ onChangePage, currentPage, totalPage }: PageButtonProps) => {
   const [block, setBlock] = useState(1);
 
   const onFirst = () => {
@@ -18,7 +13,7 @@ export const PageButton = ({
   };
 
   const onLast = () => {
-    setCurrentPage(totalPage);
+    onChangePage(totalPage);
     setBlock(Math.ceil(totalPage / PageLimit.limit) - 1);
   };
 
@@ -29,7 +24,7 @@ export const PageButton = ({
     if (PageLimit.limit * Number(block + 1) < Number(currentPage + 1)) {
       setBlock((n: number) => n + 1);
     } //보여줄 페이지네이션 개수(pageLimit) * (blockNum+1) 가 page + 1보다 작다면 setBlockNum은 현재 페이지 + 1을 한다.
-    setCurrentPage(currentPage + 1); //setPage에 현재 페이지 + 1을 한다.
+    onChangePage(currentPage + 1); //setPage에 현재 페이지 + 1을 한다.
   };
 
   const onPrev = () => {
@@ -39,7 +34,7 @@ export const PageButton = ({
     if (currentPage - 1 <= PageLimit.limit * block) {
       setBlock((n: number) => n - 1);
     } // 현재 페이지 - 1 이 보여줄 페이지네이션 개수(pageLimit) * blockNum 보다 작거나 같으면 setBlockNum에 - 1 을 작동시킨다.
-    setCurrentPage(currentPage - 1); // setPage를 현재 페이지에서 -1 로 이동시킨다.
+    onChangePage(currentPage - 1); // setPage를 현재 페이지에서 -1 로 이동시킨다.
   };
 
   return (
