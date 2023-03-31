@@ -14,7 +14,6 @@ type TitleProps = {
 type PageButtonProps = {
   totalPage: number;
   currentPage: number;
-  setCurrentPage: (page: number) => void;
   onChangePage: (page: number) => void;
 };
 

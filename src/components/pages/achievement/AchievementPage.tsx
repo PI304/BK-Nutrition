@@ -68,7 +68,6 @@ export const AchievementPage = () => {
           totalPage={achievement?.count ? Math.ceil(achievement?.count / PageLimit.limit) : 0}
           currentPage={page}
           onChangePage={onChangePage}
-          setCurrentPage={setPage}
         />
       </S.BoardBox>
     </>
@@ -193,11 +192,11 @@ namespace S {
 
     @media (max-width: 1200px) {
       &:first-child {
-        text-overflow: ellipsis;
-        white-space: pre-line;
+        display: none;
       }
       &:nth-child(2) {
-        display: none;
+        text-overflow: ellipsis;
+        white-space: pre-line;
       }
       &:nth-child(3) {
         display: none;
