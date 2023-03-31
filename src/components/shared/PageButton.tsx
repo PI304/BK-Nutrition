@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import { Colors, Fonts } from '@/styles';
 import { svgDoubleLeft7, svgLeft7, svgRight7, svgDoubleRight7 } from '../../styles/svgs';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { PageLimit } from '@/constants';
 
-export const PageButton = ({ onChangePage, currentPage, totalPage }: PageButtonProps) => {
-  const [pages, setPages] = useState<number[]>([]);
+export const PageButton = ({
+  onChangePage,
+  currentPage,
+  totalPage,
+  setCurrentPage,
+}: PageButtonProps) => {
   const [block, setBlock] = useState(1);
-
-  const getLastBlock = () => Math.ceil(pages.length / 5);
-
-  const getPagesInCurrentBlock = () => pages.slice((block - 1) * 5, (block - 1) * 5 + 5);
 
   const onFirst = () => {
     setBlock(1);
@@ -18,39 +18,30 @@ export const PageButton = ({ onChangePage, currentPage, totalPage }: PageButtonP
   };
 
   const onLast = () => {
-    setBlock(getLastBlock());
-    onChangePage(pages.length);
-  };
-
-  const onPrev = () => {
-    if (block !== 1) {
-      const prevBlock = block - 1;
-      setBlock(prevBlock);
-      /* 이전 블록의 마지막 페이지로 이동 */
-      onChangePage((prevBlock - 1) * 5 + 5);
-    }
+    setCurrentPage(totalPage);
+    setBlock(Math.ceil(totalPage / PageLimit.limit) - 1);
   };
 
   const onNext = () => {
-    if (block !== getLastBlock()) {
-      const nextBlock = block + 1;
-      setBlock(nextBlock);
-      /* 다음 블록의 첫 페이지로 이동 */
-      onChangePage((nextBlock - 1) * 5 + 1);
-    }
+    if (currentPage >= totalPage) {
+      return;
+    } // page가 마지막 페이지보다 크거나 같으면 아무 것도 리턴하지 않는다.
+    if (PageLimit.limit * Number(block + 1) < Number(currentPage + 1)) {
+      setBlock((n: number) => n + 1);
+    } //보여줄 페이지네이션 개수(pageLimit) * (blockNum+1) 가 page + 1보다 작다면 setBlockNum은 현재 페이지 + 1을 한다.
+    setCurrentPage(currentPage + 1); //setPage에 현재 페이지 + 1을 한다.
   };
 
-  useEffect(() => {
-    if (totalPage) {
-      const pagesCnt = Math.ceil(totalPage / PageLimit.limit);
-      const pages = [
-        ...Array(pagesCnt)
-          .fill(0)
-          .map((v, i) => i + 1),
-      ];
-      setPages(pages);
-    }
-  }, [totalPage]);
+  const onPrev = () => {
+    if (currentPage <= 1) {
+      return;
+    } // page가 1보다 작거나 같으면 아무 것도 리턴하지 않는다.
+    if (currentPage - 1 <= PageLimit.limit * block) {
+      setBlock((n: number) => n - 1);
+    } // 현재 페이지 - 1 이 보여줄 페이지네이션 개수(pageLimit) * blockNum 보다 작거나 같으면 setBlockNum에 - 1 을 작동시킨다.
+    setCurrentPage(currentPage - 1); // setPage를 현재 페이지에서 -1 로 이동시킨다.
+  };
+
   return (
     <>
       {!!totalPage && (

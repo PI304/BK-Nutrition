@@ -67,6 +67,7 @@ export const InternationalPage = () => {
           totalPage={international?.count ? Math.ceil(international?.count / PageLimit.limit) : 0}
           currentPage={page}
           onChangePage={onChangePage}
+          setCurrentPage={setPage}
         />
       </S.BoardBox>
     </>

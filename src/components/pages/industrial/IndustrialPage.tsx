@@ -67,6 +67,7 @@ export const IndustrialPage = () => {
           totalPage={industrial?.count ? Math.ceil(industrial?.count / PageLimit.limit) : 0}
           currentPage={page}
           onChangePage={onChangePage}
+          setCurrentPage={setPage}
         />
       </S.BoardBox>
     </>
