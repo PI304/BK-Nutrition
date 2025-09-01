@@ -390,3 +390,6 @@ export namespace SC {
 
 1rem = 10px로 설정해둔 상태입니다.  
 px이 아닌 rem을 사용해주세요.
+
+
+<!-- Security scan triggered at 2025-09-01 22:48:54 -->
