@@ -397,3 +397,5 @@ px이 아닌 rem을 사용해주세요.
 <!-- Security scan triggered at 2025-09-07 01:44:23 -->
 
 <!-- Security scan triggered at 2025-09-09 05:21:24 -->
+
+<!-- Security scan triggered at 2025-09-28 15:24:22 -->
